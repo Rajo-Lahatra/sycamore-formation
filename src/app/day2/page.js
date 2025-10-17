@@ -244,11 +244,11 @@ const slidesData = [
         <ul>
             <li>Assiette : Montant du <strong>salaire brut</strong>.</li>
             <li>Taux d’Imposition : <strong>3%</strong>.</li>
-            <li>**Note :** Sycamore, avec 250 employés, est soumise à la Contribution ONFPP et non à la Taxe d'Apprentissage (TA).</li>
         </ul>
         <h3>Précision importante sur l'ONFPP</h3>
         <ul>
             <li>Les entreprises dont l'effectif est <strong>supérieur ou égal à 30 employés</strong> sont soumises à l’<strong>ONFPP</strong>.</li>
+            <li><strong>Note :</strong> Sycamore, avec 250 employés, est soumise à la Contribution ONFPP et non à la Taxe d'Apprentissage (TA).</li>
             <li><strong>Taux ONFPP :</strong> <strong>1,5%</strong> de la masse salariale globale.</li>
             <li><strong>Échéance ONFPP :</strong> Au plus tard le <strong>20 de chaque mois</strong>.</li>
         </ul>
@@ -265,8 +265,8 @@ const slidesData = [
         </ul>
         <h3>Échéance</h3>
         <ul>
-            <li>Pour l'**ONFPP** (applicable à Sycamore) : Au plus tard le <strong>20 de chaque mois</strong>.</li>
-            <li>Pour la **TA** (entreprises < 30 employés) : Déclaration et paiement annuels au plus tard le **15 février** de chaque année.</li>
+            <li>Pour l'<strong>ONFPP</strong> (applicable à Sycamore) : Au plus tard le <strong>20 de chaque mois</strong>.</li>
+            <li>Pour la <strong>TA</strong> (entreprises < 30 employés) : Déclaration et paiement annuels au plus tard le <strong>15 février</strong> de chaque année.</li>
         </ul>
         <h3>Sanctions</h3>
         <ul>
@@ -314,27 +314,27 @@ const slidesData = [
         <h3>Contexte</h3>
         <p><strong>WASSOLON Technology Sarl</strong> (Fintech, 4 salariés) effectue la paie pour la première fois. En tant que responsable financier, il vous est demandé de valider les calculs d’impôts et taxes sur salaires effectués par le RH.</p>
         <p><strong>Calculs du RH à valider :</strong></p>
-        <table style="width: 100%; text-align: right; font-size: 0.85em; border-collapse: collapse; margin-top: 15px;">
+        <table style="width: 100%; text-align: right; font-size: 0.8em; border-collapse: collapse; margin-top: 15px;">
             <thead>
                 <tr style="background-color: var(--french-gray);">
-                    <th style="text-align: left; padding: 8px; border: 1px solid #ddd;">Salarié</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">Salaire de Base</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">Prime transport</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">Ind cherté de vie</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">Loyer appartement</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">Prime de Fonction</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">Salaire Brut</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">RTS</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">VF</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">TA/ONFPP</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">Salaire Net</th>
+                    <th style="width: 10%; text-align: center; padding: 4px; border: 1px solid #ddd;">Salarié</th>
+                    <th style="width: 10%; text-align: center; padding: 4px; border: 1px solid #ddd;">Salaire de Base</th>
+                    <th style="width: 10%; text-align: center; padding: 4px; border: 1px solid #ddd;">Prime transport</th>
+                    <th style="width: 10%; text-align: center; padding: 4px; border: 1px solid #ddd;">Ind cherté de vie</th>
+                    <th style="width: 10%; text-align: center; padding: 4px; border: 1px solid #ddd;">Loyer appartement</th>
+                    <th style="width: 10%; text-align: center; padding: 4px; border: 1px solid #ddd;">Prime de Fonction</th>
+                    <th style="width: 10%; text-align: center; padding: 4px; border: 1px solid #ddd;">Salaire Brut</th>
+                    <th style="width: 8%; text-align: center; padding: 4px; border: 1px solid #ddd;">RTS</th>
+                    <th style="width: 8%; text-align: center; padding: 4px; border: 1px solid #ddd;">VF</th>
+                    <th style="width: 8%; text-align: center; padding: 4px; border: 1px solid #ddd;">TA/ONFPP</th>
+                    <th style="width: 8%; text-align: center; padding: 4px; border: 1px solid #ddd;">Salaire Net</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td style="text-align: left; padding: 8px; border: 1px solid #ddd;">Salarié 1</td><td style="padding: 8px; border: 1px solid #ddd;">3 000 000</td><td style="padding: 8px; border: 1px solid #ddd;">2 000 000</td><td style="padding: 8px; border: 1px solid #ddd;">1 300 000</td><td style="padding: 8px; border: 1px solid #ddd;">2 000 000</td><td style="padding: 8px; border: 1px solid #ddd;">-</td><td style="padding: 8px; border: 1px solid #ddd;">8 300 000</td><td style="padding: 8px; border: 1px solid #ddd;">250 000</td><td style="padding: 8px; border: 1px solid #ddd;">489 000</td><td style="padding: 8px; border: 1px solid #ddd;">124 500</td><td style="padding: 8px; border: 1px solid #ddd;">7 925 000</td></tr>
-                <tr><td style="text-align: left; padding: 8px; border: 1px solid #ddd;">Salarié 2</td><td style="padding: 8px; border: 1px solid #ddd;">8 200 000</td><td style="padding: 8px; border: 1px solid #ddd;">800 000</td><td style="padding: 8px; border: 1px solid #ddd;">900 000</td><td style="padding: 8px; border: 1px solid #ddd;">1 000 000</td><td style="padding: 8px; border: 1px solid #ddd;">-</td><td style="padding: 8px; border: 1px solid #ddd;">10 900 000</td><td style="padding: 8px; border: 1px solid #ddd;">567 500</td><td style="padding: 8px; border: 1px solid #ddd;">645 000</td><td style="padding: 8px; border: 1px solid #ddd;">163 500</td><td style="padding: 8px; border: 1px solid #ddd;">10 207 500</td></tr>
-                <tr><td style="text-align: left; padding: 8px; border: 1px solid #ddd;">Salarié 3</td><td style="padding: 8px; border: 1px solid #ddd;">3 600 000</td><td style="padding: 8px; border: 1px solid #ddd;">1 100 000</td><td style="padding: 8px; border: 1px solid #ddd;">1 000 000</td><td style="padding: 8px; border: 1px solid #ddd;">-</td><td style="padding: 8px; border: 1px solid #ddd;">2 000 000</td><td style="padding: 8px; border: 1px solid #ddd;">7 700 000</td><td style="padding: 8px; border: 1px solid #ddd;">325 000</td><td style="padding: 8px; border: 1px solid #ddd;">453  000</td><td style="padding: 8px; border: 1px solid #ddd;">115 500</td><td style="padding: 8px; border: 1px solid #ddd;">7 250 000</td></tr>
-                <tr><td style="text-align: left; padding: 8px; border: 1px solid #ddd;">Salarié 5</td><td style="padding: 8px; border: 1px solid #ddd;">1 000 000</td><td style="padding: 8px; border: 1px solid #ddd;">200 000</td><td style="padding: 8px; border: 1px solid #ddd;">150 000</td><td style="padding: 8px; border: 1px solid #ddd;">-</td><td style="padding: 8px; border: 1px solid #ddd;">-</td><td style="padding: 8px; border: 1px solid #ddd;">1 350 000</td><td style="padding: 8px; border: 1px solid #ddd;">14 125</td><td style="padding: 8px; border: 1px solid #ddd;">76 140</td><td style="padding: 8px; border: 1px solid #ddd;">20 250</td><td style="padding: 8px; border: 1px solid #ddd;">1 268 375</td></tr>
+                <tr><td style="text-align: left; padding: 4px; border: 1px solid #ddd;">Salarié 1</td><td style="padding: 4px; border: 1px solid #ddd;">3.000.000</td><td style="padding: 4px; border: 1px solid #ddd;">2.000.000</td><td style="padding: 4px; border: 1px solid #ddd;">1.300.000</td><td style="padding: 4px; border: 1px solid #ddd;">2.000.000</td><td style="padding: 4px; border: 1px solid #ddd;">-</td><td style="padding: 4px; border: 1px solid #ddd;">8.300.000</td><td style="padding: 4px; border: 1px solid #ddd;">250.000</td><td style="padding: 4px; border: 1px solid #ddd;">489.000</td><td style="padding: 4px; border: 1px solid #ddd;">124.500</td><td style="padding: 4px; border: 1px solid #ddd;">7.925.000</td></tr>
+                <tr><td style="text-align: left; padding: 4px; border: 1px solid #ddd;">Salarié 2</td><td style="padding: 4px; border: 1px solid #ddd;">8.200.000</td><td style="padding: 4px; border: 1px solid #ddd;">800.000</td><td style="padding: 4px; border: 1px solid #ddd;">900.000</td><td style="padding: 4px; border: 1px solid #ddd;">1.000.000</td><td style="padding: 4px; border: 1px solid #ddd;">-</td><td style="padding: 4px; border: 1px solid #ddd;">10.900.000</td><td style="padding: 4px; border: 1px solid #ddd;">567.500</td><td style="padding: 4px; border: 1px solid #ddd;">645.000</td><td style="padding: 4px; border: 1px solid #ddd;">163.500</td><td style="padding: 4px; border: 1px solid #ddd;">10.207.500</td></tr>
+                <tr><td style="text-align: left; padding: 4px; border: 1px solid #ddd;">Salarié 3</td><td style="padding: 4px; border: 1px solid #ddd;">3.600.000</td><td style="padding: 4px; border: 1px solid #ddd;">1.100.000</td><td style="padding: 4px; border: 1px solid #ddd;">1.000.000</td><td style="padding: 4px; border: 1px solid #ddd;">-</td><td style="padding: 4px; border: 1px solid #ddd;">2.000.000</td><td style="padding: 4px; border: 1px solid #ddd;">7.700.000</td><td style="padding: 4px; border: 1px solid #ddd;">325.000</td><td style="padding: 4px; border: 1px solid #ddd;">453.000</td><td style="padding: 4px; border: 1px solid #ddd;">115.500</td><td style="padding: 4px; border: 1px solid #ddd;">7.250.000</td></tr>
+                <tr><td style="text-align: left; padding: 4px; border: 1px solid #ddd;">Salarié 5</td><td style="padding: 4px; border: 1px solid #ddd;">1.000.000</td><td style="padding: 4px; border: 1px solid #ddd;">200.000</td><td style="padding: 4px; border: 1px solid #ddd;">150.000</td><td style="padding: 4px; border: 1px solid #ddd;">-</td><td style="padding: 4px; border: 1px solid #ddd;">-</td><td style="padding: 4px; border: 1px solid #ddd;">1.350.000</td><td style="padding: 4px; border: 1px solid #ddd;">14.125</td><td style="padding: 4px; border: 1px solid #ddd;">76.140</td><td style="padding: 4px; border: 1px solid #ddd;">20.250</td><td style="padding: 4px; border: 1px solid #ddd;">1.268.375</td></tr>
             </tbody>
         </table>
         `,

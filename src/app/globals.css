@@ -1,0 +1,117 @@
+/* Fichier : sycamore-formation/src/app/globals.css */
+
+/* Base Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+.container {
+    width: 95%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Header Styling */
+header {
+    background-color: #004d40; /* Couleur d'accentuation: Vert foncé */
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 5px solid #009688;
+}
+header h1 {
+    margin: 0 0 10px 0;
+    font-size: 2.5em;
+}
+header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+/* Section Styling */
+section {
+    background-color: white;
+    margin-bottom: 25px;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    color: #004d40;
+    border-bottom: 2px solid #b2dfdb;
+    padding-bottom: 8px;
+    margin-top: 0;
+}
+
+/* Accordion (Details/Summary) Styling for Daily Schedule */
+details {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 15px;
+    transition: all 0.3s;
+}
+details[open] {
+    background-color: #e0f2f1; /* Fond clair pour la journée ouverte */
+    border-color: #009688;
+}
+summary {
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #00796b;
+    padding: 10px 0;
+    cursor: pointer;
+    outline: none;
+}
+summary::before {
+    content: "▶";
+    margin-right: 10px;
+    font-size: 0.8em;
+    transition: transform 0.3s;
+    display: inline-block;
+}
+details[open] summary::before {
+    content: "▼";
+}
+
+/* Table Styling for Detailed Schedule */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: white;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.schedule-table th, .schedule-table td {
+    border: 1px solid #cfd8dc;
+    padding: 12px 15px;
+    text-align: left;
+}
+.schedule-table th {
+    background-color: #004d40;
+    color: white;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+.schedule-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.schedule-table td:nth-child(1) {
+    font-weight: bold;
+    white-space: nowrap;
+    width: 10%;
+}
+.table-break {
+    background-color: #ffcc80 !important;
+    font-style: italic;
+    text-align: center !important;
+    font-weight: bold !important;
+    color: #333 !important;
+}

@@ -101,7 +101,7 @@ const SLIDES = [
                 
                 <div style={{ padding: '15px', border: '2px solid #E94F64', borderRadius: '8px', backgroundColor: '#ffebe9' }}>
                     <p style={{ fontWeight: 'bold' }}>Règle cruciale :</p>
-                    <p>La fraction de l’IMF non imputée sur l’IS (si IS < IMF) <strong>n’est pas reportable</strong> sur les exercices suivants et reste acquise à l'État.</p>
+                    <p>La fraction de l’IMF non imputée sur l’IS (si IS &lt; IMF) <strong>n’est pas reportable</strong> sur les exercices suivants et reste acquise à l'État.</p>
                 </div>
                 
                 <p>Le Code minier prévoit des exonérations temporaires d'IMF durant les phases d'exploration/recherche.</p>

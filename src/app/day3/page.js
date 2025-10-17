@@ -232,7 +232,7 @@ const slidesData = [
         `
         <h3>Échéance</h3>
         <ul>
-            <li>Déclaration et paiement : Au plus tard le <strong>15ème jour du mois suivant</strong> la période d'imposition (mois civil).</li>
+            <li>Déclaration et paiement : Au plus tard le <strong>10ème jour du mois suivant</strong> la période d'imposition (mois civil).</li>
         </ul>
         <h3>Sanctions Spécifiques à la TVA (Exemples)</h3>
         <ul>

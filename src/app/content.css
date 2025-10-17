@@ -94,3 +94,73 @@
     padding-top: 25px;
     text-align: center;
 }
+.slideshow {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Style des contrôles de navigation */
+.slide-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+/* Boutons de navigation */
+.nav-button {
+    background-color: var(--saddle);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover:not(:disabled) {
+    background-color: var(--sepia);
+}
+
+.nav-button:disabled {
+    background-color: var(--french-gray);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Compteur de diapositives */
+.slide-counter {
+    font-weight: bold;
+    color: var(--saddle);
+    font-size: 1.1em;
+    padding: 5px 15px;
+    border: 1px solid var(--french-gray);
+    border-radius: 4px;
+}
+
+/* Bouton de retour au planning (Ajouté dans ContentWrapper) */
+.back-button {
+    display: block;
+    margin-top: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.back-button:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Masquer le logo sur la page d'accueil pour éviter la duplication avec le header existant */
+.content-body .logo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}

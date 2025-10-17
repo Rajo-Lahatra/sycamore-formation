@@ -1,4 +1,16 @@
-/* Fichier : sycamore-formation/src/app/globals.css */
+/* src/app/globals.css */
+
+/* Définition des variables de couleur (Palette Sycamore) */
+:root {
+    --sun: #fba519;
+    --saddle: #503326;
+    --french-gray: #bcbdc0;
+    --tulip-tree: #e8a83d;
+    --sepia: #714112;
+    --pale-oyster: #9b877a;
+    --quincy: #654530;
+    --fuel-yellow: #eea125;
+}
 
 /* Base Styling */
 body {
@@ -6,7 +18,8 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6;
+    /* Fond très clair, mais moins froid que blanc */
+    background-color: #fcfbf8; 
     color: #333;
 }
 .container {
@@ -16,13 +29,15 @@ body {
     padding: 0 20px;
 }
 
-/* Header Styling */
+/* Header Styling (Utilise les couleurs les plus foncées et les plus vives) */
 header {
-    background-color: #004d40; /* Couleur d'accentuation: Vert foncé */
+    /* saddle pour le fond du header */
+    background-color: var(--saddle); 
     color: white;
     padding: 40px 20px;
     text-align: center;
-    border-bottom: 5px solid #009688;
+    /* fuel-yellow pour la bordure percutante */
+    border-bottom: 5px solid var(--fuel-yellow); 
 }
 header h1 {
     margin: 0 0 10px 0;
@@ -42,28 +57,32 @@ section {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 h2 {
-    color: #004d40;
-    border-bottom: 2px solid #b2dfdb;
+    /* sepia pour le titre de section */
+    color: var(--sepia); 
+    /* french-gray ou pale-oyster pour la ligne de séparation */
+    border-bottom: 2px solid var(--french-gray); 
     padding-bottom: 8px;
     margin-top: 0;
 }
 
 /* Accordion (Details/Summary) Styling for Daily Schedule */
 details {
-    border: 1px solid #ddd;
+    border: 1px solid var(--french-gray);
     border-radius: 6px;
     padding: 10px;
     margin-bottom: 15px;
     transition: all 0.3s;
 }
 details[open] {
-    background-color: #e0f2f1; /* Fond clair pour la journée ouverte */
-    border-color: #009688;
+    /* tulip-tree (une nuance de jaune/orange clair) pour le fond ouvert */
+    background-color: #fff9e6; 
+    border-color: var(--tulip-tree);
 }
 summary {
     font-weight: bold;
     font-size: 1.3em;
-    color: #00796b;
+    /* sun comme couleur principale d'accentuation pour les jours */
+    color: var(--sun); 
     padding: 10px 0;
     cursor: pointer;
     outline: none;
@@ -73,6 +92,8 @@ summary::before {
     margin-right: 10px;
     font-size: 0.8em;
     transition: transform 0.3s;
+    /* sun comme couleur de la flèche */
+    color: var(--sun); 
     display: inline-block;
 }
 details[open] summary::before {
@@ -94,7 +115,8 @@ details[open] summary::before {
     text-align: left;
 }
 .schedule-table th {
-    background-color: #004d40;
+    /* saddle pour les entêtes de colonnes */
+    background-color: var(--saddle); 
     color: white;
     font-weight: normal;
     text-transform: uppercase;
@@ -109,9 +131,47 @@ details[open] summary::before {
     width: 10%;
 }
 .table-break {
-    background-color: #ffcc80 !important;
+    /* Utilisation d'une couleur chaude pour les pauses */
+    background-color: var(--tulip-tree) !important; 
     font-style: italic;
     text-align: center !important;
     font-weight: bold !important;
-    color: #333 !important;
+    color: var(--saddle) !important;
+}
+/* Conteneur pour gérer l'alignement vertical et horizontal */
+header {
+    /* Remplacer text-align: center; par display: flex; */
+    display: flex;
+    flex-direction: column; /* Garder l'alignement vertical pour le texte */
+    align-items: center;
+    /* On retire la hauteur fixe pour laisser le contenu définir la taille */
+    padding: 20px 20px 40px 20px; /* Réduire le padding top pour les logos */
+}
+
+/* Conteneur spécifique aux deux logos */
+.logo-container {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between; /* Espacer les deux logos */
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+/* Style commun pour les images de logo */
+.logo {
+    max-height: 80px; /* Définir une hauteur maximale pour les logos */
+    width: auto;
+    object-fit: contain;
+    background-color: white; /* Aide à la visibilité si les logos ont des fonds transparents */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Ajustements pour les écrans plus petits */
+@media (max-width: 768px) {
+    .logo {
+        max-height: 50px; /* Réduire la taille des logos sur mobile */
+    }
 }

@@ -1,16 +1,34 @@
-// Fichier : sycamore-formation/src/app/page.js
+// src/app/page.js
 
 // Ceci est un composant serveur dans Next.js (App Router)
 export default function HomePage() {
   return (
     <>
       <header>
+        {/* NOUVEAU : Conteneur des logos */}
+        <div className="logo-container">
+          {/* Logo du Prestataire (JM Consulting) */}
+          <img 
+            src="/logo-jm.png" 
+            alt="Logo JM Consulting" 
+            className="logo jm-logo" 
+          />
+          {/* Logo du Client (Sycamore) */}
+          <img 
+            src="/logo-sycamore.png" 
+            alt="Logo Sycamore Mine Guinée SAU" 
+            className="logo sycamore-logo" 
+          />
+        </div>
+
         <h1>PLANNING DÉTAILLÉ DE LA FORMATION</h1>
-        <p>Fiscalité Minière Guinéenne - Programme de la semaine</p>
+        <p>Fiscalité Minière Guinéenne</p>
         <p>Pour <strong>Sycamore Mine Guinée SAU</strong> | Du 20 au 24 octobre 2025</p>
       </header>
 
       <div className="container">
+        {/* ... LE RESTE DU CONTENU DE LA PAGE RESTE INCHANGÉ ... */}
+        
         <section id="apercu">
           <h2>Aperçu Thématique de la Formation</h2>
           <ul>
@@ -51,13 +69,6 @@ export default function HomePage() {
                   <td>09h00 – 09h30</td>
                   <td>Ouverture et présentation des objectifs de la formation</td>
                   <td>Exposé + échanges</td>
-                </tr>
-                <tr>
-                  <td>09h30 – 10h15</td>
-                  <td>
-                    Introduction générale à la fiscalité : principes, distinction impôt/taxe/redevance, système déclaratif
-                  </td>
-                  <td>Présentation interactive</td>
                 </tr>
                 <tr>
                   <td>10h15 – 11h15</td>

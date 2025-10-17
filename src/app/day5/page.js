@@ -31,7 +31,7 @@ const slidesData = [
             </ul>
         </div>
         `,
-        "JOE-ADAMS & MADISON - SYCAMORE - Fiscalité minière - 20 octobre 2025"
+        "JOE-ADAMS & MADISON - SYCAMORE - Fiscalité minière - 24 octobre 2025"
     ),
 
     // SLIDE 2: REMBOURSEMENT CRÉDIT TVA - TEXTES
@@ -620,10 +620,665 @@ const slidesData = [
         `
     ),
 
-    // Continuer avec les autres types de contrôles...
-    // Pour des raisons de longueur, je vais maintenant passer aux exercices pratiques
+ // SLIDE 1: VÉRIFICATION DE COMPTABILITÉ - Définition et impôts concernés
+createSlide(
+    "VÉRIFICATION DE COMPTABILITÉ - Définition et impôts concernés",
+    `
+    <h3>A- Définition</h3>
+    <p>Contrôle portant sur les impôts dont les bases d'imposition sont établies à partir de documents comptables.</p>
+    <p><strong>Objectifs de l'Administration fiscale :</strong></p>
+    <ul>
+        <li>Vérifier la régularité, la sincérité et le caractère probant des écritures comptables</li>
+        <li>Confronter les écritures comptables aux déclarations du contribuable</li>
+        <li>Établir les rehaussements nécessaires le cas échéant</li>
+    </ul>
 
-    // SLIDE 27: EXERCICE 1 - CALCUL REDEVANCE
+    <h3>B- Impôts concernés</h3>
+    <ul>
+        <li>Impôt sur les Bénéfices Non Commerciaux</li>
+        <li>Impôt sur les Bénéfices de l'Exploitation Agricole</li>
+        <li>Impôt sur les Sociétés</li>
+        <li>Impôt Minimum Forfaitaire</li>
+        <li>Contribution Foncière Unique</li>
+        <li>Taxe sur la Valeur Ajoutée</li>
+        <li>Taxe sur les Activités Financières</li>
+        <li>Taxe sur les Assurances</li>
+        <li>Droits d'Accises</li>
+    </ul>
+    `
+),
+
+// SLIDE 2: PROCÉDURE DE VÉRIFICATION - Avis et contenu
+createSlide(
+    "PROCÉDURE DE VÉRIFICATION - Avis et contenu",
+    `
+    <h3>C- Procédure de vérification</h3>
+
+    <h4>1) Avis de vérification</h4>
+    <ul>
+        <li>Notification par <strong>lettre recommandée avec accusé de réception</strong></li>
+        <li>Délai minimal de <strong>7 jours francs</strong> avant le début de la vérification</li>
+    </ul>
+
+    <h4>2) Contenu obligatoire de l'avis (sous peine de nullité) :</h4>
+    <ul>
+        <li>Années soumises à vérification</li>
+        <li>Impôts et taxes concernés</li>
+        <li>Noms et grades des supérieurs hiérarchiques du vérificateur</li>
+        <li>Mention de la charte des droits et obligations du contribuable</li>
+        <li>Indication que le contribuable peut se faire assister par un conseil</li>
+    </ul>
+    `
+),
+
+// SLIDE 3: PROCÉDURE DE VÉRIFICATION - Suite
+createSlide(
+    "PROCÉDURE DE VÉRIFICATION - Suite",
+    `
+    <h4>3) Cas de dépassement du délai de reprise</h4>
+    <ul>
+        <li>Vérification possible des <strong>3 derniers exercices prescrits</strong></li>
+        <li>Redressement limité au montant du déficit imputé ou du crédit de TVA reporté</li>
+    </ul>
+
+    <h4>4) Vérification inopinée</h4>
+    <ul>
+        <li>Possible <strong>sans avis préalable</strong></li>
+        <li>Limitation aux constatations matérielles :</li>
+        <ul>
+            <li>Inventaire physique des moyens de production et du stock</li>
+            <li>Inventaire des valeurs en caisse</li>
+            <li>Relevé des prix pratiqués</li>
+            <li>Vérification de l'existence des documents comptables</li>
+            <li>Copie des fichiers informatiques</li>
+        </ul>
+    </ul>
+    `
+),
+
+// SLIDE 4: PROCÉDURE DE VÉRIFICATION - Lieu et devoirs
+createSlide(
+    "PROCÉDURE DE VÉRIFICATION - Lieu et devoirs",
+    `
+    <h4>5) Lieu et heures de vérification</h4>
+    <ul>
+        <li>Siège de l'entreprise ou lieu principal d'établissement</li>
+        <li>Lieu de conservation des documents (avec accord)</li>
+        <li>Heures normales d'ouverture des locaux professionnels</li>
+    </ul>
+
+    <h4>6) Débat oral et contradictoire</h4>
+    <p>Droit du contribuable à un <strong>débat contradictoire</strong> avec le vérificateur</p>
+
+    <h4>7) Devoirs du contribuable</h4>
+    <ul>
+        <li>Présentation de <strong>tous les documents comptables</strong> (physiques et électroniques)</li>
+        <li>Écritures en <strong>français</strong> et monnaie en <strong>GNF</strong></li>
+        <li>Traduction et conversion si nécessaire</li>
+    </ul>
+    `
+),
+
+// SLIDE 5: POUVOIRS DES VÉRIFICATEURS ET DURÉE
+createSlide(
+    "POUVOIRS DES VÉRIFICATEURS ET DURÉE",
+    `
+    <h3>D- Pouvoirs des vérificateurs</h3>
+    <ul>
+        <li>Droit de visiter les locaux et installations professionnelles</li>
+        <li>Interdiction d'ouvrir un coffre sans accord du contribuable</li>
+        <li>Droit de prendre copie des livres et documents</li>
+        <li>Interdiction d'emporter les documents sans demande écrite préalable et remise de reçu</li>
+        <li>Limitation des informations demandables pour les professions soumises au secret professionnel</li>
+    </ul>
+
+    <h3>E- Durée de la vérification</h3>
+    <ul>
+        <li><strong>6 mois maximum</strong> pour les PME</li>
+        <li><strong>9 mois maximum</strong> pour les grandes entreprises</li>
+        <li>Dépassement possible dans certains cas :
+            <ul>
+                <li>Procès-verbal de flagrance fiscale</li>
+                <li>Enquête judiciaire pour fraude fiscale</li>
+                <li>Activité occulte du contribuable</li>
+                <li>Graves irrégularités comptables</li>
+            </ul>
+        </li>
+    </ul>
+    `
+),
+
+// SLIDE 6: GARANTIES DU CONTRIBUABLE
+createSlide(
+    "GARANTIES DU CONTRIBUABLE",
+    `
+    <h3>F- Garanties du contribuable</h3>
+    <ul>
+        <li>Information préalable par <strong>avis de vérification complet</strong> (sous peine de nullité)</li>
+        <li>Nouvel avis en cas d'action sur de nouveaux éléments</li>
+        <li>Respect des délais maximum de vérification (6/9 mois)</li>
+        <li>Droit au <strong>débat contradictoire</strong></li>
+        <li>Droit d'opposer l'interprétation des textes fiscaux</li>
+        <li>Droit de s'appuyer sur un rescrit fiscal</li>
+        <li>Interdiction de nouveau contrôle pour la même période et mêmes impôts</li>
+        <li>Droit de réponse dans les <strong>90 jours</strong> en cas de proposition de rectification</li>
+    </ul>
+    `
+),
+
+// SLIDE 7: PROCÉDURE DE RECTIFICATION CONTRADICTOIRE
+createSlide(
+    "PROCÉDURE DE RECTIFICATION CONTRADICTOIRE",
+    `
+    <h3>G- Procédure de rectification contradictoire</h3>
+
+    <h4>1) Définition</h4>
+    <p>Procédure de droit commun permettant à l'administration de corriger les erreurs, insuffisances, inexactitudes, omissions ou dissimulations dans les déclarations fiscales.</p>
+
+    <h4>2) Principes fondamentaux :</h4>
+    <ul>
+        <li>Caractère <strong>contradictoire</strong></li>
+        <li>Charge de la preuve incombant à l'administration</li>
+        <li>Procédure de <strong>droit commun</strong></li>
+        <li>Effet <strong>interruptif de prescription</strong></li>
+    </ul>
+
+    <h4>3) Déroulement :</h4>
+    <p>Proposition de rectification envoyée par <strong>lettre recommandée</strong> ou remise en main propre après constatation d'anomalies.</p>
+    `
+),
+
+// SLIDE 8: MENTIONS OBLIGATOIRES ET RÉPONSE
+createSlide(
+    "MENTIONS OBLIGATOIRES ET RÉPONSE",
+    `
+    <h4>4) Mentions obligatoires de la proposition (sous peine de nullité) :</h4>
+    <ul>
+        <li>Nature et motifs de la rectification</li>
+        <li>Montant de la rectification (bases et droits)</li>
+        <li>Nature des traitements effectués (si comptabilité informatisée)</li>
+        <li>Teneur et origine des renseignements obtenus de tiers</li>
+        <li>Grade et signature de l'agent</li>
+        <li>Noms et grades des supérieurs hiérarchiques</li>
+        <li>Droit à l'assistance par un conseil</li>
+        <li>Délai de réponse de <strong>30 jours</strong> (prolongeable de 15 jours)</li>
+    </ul>
+
+    <h4>5) Réponse du contribuable :</h4>
+    <ul>
+        <li>Délai de <strong>30 jours</strong> pour répondre</li>
+        <li>Prolongation possible de <strong>15 jours supplémentaires</strong></li>
+        <li>Acceptation pure et simple ou présentation d'observations</li>
+        <li>L'acceptation n'empêche pas une réclamation contentieuse ultérieure</li>
+    </ul>
+    `
+),
+
+// SLIDE 9: TAXATION D'OFFICE
+createSlide(
+    "TAXATION D'OFFICE",
+    `
+    <h3>H- Procédure de taxation d'office</h3>
+
+    <h4>1) Définition</h4>
+    <p>Procédure <strong>exceptionnelle</strong> permettant à l'administration d'imposer le contribuable sur la base des seuls éléments à sa disposition, <strong>sans observations préalables</strong> du contribuable.</p>
+
+    <h4>2) Principes :</h4>
+    <ul>
+        <li>Caractère <strong>non contradictoire</strong></li>
+        <li>Charge de la preuve incombant à l'administration</li>
+        <li>Procédure <strong>exceptionnelle</strong></li>
+    </ul>
+
+    <h4>3) Cas de recours :</h4>
+    <ul>
+        <li>Défaut ou retard de production des déclarations</li>
+        <li>Défaut de réponse aux demandes d'éclaircissements</li>
+        <li>Absence de documentation de prix de transfert</li>
+        <li>Rejet de comptabilité</li>
+        <li>Défaut de désignation d'un représentant fiscal</li>
+        <li>Opposition à contrôle fiscal</li>
+    </ul>
+    `
+),
+
+// SLIDE 10: CONDITIONS DE MISE EN ŒUVRE
+createSlide(
+    "CONDITIONS DE MISE EN ŒUVRE - Taxation d'office",
+    `
+    <h4>4) Conditions de mise en œuvre :</h4>
+
+    <p><strong>a) Défaut ou retard de production des déclarations :</strong></p>
+    <ul>
+        <li>Mise en demeure préalable obligatoire (sauf cas particuliers)</li>
+        <li>Délai de régularisation de <strong>30 jours</strong></li>
+    </ul>
+
+    <p><strong>b) Défaut de réponse aux demandes d'éclaircissements :</strong></p>
+    <ul>
+        <li>Refus de répondre après mise en demeure</li>
+        <li>Réponse partielle, tardive ou non satisfaisante</li>
+    </ul>
+
+    <p><strong>c) Absence de documentation de prix de transfert :</strong></p>
+    <ul>
+        <li>Abstention de présentation</li>
+        <li>Documentation incomplète</li>
+    </ul>
+
+    <p><strong>d) Rejet de comptabilité :</strong></p>
+    <ul>
+        <li>Comptabilité irrégulière (omissions, erreurs graves, absence de pièces justificatives)</li>
+        <li>Utilisation de logiciel frauduleux</li>
+        <li>Doutes sur la sincérité de comptabilité apparemment régulière</li>
+        <li>Mise en demeure obligatoire (délai de 15 jours prorogeable)</li>
+    </ul>
+    `
+),
+
+// SLIDE 11: SUITE CONDITIONS ET CONSÉQUENCES
+createSlide(
+    "SUITE CONDITIONS ET CONSÉQUENCES",
+    `
+    <p><strong>e) Défaut de désignation d'un représentant fiscal :</strong></p>
+    <ul>
+        <li>Obligation non satisfaite dans les <strong>60 jours</strong> après mise en demeure</li>
+    </ul>
+
+    <p><strong>f) Opposition à contrôle fiscal :</strong></p>
+    <ul>
+        <li>Opposition à la mise en œuvre du contrôle</li>
+        <li>Opposition à l'accès aux documents</li>
+        <li>Mise en demeure de <strong>3 jours</strong> pour cesser l'opposition</li>
+        <li>Majoration de <strong>100%</strong> des droits en plus de la taxation d'office</li>
+        <li>Amende de <strong>25 millions GNF</strong> en cas d'opposition collective</li>
+    </ul>
+
+    <h4>5) Conséquences de la taxation d'office :</h4>
+    <ul>
+        <li>Exclusion de la procédure normale de rectification contradictoire</li>
+        <li>Émission d'un avis de mise à recouvrement</li>
+        <li>Évaluation des bases "aussi exacte que possible"</li>
+        <li>Droits et pénalités majorés</li>
+        <li>Notification obligatoire et motivée (sous peine de nullité)</li>
+        <li>Interruption de la prescription du droit de reprise</li>
+    </ul>
+    `
+),
+
+// SLIDE 12: RÉGULARISATION SPONTANÉE
+createSlide(
+    "RÉGULARISATION SPONTANÉE",
+    `
+    <h3>I- Procédure de régularisation spontanée</h3>
+
+    <h4>1) Conditions de fond :</h4>
+    <ul>
+        <li>Ne concerne pas une infraction exclusive de bonne foi</li>
+        <li>Doit viser <strong>l'ensemble des impôts</strong> soumis à vérification</li>
+    </ul>
+
+    <h4>2) Conditions de forme :</h4>
+    <ul>
+        <li>Demande par <strong>lettre recommandée</strong> ou remise en main propre</li>
+        <li>Demande effectuée <strong>avant toute proposition de rectification</strong></li>
+        <li>Impossibilité de deuxième demande après première acceptation non honorée</li>
+        <li>Déclaration régularisée dans les <strong>30 jours</strong> de l'acceptation</li>
+    </ul>
+
+    <h4>3) Conséquences :</h4>
+    <ul>
+        <li>Paiement des suppléments de droits simples et intérêts de retard</li>
+        <li>Exclusion des pénalités fiscales</li>
+    </ul>
+    `
+),
+
+// SLIDE 13: VOIES DE RECOURS - Contentieux de l'assiette
+createSlide(
+    "VOIES DE RECOURS - Contentieux de l'assiette",
+    `
+    <h3>J- Voies de recours du contribuable</h3>
+
+    <h4>1) Contentieux de l'assiette</h4>
+
+    <p><strong>a) Dépôt de la réclamation :</strong></p>
+    <ul>
+        <li>Par <strong>lettre recommandée</strong> ou remise en main propre contre décharge</li>
+        <li>Au service des impôts à l'origine de l'imposition</li>
+        <li>Permet de contester tous les impôts visés par l'avis de vérification</li>
+    </ul>
+
+    <p><strong>b) Objet de la réclamation :</strong></p>
+    <ul>
+        <li>Réparation d'erreurs dans l'assiette ou la liquidation de l'impôt</li>
+        <li>Contestation d'impôts et taxes émis par l'administration</li>
+        <li>Restitution d'impôts versés indûment</li>
+        <li>Bénéfice d'exonérations ou avantages fiscaux</li>
+    </ul>
+    `
+),
+
+// SLIDE 14: CONDITIONS DE RECEVABILITÉ
+createSlide(
+    "CONDITIONS DE RECEVABILITÉ",
+    `
+    <h4>2) Conditions de recevabilité</h4>
+
+    <p><strong>a) Identification et contenu :</strong></p>
+    <ul>
+        <li>Identification complète du réclamant (nom, NIF, adresse)</li>
+        <li>Mention de la nature et du montant des impôts contestés</li>
+        <li>Exposé des moyens de fait et de droit</li>
+        <li>Joindre l'avis de mise en recouvrement si possible</li>
+    </ul>
+
+    <p><strong>b) Pièces justificatives :</strong></p>
+    <ul>
+        <li>Production des pièces justifiant l'argumentation</li>
+        <li>Justificatifs de paiement de la partie non contestée</li>
+    </ul>
+
+    <p><strong>c) Délai de réclamation :</strong></p>
+    <ul>
+        <li>Au plus tard le <strong>31 décembre de la deuxième année</strong> suivant :
+            <ul>
+                <li>La mise en recouvrement du rôle</li>
+                <li>La notification d'un AMR</li>
+                <li>Le versement de l'impôt</li>
+                <li>La notification de proposition de rectification ou taxation d'office</li>
+            </ul>
+        </li>
+    </ul>
+    `
+),
+
+// SLIDE 15: CHARGE DE LA PREUVE
+createSlide(
+    "CHARGE DE LA PREUVE",
+    `
+    <h4>3) Charge de la preuve</h4>
+
+    <p><strong>a) Preuve à la charge du contribuable :</strong></p>
+    <ul>
+        <li>En cas de taxation forfaitaire ou d'office</li>
+        <li>Litiges sur impositions basées sur ses propres déclarations</li>
+        <li>En cas d'accord exprès aux rectifications de l'administration</li>
+        <li>Lorsque la réclamation vise à rectifier une erreur à son détriment</li>
+    </ul>
+
+    <p><strong>b) Preuve à la charge de l'administration :</strong></p>
+    <ul>
+        <li>Impôt établi sans déclaration du contribuable</li>
+        <li>Contestation de l'obligation de souscrire une déclaration</li>
+        <li>Justification d'une évaluation d'office</li>
+        <li>Contestation des motifs de procédure d'office</li>
+        <li>Compensation entre dégrèvement et omissions</li>
+        <li>Établissement de manquements délibérés en cas de pénalités</li>
+        <li>Procédure de redressement contradictoire (principe général)</li>
+    </ul>
+    `
+),
+
+// SLIDE 16: SURSI DE PAIEMENT
+createSlide(
+    "SURSI DE PAIEMENT",
+    `
+    <h4>4) Sursis de paiement</h4>
+
+    <p><strong>a) Conditions :</strong></p>
+    <ul>
+        <li>Montant ≤ 10 millions GNF : sursis de droit</li>
+        <li>Montant > 10 millions GNF : garanties requises</li>
+        <li>Demande unique pour une même créance</li>
+    </ul>
+
+    <p><strong>b) Garanties acceptées :</strong></p>
+    <ul>
+        <li>Versement de consignation</li>
+        <li>Caution bancaire</li>
+        <li>Caution hypothécaire du dirigeant</li>
+        <li>Affectations hypothécaires d'immeubles</li>
+    </ul>
+
+    <p><strong>c) Effets du sursis :</strong></p>
+    <ul>
+        <li>Décision du receveur dans les <strong>15 jours</strong> (sinon acceptation tacite)</li>
+        <li><strong>30 jours</strong> pour constituer la garantie</li>
+        <li>Suspension de l'exigibilité et de la prescription</li>
+    </ul>
+    `
+),
+
+// SLIDE 17: DÉCISION ADMINISTRATIVE ET RECOURS
+createSlide(
+    "DÉCISION ADMINISTRATIVE ET RECOURS",
+    `
+    <h4>5) Décision de l'administration</h4>
+    <ul>
+        <li>Délai de réponse : <strong>6 mois</strong> (prorogeable de 3 mois)</li>
+        <li>Silence après 6 mois = rejet implicite</li>
+        <li>Décision de rejet doit être motivée et mentionner les voies de recours</li>
+        <li>Notification par lettre recommandée ou remise contre décharge</li>
+    </ul>
+
+    <h4>6) Recours devant le juge</h4>
+    <ul>
+        <li>Possible seulement en cas de rejet total ou partiel</li>
+        <li>Délai d'appel : <strong>2 mois</strong></li>
+        <li>Décision irrégulière en la forme si absence de mention des voies de recours</li>
+    </ul>
+
+    <h4>7) Contentieux de recouvrement</h4>
+    <ul>
+        <li>Porte sur la régularité formelle des actes de poursuite</li>
+        <li>Délai de contestation : <strong>2 mois</strong> à partir de la notification</li>
+        <li>Absence de réponse dans les <strong>3 mois</strong> = acceptation tacite</li>
+    </ul>
+    `
+),   
+// SLIDE 18: TABLEAU DES INTERACTIONS - Demandes d'éclaircissement
+createSlide(
+    "TABLEAU DES INTERACTIONS ADMINISTRATION-CONTRIBUABLE",
+    `
+    <h3>Tableau pratique des interactions</h3>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; font-size: 14px;">
+        <tr style="background-color: #f2f2f2;">
+            <th width="20%">Nature</th>
+            <th width="20%">Acteur</th>
+            <th width="25%">Étape</th>
+            <th width="15%">Délai</th>
+            <th width="20%">Observation</th>
+        </tr>
+        <tr>
+            <td rowspan="2"><strong>Demande d'éclaircissement et justification</strong></td>
+            <td>L'administration fiscale</td>
+            <td>Envoi d'une demande de justification auprès du contribuable</td>
+            <td>Ne concerne pas la période couverte par la prescription</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Contribuable</td>
+            <td>Le contribuable décharge la demande et rédige la justification demandée par l'administration</td>
+            <td>30 jours pour répondre</td>
+            <td>Mise en demeure possible en 15 jours pour compléter la réponse</td>
+        </tr>
+    </table>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; font-size: 14px; margin-top: 20px;">
+        <tr style="background-color: #f2f2f2;">
+            <th width="20%">Nature</th>
+            <th width="20%">Acteur</th>
+            <th width="25%">Étape</th>
+            <th width="15%">Délai</th>
+            <th width="20%">Observation</th>
+        </tr>
+        <tr>
+            <td rowspan="2"><strong>Droit de communication</strong></td>
+            <td>L'administration fiscale</td>
+            <td>Adresse un avis de passage au contribuable</td>
+            <td>Période couverte par la prescription</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Le contribuable</td>
+            <td>Communique les documents ou pièces demandés par l'administration</td>
+            <td>Présence des agents dans les locaux</td>
+            <td>Refus de communication → amende</td>
+        </tr>
+    </table>
+    `
+),
+
+// SLIDE 19: TABLEAU DES INTERACTIONS - Suite
+createSlide(
+    "TABLEAU DES INTERACTIONS - Suite",
+    `
+    <h3>Tableau pratique des interactions (suite)</h3>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; font-size: 14px;">
+        <tr style="background-color: #f2f2f2;">
+            <th width="20%">Nature</th>
+            <th width="20%">Acteur</th>
+            <th width="25%">Étape</th>
+            <th width="15%">Délai</th>
+            <th width="20%">Observation</th>
+        </tr>
+        <tr>
+            <td rowspan="2"><strong>Droit d'enquête<br>(manquement aux règles de facturation)</strong></td>
+            <td>L'administration fiscale</td>
+            <td>Remet un avis d'enquête à l'assujetti</td>
+            <td>PV établi 30 jours après convocation/visite</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>L'assujetti</td>
+            <td>Transmission des documents relatifs aux opérations</td>
+            <td>Signature du PV avec copie</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; font-size: 14px; margin-top: 20px;">
+        <tr style="background-color: #f2f2f2;">
+            <th width="20%">Nature</th>
+            <th width="20%">Acteur</th>
+            <th width="25%">Étape</th>
+            <th width="15%">Délai</th>
+            <th width="20%">Observation</th>
+        </tr>
+        <tr>
+            <td rowspan="2"><strong>Contrôle sur pièces</strong></td>
+            <td>L'administration fiscale</td>
+            <td>Adresse une proposition de rectification au contribuable</td>
+            <td>Période couverte par la prescription</td>
+            <td>Défaut de réponse en 90 jours = acceptation</td>
+        </tr>
+        <tr>
+            <td>Contribuable</td>
+            <td>Adresse une réponse sur cette proposition</td>
+            <td>30 jours (prorogeable de 15 jours)</td>
+            <td>Montant exigible avec mise en demeure</td>
+        </tr>
+    </table>
+    `
+),
+
+// SLIDE 20: TABLEAU DES INTERACTIONS - Fin
+createSlide(
+    "TABLEAU DES INTERACTIONS - Fin",
+    `
+    <h3>Tableau pratique des interactions (fin)</h3>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; font-size: 14px;">
+        <tr style="background-color: #f2f2f2;">
+            <th width="20%">Nature</th>
+            <th width="20%">Acteur</th>
+            <th width="25%">Étape</th>
+            <th width="15%">Délai</th>
+            <th width="20%">Observation</th>
+        </tr>
+        <tr>
+            <td rowspan="2"><strong>Examen contradictoire de la situation fiscale personnelle</strong></td>
+            <td>L'administration fiscale</td>
+            <td>Avis de vérification notifié au contribuable</td>
+            <td>Début après 7 jours de la notification</td>
+            <td>Durée max : 1 an après réception de l'avis</td>
+        </tr>
+        <tr>
+            <td>Contribuable</td>
+            <td>Débat oral et contradictoire avec le vérificateur</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; font-size: 14px; margin-top: 20px;">
+        <tr style="background-color: #f2f2f2;">
+            <th width="20%">Nature</th>
+            <th width="20%">Acteur</th>
+            <th width="25%">Étape</th>
+            <th width="15%">Délai</th>
+            <th width="20%">Observation</th>
+        </tr>
+        <tr>
+            <td rowspan="2"><strong>Examen de comptabilité</strong></td>
+            <td>L'administration fiscale</td>
+            <td>Le contribuable doit être informé par lettre avec décharge</td>
+            <td>Début 7 jours après notification</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Contribuable</td>
+            <td>Présente les documents comptables prévus par la loi</td>
+            <td>15 jours pour envoyer copie des fichiers comptables</td>
+            <td>Défaut de transmission → procès-verbal</td>
+        </tr>
+    </table>
+    `
+),
+
+// SLIDE 21: DROITS D'INTERVENTION DE L'ADMINISTRATION
+createSlide(
+    "DROITS D'INTERVENTION DE L'ADMINISTRATION",
+    `
+    <h3>Droits d'intervention de l'administration fiscale</h3>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; font-size: 14px;">
+        <tr style="background-color: #f2f2f2;">
+            <th width="25%">Droit</th>
+            <th width="35%">Portée et modalités</th>
+            <th width="40%">Obligations du contribuable</th>
+        </tr>
+        <tr>
+            <td><strong>Demande d'éclaircissement ou de justification</strong></td>
+            <td>Porte sur tous les comptables sociaux. Délai de 30 jours pour réponse complète</td>
+            <td>Réponse complète dans le délai. Information en cas d'empêchement</td>
+        </tr>
+        <tr>
+            <td><strong>Demande de communication</strong></td>
+            <td>Exercée auprès du contribuable ou tiers (banque, client). Doit préciser pièces, impôts et délais</td>
+            <td>Accusé de réception, respect du délai, réponse complète. Continuité nécessaire</td>
+        </tr>
+        <tr>
+            <td><strong>Droit d'enquête</strong></td>
+            <td>Exercé contre les assujettis à la TVA. Administration peut agir à l'improviste ou convoquer</td>
+            <td>Recevoir les enquêteurs, présenter factures, comptabilité matière, documents professionnels</td>
+        </tr>
+        <tr>
+            <td><strong>Procédure de visite ou de saisie</strong></td>
+            <td>Exercée sur impôts directs et TVA. Nécessite autorisation préalable du juge</td>
+            <td>Protégé par exigences formelles : autorisation judiciaire, heures de perquisition, restitution documents</td>
+        </tr>
+        <tr>
+            <td><strong>Flagrance fiscale</strong></td>
+            <td>Constats et mesures conservatoires en cas de : menace recouvrement, activité occulte, factures fictives, etc.</td>
+            <td>Droit à PV après constats. Saisie du juge sous 8 jours. Possibilité main levée</td>
+        </tr>
+    </table>
+    `
+),    
     createSlide(
         "EXERCICE 1 : Simulation de calcul d'une redevance minière",
         `

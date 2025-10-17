@@ -1,12 +1,10 @@
 // Fichier : src/app/day2/page.js
 
-import SlideShow from '../SlideShow';
-import ContentWrapper from '../ContentWrapper';
+import SlideShow from '../../components/SlideShow';
+import ContentWrapper from '../../app/ContentWrapper';
 import React from 'react';
 
 // Utiliser une fonction d'aide pour générer une structure de slide uniforme
-// J'ai renommé le composant SlideShow en 'SlideShow' et ContentWrapper en 'ContentWrapper'
-// pour utiliser l'importation relative correcte dans le projet.
 const createSlide = (title, content, citation) => ({
     title,
     content: (
@@ -18,20 +16,24 @@ const createSlide = (title, content, citation) => ({
     )
 });
 
-// --- Contenu Détaillé du Jour 2 ---
+// --- Contenu Détaillé du Jour 2 : Fiscalité du Personnel ---
 
 const slidesData = [
     // SLIDE 1: INTRODUCTION JOUR 2
     createSlide(
-        "Jour 2 : Fiscalité du Personnel et Retenues Non Salariales (RNS)",
+        "Jour 2 : Fiscalité du Personnel (RTS, VF, TA/ONFPP)",
         `
         <div style="font-size: 1.1em;">
             <p><strong>2ème Partie : OBLIGATIONS FISCALES DE LA SYCAMORE</strong></p>
-            <p style="font-size: 1.2em; color: var(--fuel-yellow);"><strong>Objectif :</strong> Maîtriser les prélèvements fiscaux liés à l'emploi du personnel salarié et aux services de prestataires non-résidents dans le secteur minier.</p>
+            <p style="font-size: 1.2em; color: var(--fuel-yellow);"><strong>Objectif :</strong> Maîtriser les prélèvements fiscaux liés à l'emploi du personnel salarié dans le secteur minier.</p>
             <p><strong>Programme :</strong></p>
             <ul>
-                <li><strong>CHAPITRE 1 : Fiscalité du Personnel</strong> (RTS, VF, TA / ONFPP)</li>
-                <li><strong>CHAPITRE 2 : Retenue sur les Revenus Non Salariaux (RNS)</strong></li>
+                <li><strong>CHAPITRE 1 : Fiscalité du Personnel</strong></li>
+                <ul>
+                    <li>1. Retenue sur Traitements et Salaires (RTS)</li>
+                    <li>2. Versement Forfaitaire (VF)</li>
+                    <li>3. Taxe d’Apprentissage (TA) / Contribution ONFPP</li>
+                </ul>
                 <li>Cas Pratiques de calcul et vérification</li>
             </ul>
         </div>
@@ -125,7 +127,6 @@ const slidesData = [
             </tbody>
         </table>
         `,
-        // Correction de la syntaxe de la citation (retrait des marqueurs non HTML/JS)
         "La RTS est obtenue par application des taux aux tranches du revenu net imposable (RNI)." 
     ),
 
@@ -395,137 +396,13 @@ const slidesData = [
         `,
         null
     ),
-
-    // SLIDE 18: RNS - DÉFINITION
-    createSlide(
-        "CHAPITRE 2 : Retenue sur les Revenus Non Salariaux (RNS)",
-        `
-        <h3>Définition</h3>
-        <ul>
-            <li>La <strong>RNS</strong> est un prélèvement obligatoire perçu sur certains revenus générés en Guinée par des personnes physiques ou morales <strong>n’ayant pas leur résidence fiscale en Guinée</strong> (prestataires techniques étrangers : géologues, ingénieurs, consultants, etc.).</li>
-            <li>Ces revenus sont des paiements effectués par les débiteurs établis en Guinée en contrepartie de prestations de services.</li>
-        </ul>
-        <h3>Responsabilité de Sycamore</h3>
-        <ul>
-            <li><strong>Redevable réel :</strong> Le prestataire non-résident.</li>
-            <li><strong>Redevable légal :</strong> Le débiteur établi en Guinée (<strong>Sycamore</strong>). La société prélève l'impôt lors du paiement de la prestation et le reverse à l'Administration.</li>
-            <li>En cas de non-prélèvement, Sycamore supporte la charge fiscale et les pénalités.</li>
-        </ul>
-        `
-    ),
-
-    // SLIDE 19: RNS - MATIÈRE, ASSIETTE & TAUX
-    createSlide(
-        "RNS - Matière Imposable, Assiette et Taux",
-        `
-        <h3>Personne Imposable</h3>
-        <ul>
-            <li>Le prestataire de services non-résident.</li>
-        </ul>
-        <h3>Matière Imposable</h3>
-        <ul>
-            <li>Revenu perçu en contrepartie de la prestation de services (honoraires ou redevances).</li>
-        </ul>
-        <h3>Assiette et Taux</h3>
-        <ul>
-            <li>Assiette : Montant <strong>brut (Hors TVA)</strong> de la prestation.</li>
-            <li>Taux standard : <strong>15%</strong>.</li>
-            <li>Taux réduit si une Convention de non-double imposition est applicable (ex. France, Émirats, etc.).</li>
-        </ul>
-        `
-    ),
-
-    // SLIDE 20: RNS - MODALITÉS
-    createSlide(
-        "RNS - Modalités de Déclaration et Échéance",
-        `
-        <h3>Déclaration Électronique</h3>
-        <ul>
-            <li>Déclaration via la plateforme <strong>"ETAX"</strong>, avec les annexes relatives aux transactions ayant fait l’objet de RNS.</li>
-        </ul>
-        <h3>Échéance</h3>
-        <ul>
-            <li>Déclaration et paiement : Au plus tard le <strong>15 du mois suivant</strong> le paiement du service.</li>
-        </ul>
-        <h3>Sanctions</h3>
-        <ul>
-            <li>Les sanctions du défaut de déclaration et paiement, ou tardif sont présentées dans le tableau en annexe.</li>
-        </ul>
-        `
-    ),
-
-    // SLIDE 21: RNS - IMPACT DES CONVENTIONS DE NON DOUBLE IMPOSITION
-    createSlide(
-        "RNS - Impact des Conventions de Non Double Imposition (CDI)",
-        `
-        <h3>Qu'est-ce qu'une CDI ?</h3>
-        <ul>
-            <li>Accord bilatéral visant à éliminer la <strong>double imposition</strong> des revenus des résidents des États signataires.</li>
-            <li>L’accord précise le type de revenu et l’État ayant prérogative d’imposition.</li>
-        </ul>
-        <h3>Impact en Guinée</h3>
-        <ul>
-            <li>La Guinée est signataire de 3 traités de non double imposition qui limitent l’imposition de certains revenus non salariaux (revenus de prestations et redevances).</li>
-            <li>Il est essentiel de vérifier l'existence d'une CDI avec le pays du prestataire pour appliquer le taux correct.</li>
-        </ul>
-        `
-    ),
-
-    // SLIDE 22: RNS - TABLEAU CDI
-    createSlide(
-        "CDI - Exemples d'Imposition en Guinée (RNS)",
-        `
-        <table style="width: 100%; text-align: center; border-collapse: collapse; margin-top: 15px;">
-            <thead>
-                <tr style="background-color: var(--fuel-yellow);">
-                    <th style="text-align: left; padding: 8px; border: 1px solid #ddd;">PAYS</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">DIVIDENDES</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">INTERETS</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">REDEVANCES</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">FRAIS DE SERVICES</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="background-color: var(--saddle); color: white;">
-                    <td style="text-align: left; padding: 8px; border: 1px solid #ddd;"><strong>Taux d’imposition (CGI)</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">15%</td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">15%</td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">15%</td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">15%</td>
-                </tr>
-                <tr>
-                    <td style="text-align: left; padding: 8px; border: 1px solid #ddd;"><strong>Résidents de France</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">15%</td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">10%</td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">10%</td>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>0%</strong></td>
-                </tr>
-                <tr style="background-color: #f0f0f0;">
-                    <td style="text-align: left; padding: 8px; border: 1px solid #ddd;"><strong>Résidents du Maroc</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">5%</td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">Dans la limite de 10%</td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">10%</td>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>0%</strong></td>
-                </tr>
-                <tr>
-                    <td style="text-align: left; padding: 8px; border: 1px solid #ddd;"><strong>Résidents des Emirats Arabes Unis</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">0%</td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">0%</td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">0%</td>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>0%</strong></td>
-                </tr>
-            </tbody>
-        </table>
-        `,
-        "Le tableau présente l’imposition de ces revenus en termes de taux et de juridiction, selon la convention applicable."
-    ),
 ];
 
 
 export default function Day2Page() {
     return (
         <ContentWrapper
-            title="OBLIGATIONS FISCALES : Personnel & Retenues Non Salariales (RNS)"
+            title="Fiscalité du Personnel : RTS, VF, TA/ONFPP"
             date="Mardi 21 octobre 2025"
         >
             <SlideShow slides={slidesData} />

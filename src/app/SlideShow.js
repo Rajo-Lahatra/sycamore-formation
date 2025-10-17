@@ -16,7 +16,7 @@ export default function SlideShow({ slides }) {
     setCurrentSlideIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
   
-  // Gestion de la navigation au clavier (optionnel, mais pratique pour un diaporama)
+  // Gestion de la navigation au clavier (optionnel, mais pratique)
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'ArrowRight' && currentSlideIndex < slides.length - 1) {
@@ -29,12 +29,12 @@ export default function SlideShow({ slides }) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [currentSlideIndex, slides.length]); // Ajout des dépendances pour useEffect
+  }, [currentSlideIndex, slides.length]); 
   
   const currentSlide = slides[currentSlideIndex];
   
   return (
-    <div className="slideshow-wrapper"> {/* Nouveau conteneur pour la mise en page latérale */}
+    <div className="slideshow-wrapper"> 
       
       {/* Bouton de navigation Précédent (Gauche) */}
       <button 
@@ -53,7 +53,7 @@ export default function SlideShow({ slides }) {
           {currentSlide.content}
         </section>
         
-        {/* 2. Affichage du compteur de diapositives en bas (plus discret) */}
+        {/* 2. Affichage du compteur de diapositives en bas (nouveau) */}
         <div className="slide-controls-bottom">
           <span className="slide-counter">
             Diapositive {currentSlideIndex + 1} / {slides.length}

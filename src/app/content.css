@@ -1,7 +1,17 @@
 /* Fichier : src/app/content.css */
 
+/* --- Variables (Assurez-vous qu'elles sont définies dans globals.css ou ici si vous ne les avez pas déjà) --- 
+:root {
+    --saddle: #4a3e2a; 
+    --sepia: #705838; 
+    --tulip-tree: #c99e4b;
+    --sun: #e9b343;
+    --fuel-yellow: #f8c049;
+    --french-gray: #bcbdc0;
+}
+*/
+
 /* Styles généraux pour le corps des pages de contenu */
-/* On s'assure que le contenu remplisse bien la page */
 .content-body {
     min-height: 100vh;
     padding: 0;
@@ -29,19 +39,16 @@
 }
 
 .content-title-header h1 {
-    font-size: 2.2em;
-    margin: 0;
-}
-.content-title-header h1 {
+    /* Fusion des doublons h1 */
     color: white;
     font-size: 2.2em;
     margin: 0;
 }
 .content-title-header .content-date {
-    color: var(--tulip-tree); /* Couleur claire pour la date */
+    color: var(--tulip-tree); 
 }
 .content-title-header .back-button {
-    color: var(--sun); /* Couleur d'accentuation pour le lien de retour */
+    color: var(--sun); 
 }
 .content-date {
     font-style: italic;
@@ -49,16 +56,107 @@
     margin-top: 5px;
 }
 
-/* Style de chaque section (simule une diapositive) */
+/* --- LOGOS (Correction de la taille et de l'ordre) --- */
+
+.content-body .logo-container {
+    display: flex;
+    justify-content: space-between; /* Place les éléments aux extrémités */
+    align-items: center;
+    width: 100%; 
+    max-width: 900px; 
+    margin: 0 auto 20px auto; 
+}
+
+.logo {
+    height: auto; 
+    max-height: 40px; /* Logos plus petits */
+    transition: transform 0.3s;
+}
+
+/* J&M à gauche (order: 1) et Sycamore à droite (order: 2) */
+.jm-logo {
+    order: 1; 
+}
+
+.sycamore-logo {
+    order: 2; 
+}
+
+
+/* --- DIAPORAMA & NAVIGATION LATÉRALE (Correction des doublons et consolidation) --- */
+
+/* Conteneur principal qui aligne la diapositive et les boutons côte à côte */
+.slideshow-wrapper {
+    display: flex;
+    align-items: center; /* Centre les éléments verticalement */
+    gap: 10px; /* Espace entre les boutons et la diapositive */
+}
+
+/* Le diaporama prend la majorité de l'espace */
+.slideshow {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Style des boutons de navigation latéraux */
+.slide-nav-side {
+    background-color: var(--saddle);
+    color: white;
+    border: none;
+    width: 45px; 
+    height: 45px;
+    border-radius: 50%; 
+    font-size: 18px;
+    font-weight: bold;
+    flex-shrink: 0; 
+    transition: background-color 0.3s;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.slide-nav-side:hover:not(:disabled) {
+    background-color: var(--fuel-yellow);
+}
+
+.slide-nav-side:disabled {
+    background-color: var(--french-gray);
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+/* Style pour le compteur de diapositives en bas */
+.slide-controls-bottom {
+    text-align: center;
+    margin-top: -10px; 
+}
+
+.slide-counter {
+    font-weight: bold;
+    color: var(--saddle);
+    font-size: 1em;
+    padding: 5px 15px;
+    border: 1px solid var(--french-gray);
+    border-radius: 4px;
+}
+
+/* L'ancienne classe de contrôle du bas est masquée */
+.slide-controls {
+    display: none; 
+}
+
+/* --- STYLES DES SLIDES (Pas de changement requis, mais inclus pour complétude) --- */
+
 .slide-section {
     background-color: white;
     border: 1px solid var(--french-gray);
-    /* Ombre subtile pour donner un effet 3D de slide */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
     padding: 30px 40px;
     margin-bottom: 30px;
     border-radius: 4px;
-    min-height: 250px; /* Hauteur minimale pour les slides */
+    min-height: 250px; 
 }
 
 .slide-title {
@@ -76,9 +174,8 @@
     margin-top: 20px;
 }
 
-/* Style des listes pour l'effet "Bullet Points" de PowerPoint */
 .slide-section ul {
-    list-style-type: none; /* Enlève les bullets par défaut */
+    list-style-type: none; 
     padding-left: 20px;
 }
 
@@ -86,65 +183,22 @@
     font-size: 1.1em;
     margin-bottom: 12px;
     padding-left: 15px;
-    /* Utilise une couleur d'accentuation pour les bullets */
     border-left: 3px solid var(--sun); 
     line-height: 1.5;
 }
 
-/* Style des paragraphes pour une meilleure lisibilité */
 .slide-section p {
     font-size: 1.1em;
     margin-bottom: 15px;
 }
 
-/* Style pour les informations de contact (comme un pied de page de slide) */
 .contact-info {
     border-left: none;
     border-top: 2px dashed var(--french-gray);
     padding-top: 25px;
     text-align: center;
 }
-/* Style des contrôles de navigation */
-.slide-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-}
 
-/* Boutons de navigation */
-.nav-button {
-    background-color: var(--saddle);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.nav-button:hover:not(:disabled) {
-    background-color: var(--sepia);
-}
-
-.nav-button:disabled {
-    background-color: var(--french-gray);
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
-/* Compteur de diapositives */
-.slide-counter {
-    font-weight: bold;
-    color: var(--saddle);
-    font-size: 1.1em;
-    padding: 5px 15px;
-    border: 1px solid var(--french-gray);
-    border-radius: 4px;
-}
-
-/* Bouton de retour au planning (Ajouté dans ContentWrapper) */
 .back-button {
     display: block;
     margin-top: 15px;
@@ -157,90 +211,4 @@
 .back-button:hover {
     opacity: 1;
     text-decoration: underline;
-}
-
-/* Masquer le logo sur la page d'accueil pour éviter la duplication avec le header existant */
-.content-body .logo-container {
-    /* Utilisez Flexbox pour espacer les logos */
-    display: flex;
-    justify-content: space-between; /* Place les éléments aux extrémités */
-    align-items: center;
-    width: 100%; /* S'étend sur toute la largeur de l'en-tête */
-    max-width: 900px; /* Limite la taille pour éviter l'étirement excessif */
-    margin: 0 auto 20px auto; /* Centre le conteneur et ajoute une marge en bas */
-}
-
-/* Conteneur principal qui aligne la diapositive et les boutons côte à côte */
-.slideshow-wrapper {
-    display: flex;
-    align-items: center; /* Centre les éléments verticalement */
-    gap: 10px; /* Espace entre les boutons et la diapositive */
-}
-/* Styles pour les logos eux-mêmes */
-.logo {
-    height: auto; /* Maintient le ratio */
-    max-height: 50px; /* Taille plus petite pour les slides */
-    transition: transform 0.3s;
-}
-
-.jm-logo {
-    /* JM (à droite, donc nous le laissons à droite) */
-    order: 2; /* S'assure qu'il est à droite */
-}
-
-.sycamore-logo {
-    /* Sycamore (à gauche) */
-    order: 1; /* S'assure qu'il est à gauche */
-}
-/* Le diaporama prend la majorité de l'espace */
-.slideshow {
-    flex-grow: 1; /* Prend l'espace restant */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* Style des boutons de navigation latéraux */
-.slide-nav-side {
-    /* Styles pour rendre le bouton rond et grand */
-    background-color: var(--saddle);
-    color: white;
-    border: none;
-    width: 50px; /* Taille fixe */
-    height: 50px;
-    border-radius: 50%; /* Rond */
-    font-size: 20px;
-    font-weight: bold;
-    flex-shrink: 0; /* Empêche le bouton de rétrécir */
-    transition: background-color 0.3s;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.slide-nav-side:hover:not(:disabled) {
-    background-color: var(--fuel-yellow);
-}
-
-.slide-nav-side:disabled {
-    background-color: var(--french-gray);
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
-/* Style pour le compteur de diapositives en bas (nouveau) */
-.slide-controls-bottom {
-    text-align: center;
-    margin-top: -10px; /* Remonte légèrement sous la slide */
-}
-
-.slide-counter {
-    /* Style déjà défini, mais on le laisse ici pour référence */
-    font-weight: bold;
-    color: var(--saddle);
-    font-size: 1em;
-}
-
-/* Suppression de l'ancienne mise en page des contrôles */
-.slide-controls {
-    display: none; /* Masque l'ancienne barre de contrôle */
 }

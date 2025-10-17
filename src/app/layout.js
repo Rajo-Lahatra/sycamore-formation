@@ -1,7 +1,7 @@
 // Fichier : sycamore-formation/src/app/layout.js
 
-import './globals.css'; // Importe les styles généraux (Header, Planning...)
-import './content.css'; // NOUVEAU : Importe les styles spécifiques aux slides
+import './globals.css'; 
+import './content.css'; // S'assure que le CSS de contenu est bien importé
 
 export const metadata = {
   title: 'Formation Sycamore - Fiscalité Minière',
@@ -9,11 +9,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  // Le style est appliqué à <body>, mais sera ciblé par des classes CSS spécifiques 
-  // dans page.js et dayX/page.js pour que seul le contenu de dayX soit affecté.
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body>
+        {/* Children est le contenu principal, y compris ContentWrapper */}
+        {children}
+      </body>
     </html>
   );
 }

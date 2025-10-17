@@ -1,6 +1,5 @@
 // Fichier : src/app/ContentWrapper.js
 
-// Nous avons besoin d'un composant client pour l'interactivité (les boutons du diaporama)
 'use client'; 
 
 import { usePathname } from 'next/navigation';
@@ -10,7 +9,7 @@ export default function ContentWrapper({ children, title, date }) {
   const isHomePage = pathname === '/';
   
   if (isHomePage) {
-      // Si c'est la page principale, on laisse le contenu tel quel (avec son propre header)
+      // Si c'est la page principale, on laisse le contenu tel quel
       return <>{children}</>;
   }
   
@@ -19,7 +18,8 @@ export default function ContentWrapper({ children, title, date }) {
     <div className="content-body"> 
       {/* Structure de l'en-tête pour les pages de contenu */}
       <div className="content-title-header">
-        {/* Logos : S'affichent maintenant sur toutes les pages de contenu */}
+        
+        {/* LOGOS : J&M est listé en premier pour être à gauche (order: 1) */}
         <div className="logo-container">
             <img 
                 src="/logo-jm.png" 
@@ -36,7 +36,7 @@ export default function ContentWrapper({ children, title, date }) {
         <h1>{title}</h1>
         <p className="content-date">{date}</p>
         
-        {/* Bouton de retour à la page principale */}
+        {/* Bouton de retour à la page principale (super utile !) */}
         <a href="/" className="back-button">
             &larr; Retour au Planning
         </a>

@@ -19,8 +19,8 @@
 
 /* Titre principal de la page (Nom du jour de formation) */
 .content-title-header {
-    background-color: var(--sun); /* Couleur d'accentuation pour la barre de titre */
-    color: var(--saddle);
+    background-color: var(--saddle); /* Couleur d'accentuation pour la barre de titre */
+    color: white;
     padding: 30px 20px;
     margin-bottom: 40px;
     text-align: center;
@@ -32,7 +32,17 @@
     font-size: 2.2em;
     margin: 0;
 }
-
+.content-title-header h1 {
+    color: white;
+    font-size: 2.2em;
+    margin: 0;
+}
+.content-title-header .content-date {
+    color: var(--tulip-tree); /* Couleur claire pour la date */
+}
+.content-title-header .back-button {
+    color: var(--sun); /* Couleur d'accentuation pour le lien de retour */
+}
 .content-date {
     font-style: italic;
     font-weight: 600;
@@ -94,12 +104,6 @@
     padding-top: 25px;
     text-align: center;
 }
-.slideshow {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
 /* Style des contrôles de navigation */
 .slide-controls {
     display: flex;
@@ -157,10 +161,86 @@
 
 /* Masquer le logo sur la page d'accueil pour éviter la duplication avec le header existant */
 .content-body .logo-container {
+    /* Utilisez Flexbox pour espacer les logos */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Place les éléments aux extrémités */
     align-items: center;
-    width: 100%;
-    max-width: 800px;
-    margin-bottom: 20px;
+    width: 100%; /* S'étend sur toute la largeur de l'en-tête */
+    max-width: 900px; /* Limite la taille pour éviter l'étirement excessif */
+    margin: 0 auto 20px auto; /* Centre le conteneur et ajoute une marge en bas */
+}
+
+/* Conteneur principal qui aligne la diapositive et les boutons côte à côte */
+.slideshow-wrapper {
+    display: flex;
+    align-items: center; /* Centre les éléments verticalement */
+    gap: 10px; /* Espace entre les boutons et la diapositive */
+}
+/* Styles pour les logos eux-mêmes */
+.logo {
+    height: auto; /* Maintient le ratio */
+    max-height: 50px; /* Taille plus petite pour les slides */
+    transition: transform 0.3s;
+}
+
+.jm-logo {
+    /* JM (à droite, donc nous le laissons à droite) */
+    order: 2; /* S'assure qu'il est à droite */
+}
+
+.sycamore-logo {
+    /* Sycamore (à gauche) */
+    order: 1; /* S'assure qu'il est à gauche */
+}
+/* Le diaporama prend la majorité de l'espace */
+.slideshow {
+    flex-grow: 1; /* Prend l'espace restant */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Style des boutons de navigation latéraux */
+.slide-nav-side {
+    /* Styles pour rendre le bouton rond et grand */
+    background-color: var(--saddle);
+    color: white;
+    border: none;
+    width: 50px; /* Taille fixe */
+    height: 50px;
+    border-radius: 50%; /* Rond */
+    font-size: 20px;
+    font-weight: bold;
+    flex-shrink: 0; /* Empêche le bouton de rétrécir */
+    transition: background-color 0.3s;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.slide-nav-side:hover:not(:disabled) {
+    background-color: var(--fuel-yellow);
+}
+
+.slide-nav-side:disabled {
+    background-color: var(--french-gray);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Style pour le compteur de diapositives en bas (nouveau) */
+.slide-controls-bottom {
+    text-align: center;
+    margin-top: -10px; /* Remonte légèrement sous la slide */
+}
+
+.slide-counter {
+    /* Style déjà défini, mais on le laisse ici pour référence */
+    font-weight: bold;
+    color: var(--saddle);
+    font-size: 1em;
+}
+
+/* Suppression de l'ancienne mise en page des contrôles */
+.slide-controls {
+    display: none; /* Masque l'ancienne barre de contrôle */
 }

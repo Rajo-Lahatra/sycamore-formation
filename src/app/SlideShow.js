@@ -1,11 +1,10 @@
 // Fichier : src/app/SlideShow.js
 
-'use client'; // Indique que ce composant doit s'exécuter côté client
+'use client'; 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function SlideShow({ slides }) {
-  // État pour suivre l'index de la diapositive actuelle
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   
   // Fonctions pour naviguer
@@ -17,40 +16,61 @@ export default function SlideShow({ slides }) {
     setCurrentSlideIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
   
-  // Obtenir la diapositive actuelle
+  // Gestion de la navigation au clavier (optionnel, mais pratique pour un diaporama)
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowRight' && currentSlideIndex < slides.length - 1) {
+        goToNext();
+      } else if (event.key === 'ArrowLeft' && currentSlideIndex > 0) {
+        goToPrev();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentSlideIndex, slides.length]); // Ajout des dépendances pour useEffect
+  
   const currentSlide = slides[currentSlideIndex];
   
-  // Affichage de la diapositive et des contrôles
   return (
-    <div className="slideshow">
+    <div className="slideshow-wrapper"> {/* Nouveau conteneur pour la mise en page latérale */}
       
-      {/* 1. Affichage de la diapositive actuelle */}
-      <section className="slide-section">
-        {currentSlide.content}
-      </section>
-      
-      {/* 2. Contrôles de navigation */}
-      <div className="slide-controls">
-        <button 
-          onClick={goToPrev} 
-          disabled={currentSlideIndex === 0}
-          className="nav-button prev-button"
-        >
-          &larr; Diapositive Précédente
-        </button>
+      {/* Bouton de navigation Précédent (Gauche) */}
+      <button 
+        onClick={goToPrev} 
+        disabled={currentSlideIndex === 0}
+        className="nav-button prev-button slide-nav-side"
+        aria-label="Diapositive précédente"
+      >
+        &#9664; {/* Flèche gauche */}
+      </button>
+
+      <div className="slideshow">
         
-        <span className="slide-counter">
-          {currentSlideIndex + 1} / {slides.length}
-        </span>
+        {/* 1. Affichage de la diapositive actuelle */}
+        <section className="slide-section">
+          {currentSlide.content}
+        </section>
         
-        <button 
-          onClick={goToNext} 
-          disabled={currentSlideIndex === slides.length - 1}
-          className="nav-button next-button"
-        >
-          Diapositive Suivante &rarr;
-        </button>
+        {/* 2. Affichage du compteur de diapositives en bas (plus discret) */}
+        <div className="slide-controls-bottom">
+          <span className="slide-counter">
+            Diapositive {currentSlideIndex + 1} / {slides.length}
+          </span>
+        </div>
+        
       </div>
+
+      {/* Bouton de navigation Suivant (Droite) */}
+      <button 
+        onClick={goToNext} 
+        disabled={currentSlideIndex === slides.length - 1}
+        className="nav-button next-button slide-nav-side"
+        aria-label="Diapositive suivante"
+      >
+        &#9654; {/* Flèche droite */}
+      </button>
       
     </div>
   );

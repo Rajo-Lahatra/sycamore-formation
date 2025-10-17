@@ -1,11 +1,10 @@
 /**
- * Contenu détaillé du Jour 4: IS, IMF, CFU, Droit d'enregistrement, Patente et Charges Minières Spécifiques.
- * Les informations proviennent du support de formation "Sycamore - Fiscalité minière".
- * Ce fichier exporte la structure de données et les fonctions de rendu pour la compatibilité SSR/Vercel.
+ * Composant de page pour le Jour 4 de la formation Fiscalité Minière.
+ * Ce composant est conçu comme un Next.js Server Component pour une compatibilité SSR totale.
  */
 
 // 1. Structure de données (JSON) contenant le contenu de la formation
-export const content = {
+const content = {
   header: {
     title: "IS, IMF, CFU, droit d'enregistrement, patente et charges minières spécifiques",
     subtitle: "Maîtriser les Impôts Directs, Taxes Locales et Redevances Minières"
@@ -16,10 +15,10 @@ export const content = {
       content: `
         <p class="text-lg font-semibold text-green-700 mb-4">Objectifs de la session :</p>
         <ul class="list-disc ml-6 space-y-2">
-          <li>Comprendre en détail le mécanisme de l'Impôt sur les Sociétés (IS) et de l'Impôt Minimum Forfaitaire (IMF).</li>
+          <li>Comprendre en détail le mécanisme de l'Impôt sur les Sociétés (**IS**) et de l'Impôt Minimum Forfaitaire (**IMF**).</li>
           <li>Analyser les spécificités de la détermination du résultat imposable en milieu minier (amortissements, déductibilité des charges).</li>
           <li>Identifier les obligations en matière d'impôts locaux (**CFU**, Patente) et de **Droits d'Enregistrement**.</li>
-          <li>Maîtriser le cadre des charges minières spécifiques (**Redevance minière**, Contribution au Développement Local - **FODEL**).</li>
+          <li>Maîtriser le cadre des charges minières spécifiques (Redevance minière, Contribution au Développement Local - **FODEL**).</li>
           <li>Passer en revue les régimes de **stabilité fiscale** et les incitations.</li>
         </ul>
       `
@@ -196,7 +195,7 @@ export const content = {
         <p class="text-lg font-bold text-teal-700 mt-4">Incitations Fiscales (Minières) :</p>
         <ul class="list-disc ml-6 space-y-2">
           <li>**Amortissement Accéléré** (jusqu'à 25% la 1ère année).</li>
-          <li>**Exonérations temporaires** de Droits de Douane et de TVA sur les équipements et intrants miniers importés pendant les phases de recherche/développement.</li>
+          <li>**Exonérations temporaires** de Droits de Douane et de TVA sur les équipements miniers importés pendant les phases de recherche/développement.</li>
           <li>Déductions spécifiques liées aux investissements en infrastructures (si elles bénéficient aux collectivités).</li>
         </ul>
       `
@@ -204,86 +203,50 @@ export const content = {
   ]
 };
 
-// 2. Fonctions de rendu (pour générer le HTML final à partir des données)
-export const renderSlide = (slide, index) => {
-  return `
-    <div class="slide bg-white p-8 rounded-lg shadow-xl mb-6 transition duration-300 ease-in-out hover:shadow-2xl">
-      <h2 class="text-3xl font-extrabold text-gray-800 border-b-4 border-green-500 pb-3 mb-5">${index + 1}. ${slide.title}</h2>
-      <div class="text-gray-700 leading-relaxed space-y-4">
-        ${slide.content}
-      </div>
-    </div>
-  `;
-};
+// 2. Composant de Slide pour le rendu d'une diapositive individuelle
+const Slide = ({ slide, index }) => (
+  <div className="slide bg-white p-6 md:p-8 rounded-xl shadow-lg mb-6 transition duration-300 ease-in-out hover:shadow-xl border-t-4 border-green-500">
+    <h2 className="text-xl md:text-3xl font-extrabold text-gray-800 border-b-2 border-gray-200 pb-3 mb-5">
+      {index + 1}. {slide.title}
+    </h2>
+    {/* ATTENTION: DangerouslySetInnerHTML est utilisé ici car le contenu est une chaîne HTML. 
+      Dans un vrai projet, il faudrait convertir ce HTML en JSX sécurisé.
+      Pour la démonstration, on utilise dangerouslySetInnerHTML. 
+    */}
+    <div 
+      className="text-gray-700 leading-relaxed space-y-4 text-sm md:text-base"
+      dangerouslySetInnerHTML={{ __html: slide.content }}
+    />
+  </div>
+);
 
-export const renderContent = (data) => {
-  const slidesHtml = data.slides.map(renderSlide).join('');
-  
-  // Utilisation de Tailwind CSS et style minimaliste
-  return `
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>${data.header.title}</title>
-      <script src="https://cdn.tailwindcss.com"></script>
-      <style>
-        body {
-          font-family: 'Inter', sans-serif;
-          background-color: #f0f4f8;
-          padding: 20px;
-        }
-        .container {
-          max-width: 1000px;
-          margin: auto;
-        }
-        @media (max-width: 768px) {
-          .slide {
-            padding: 1rem;
-          }
-          .container {
-            padding: 0 10px;
-          }
-          header h1 {
-            font-size: 1.75rem;
-          }
-          header p {
-            font-size: 1rem;
-          }
-        }
-      </style>
-    </head>
-    <body>
-      <div class="container rounded-xl">
-        <header class="bg-blue-800 text-white p-6 rounded-t-xl shadow-lg mb-8">
-          <h1 class="text-4xl font-black mb-1">${data.header.title}</h1>
-          <p class="text-xl opacity-90">${data.header.subtitle}</p>
+// 3. Composant principal de la page
+export default function Page() {
+  const { header, slides } = content;
+
+  return (
+    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+      <div className="max-w-4xl mx-auto rounded-xl shadow-2xl overflow-hidden">
+        
+        {/* En-tête de la page */}
+        <header className="bg-blue-800 text-white p-6 md:p-8 rounded-t-xl">
+          <h1 className="text-2xl md:text-4xl font-black mb-1">{header.title}</h1>
+          <p className="text-base md:text-xl opacity-90">{header.subtitle}</p>
         </header>
-        <main>
-          ${slidesHtml}
+
+        {/* Contenu principal: Slides */}
+        <main className="p-4 md:p-8 bg-gray-100">
+          {/* Correction de l'erreur: s'assurer que 'slides' est bien un tableau et mappé dans un composant */}
+          {slides && slides.map((slide, index) => (
+            <Slide key={index} slide={slide} index={index} />
+          ))}
         </main>
-        <footer class="text-center text-gray-500 mt-8 pb-4">
-          &copy; Formation Fiscalité Minière - Jour 4
+        
+        {/* Pied de page */}
+        <footer className="text-center text-gray-500 p-4 bg-white rounded-b-xl border-t">
+          &copy; Formation Fiscalité Minière - Jour 4 (Component Next.js)
         </footer>
       </div>
-    </body>
-    </html>
-  `;
-};
-
-// 3. Appel de la fonction de rendu (uniquement si l'environnement est côté client)
-// NOTE: L'environnement Canvas exécute souvent les exports pour le preview.
-// Je ne fais pas d'appel direct à document ici pour ne pas casser le build Vercel/SSR.
-
-// Pour permettre l'affichage dans l'environnement de développement si nécessaire,
-// on peut l'encapsuler pour s'assurer qu'il s'exécute uniquement côté client.
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('app').innerHTML = renderContent(content);
-  });
+    </div>
+  );
 }
-// Le code ci-dessus est encapsulé pour fonctionner dans un navigateur sans casser l'environnement Vercel.
-
-// Export par défaut (le module exporte ses données et fonctions)
-export default renderContent;

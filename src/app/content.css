@@ -1,0 +1,96 @@
+/* Fichier : src/app/content.css */
+
+/* Styles généraux pour le corps des pages de contenu */
+/* On s'assure que le contenu remplisse bien la page */
+.content-body {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: var(--saddle); /* Utilisation du marron foncé pour la zone hors slide */
+}
+
+/* Conteneur principal de la page de contenu */
+.content-container {
+    width: 95%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+/* Titre principal de la page (Nom du jour de formation) */
+.content-title-header {
+    background-color: var(--sun); /* Couleur d'accentuation pour la barre de titre */
+    color: var(--saddle);
+    padding: 30px 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom: 5px solid var(--sepia);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.content-title-header h1 {
+    font-size: 2.2em;
+    margin: 0;
+}
+
+.content-date {
+    font-style: italic;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* Style de chaque section (simule une diapositive) */
+.slide-section {
+    background-color: white;
+    border: 1px solid var(--french-gray);
+    /* Ombre subtile pour donner un effet 3D de slide */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
+    padding: 30px 40px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    min-height: 250px; /* Hauteur minimale pour les slides */
+}
+
+.slide-title {
+    color: var(--saddle);
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--tulip-tree);
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.slide-section h3 {
+    color: var(--fuel-yellow);
+    font-size: 1.4em;
+    margin-top: 20px;
+}
+
+/* Style des listes pour l'effet "Bullet Points" de PowerPoint */
+.slide-section ul {
+    list-style-type: none; /* Enlève les bullets par défaut */
+    padding-left: 20px;
+}
+
+.slide-section ul li {
+    font-size: 1.1em;
+    margin-bottom: 12px;
+    padding-left: 15px;
+    /* Utilise une couleur d'accentuation pour les bullets */
+    border-left: 3px solid var(--sun); 
+    line-height: 1.5;
+}
+
+/* Style des paragraphes pour une meilleure lisibilité */
+.slide-section p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+/* Style pour les informations de contact (comme un pied de page de slide) */
+.contact-info {
+    border-left: none;
+    border-top: 2px dashed var(--french-gray);
+    padding-top: 25px;
+    text-align: center;
+}

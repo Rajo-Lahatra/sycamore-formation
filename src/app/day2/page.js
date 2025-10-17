@@ -1,7 +1,8 @@
 // Fichier : src/app/day2/page.js
 
-import SlideShow from '../../components/SlideShow';
-import ContentWrapper from '../../app/ContentWrapper';
+// CORRECTION DE L'IMPORT : Utilisation du chemin relatif correct (parent direct)
+import SlideShow from '../SlideShow';
+import ContentWrapper from '../ContentWrapper';
 import React from 'react';
 
 // Utiliser une fonction d'aide pour générer une structure de slide uniforme
@@ -243,6 +244,7 @@ const slidesData = [
         <ul>
             <li>Assiette : Montant du <strong>salaire brut</strong>.</li>
             <li>Taux d’Imposition : <strong>3%</strong>.</li>
+            <li>**Note :** Sycamore, avec 250 employés, est soumise à la Contribution ONFPP et non à la Taxe d'Apprentissage (TA).</li>
         </ul>
         <h3>Précision importante sur l'ONFPP</h3>
         <ul>
@@ -255,15 +257,16 @@ const slidesData = [
 
     // SLIDE 13: TA - MODALITÉS
     createSlide(
-        "TA - Modalités de Déclaration et Échéance",
+        "TA/ONFPP - Modalités de Déclaration et Échéance",
         `
         <h3>Déclaration Électronique</h3>
         <ul>
-            <li>Déclaration via la plateforme <strong>"ETAX"</strong> (renseigner la base d’imposition et le montant de la TA).</li>
+            <li>Déclaration via la plateforme <strong>"ETAX"</strong>.</li>
         </ul>
         <h3>Échéance</h3>
         <ul>
-            <li>Déclaration et paiement : Au plus tard le <strong>15 février</strong> de chaque année (déclaration annuelle).</li>
+            <li>Pour l'**ONFPP** (applicable à Sycamore) : Au plus tard le <strong>20 de chaque mois</strong>.</li>
+            <li>Pour la **TA** (entreprises < 30 employés) : Déclaration et paiement annuels au plus tard le **15 février** de chaque année.</li>
         </ul>
         <h3>Sanctions</h3>
         <ul>
@@ -284,12 +287,12 @@ const slidesData = [
         <table style="width: 100%; text-align: right; border-collapse: collapse; margin-top: 15px;">
             <thead>
                 <tr style="background-color: var(--french-gray);">
-                    <th style="text-align: left; padding: 8px; border: 1px solid #ddd;">Employé</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">Salaire de Base</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">Prime transport</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">Indemnité cherté de vie</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">Loyer appartement</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">Prime de Fonction</th>
+                    <th style="width: 15%; text-align: left; padding: 8px; border: 1px solid #ddd;">Employé</th>
+                    <th style="width: 17%; padding: 8px; border: 1px solid #ddd;">Salaire de Base</th>
+                    <th style="width: 17%; padding: 8px; border: 1px solid #ddd;">Prime transport</th>
+                    <th style="width: 17%; padding: 8px; border: 1px solid #ddd;">Indemnité cherté de vie</th>
+                    <th style="width: 17%; padding: 8px; border: 1px solid #ddd;">Loyer appartement</th>
+                    <th style="width: 17%; padding: 8px; border: 1px solid #ddd;">Prime de Fonction</th>
                 </tr>
             </thead>
             <tbody>
@@ -323,7 +326,7 @@ const slidesData = [
                     <th style="padding: 8px; border: 1px solid #ddd;">Salaire Brut</th>
                     <th style="padding: 8px; border: 1px solid #ddd;">RTS</th>
                     <th style="padding: 8px; border: 1px solid #ddd;">VF</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">ONFPP</th>
+                    <th style="padding: 8px; border: 1px solid #ddd;">TA/ONFPP</th>
                     <th style="padding: 8px; border: 1px solid #ddd;">Salaire Net</th>
                 </tr>
             </thead>

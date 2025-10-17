@@ -1,19 +1,22 @@
 // src/app/page.js
 
-// Ceci est un composant serveur dans Next.js (App Router)
 export default function HomePage() {
+  // Fonction pour générer le lien de contenu
+  const ContentButton = ({ dayNumber }) => (
+    <a href={`/day${dayNumber}`} className="content-button">
+      Accéder Contenu
+    </a>
+  );
+    
   return (
     <>
       <header>
-        {/* NOUVEAU : Conteneur des logos */}
         <div className="logo-container">
-          {/* Logo du Prestataire (JM Consulting) */}
           <img 
             src="/logo-jm.png" 
             alt="Logo JM Consulting" 
             className="logo jm-logo" 
           />
-          {/* Logo du Client (Sycamore) */}
           <img 
             src="/logo-sycamore.png" 
             alt="Logo Sycamore Mine Guinée SAU" 
@@ -27,27 +30,17 @@ export default function HomePage() {
       </header>
 
       <div className="container">
-        {/* ... LE RESTE DU CONTENU DE LA PAGE RESTE INCHANGÉ ... */}
         
         <section id="apercu">
-          <h2>Aperçu Thématique de la Formation</h2>
-          <ul>
-            <li>
-              <strong>Jour 1 : Introduction & Cadre Fiscal Minier</strong> (4h) - Les règles du jeu et le double encadrement légal (Code Minier / CGI).
-            </li>
-            <li>
-              <strong>Jour 2 : Fiscalité du Personnel (RTS)</strong> (3h) - Maîtriser le calcul de la paie et les obligations déclaratives.
-            </li>
-            <li>
-              <strong>Jour 3 : TVA, PF, RNS</strong> (3h) - Focus sur les impôts indirects et les retenues à la source.
-            </li>
-            <li>
-              <strong>Jour 4 : IS & IMF</strong> (3h) - Base imposable, charges déductibles, amortissements miniers et spécificités sectorielles.
-            </li>
-            <li>
-              <strong>Jour 5 : Remboursement TVA & Contrôle Fiscal</strong> (3h) - Sécuriser les droits de l'entreprise et gérer le risque fiscal.
-            </li>
-          </ul>
+            <h2>Aperçu Thématique de la Formation</h2>
+            {/* Le contenu de la section Aperçu reste inchangé */}
+            <ul>
+                <li><strong>Jour 1 : Introduction & Cadre Fiscal Minier</strong> (4h) - Les règles du jeu et le double encadrement légal (Code Minier / CGI).</li>
+                <li><strong>Jour 2 : Fiscalité du Personnel (RTS)</strong> (3h) - Maîtriser le calcul de la paie et les obligations déclaratives.</li>
+                <li><strong>Jour 3 : TVA, PF, RNS</strong> (3h) - Focus sur les impôts indirects et les retenues à la source.</li>
+                <li><strong>Jour 4 : IS & IMF</strong> (3h) - Base imposable, charges déductibles, amortissements miniers et spécificités sectorielles.</li>
+                <li><strong>Jour 5 : Remboursement TVA & Contrôle Fiscal</strong> (3h) - Sécuriser les droits de l'entreprise et gérer le risque fiscal.</li>
+            </ul>
         </section>
 
         <section id="programme-detaille">
@@ -62,6 +55,7 @@ export default function HomePage() {
                   <th>Horaire</th>
                   <th>Thème / Activité</th>
                   <th>Méthode</th>
+                  <th>Contenu</th> {/* NOUVEAU TITRE DE COLONNE */}
                 </tr>
               </thead>
               <tbody>
@@ -69,6 +63,14 @@ export default function HomePage() {
                   <td>09h00 – 09h30</td>
                   <td>Ouverture et présentation des objectifs de la formation</td>
                   <td>Exposé + échanges</td>
+                  <td rowSpan="4"><ContentButton dayNumber={1} /></td> {/* BOUTON */}
+                </tr>
+                <tr>
+                  <td>09h30 – 10h15</td>
+                  <td>
+                    Introduction générale à la fiscalité : principes, distinction impôt/taxe/redevance, système déclaratif
+                  </td>
+                  <td>Présentation interactive</td>
                 </tr>
                 <tr>
                   <td>10h15 – 11h15</td>
@@ -79,19 +81,21 @@ export default function HomePage() {
                   <td>Présentation + Q/R</td>
                 </tr>
                 <tr>
-                  <td className="table-break" colSpan="3">
-                    11h15 – 11h30 : PAUSE
-                  </td>
-                </tr>
-                <tr>
                   <td>11h30 – 12h30</td>
                   <td>Identification des obligations fiscales de Sycamore (Calendrier, échéances)</td>
                   <td>Discussion</td>
+                </tr>
+                
+                <tr>
+                  <td className="table-break" colSpan="4"> {/* COLSPAN AJUSTÉ À 4 */}
+                    11h15 – 11h30 : PAUSE
+                  </td>
                 </tr>
                 <tr>
                   <td>12h30 – 13h00</td>
                   <td>Synthèse et conclusion du jour</td>
                   <td>Discussion ouverte</td>
+                  <td></td> {/* LAISSER VIDE SI LE BOUTON EST DANS LE rowspan précédent */}
                 </tr>
               </tbody>
             </table>
@@ -106,6 +110,7 @@ export default function HomePage() {
                   <th>Horaire</th>
                   <th>Thème / Activité</th>
                   <th>Méthode</th>
+                  <th>Contenu</th> {/* NOUVEAU TITRE DE COLONNE */}
                 </tr>
               </thead>
               <tbody>
@@ -116,6 +121,7 @@ export default function HomePage() {
                     cotisations sociales, <strong>Versement Forfaitaire (VF)</strong> (6%)
                   </td>
                   <td>Exposé détaillé</td>
+                  <td rowSpan="3"><ContentButton dayNumber={2} /></td> {/* BOUTON */}
                 </tr>
                 <tr>
                   <td>10h00 – 10h45</td>
@@ -123,19 +129,20 @@ export default function HomePage() {
                   <td>Exercices individuels + correction</td>
                 </tr>
                 <tr>
-                  <td className="table-break" colSpan="3">
-                    10h45 – 11h00 : PAUSE
-                  </td>
-                </tr>
-                <tr>
                   <td>11h00 – 12h00</td>
                   <td>Obligations déclaratives et paiement : Délais (mensuels), modalités, pénalités de retard ou défaut.</td>
                   <td>Exposé + échanges</td>
+                </tr>
+                <tr>
+                  <td className="table-break" colSpan="4"> {/* COLSPAN AJUSTÉ À 4 */}
+                    10h45 – 11h00 : PAUSE
+                  </td>
                 </tr>
               </tbody>
             </table>
           </details>
 
+          {/* ... Répétez ce modèle pour les Jours 3, 4 et 5 en ajustant rowSpan et dayNumber ... */}
           {/* Jour 3 */}
           <details>
             <summary>Jour 3 : Mercredi 22 octobre 2025 - TVA, PF, et Retenues à la Source (RNS).</summary>
@@ -145,6 +152,7 @@ export default function HomePage() {
                   <th>Horaire</th>
                   <th>Thème / Activité</th>
                   <th>Méthode</th>
+                  <th>Contenu</th>
                 </tr>
               </thead>
               <tbody>
@@ -155,6 +163,7 @@ export default function HomePage() {
                     précompteur et risques
                   </td>
                   <td>Exposé + échanges</td>
+                  <td rowSpan="3"><ContentButton dayNumber={3} /></td>
                 </tr>
                 <tr>
                   <td>09h45 – 10h30</td>
@@ -165,14 +174,14 @@ export default function HomePage() {
                   <td>Présentation détaillée</td>
                 </tr>
                 <tr>
-                  <td className="table-break" colSpan="3">
-                    10h30 – 10h45 : PAUSE
-                  </td>
-                </tr>
-                <tr>
                   <td>10h45 – 12h00</td>
                   <td>Cas pratiques TVA (Sycamore & Auritrans) : Application du précompte et calcul de la déclaration mensuelle</td>
                   <td>Exercices + corrections collectives</td>
+                </tr>
+                <tr>
+                  <td className="table-break" colSpan="4">
+                    10h30 – 10h45 : PAUSE
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -187,6 +196,7 @@ export default function HomePage() {
                   <th>Horaire</th>
                   <th>Thème / Activité</th>
                   <th>Méthode</th>
+                  <th>Contenu</th>
                 </tr>
               </thead>
               <tbody>
@@ -197,16 +207,12 @@ export default function HomePage() {
                     amortissements miniers, <strong>IMF (Impôt Minimum Forfaitaire)</strong>
                   </td>
                   <td>Exposé technique</td>
+                  <td rowSpan="3"><ContentButton dayNumber={4} /></td>
                 </tr>
                 <tr>
                   <td>09h45 – 10h45</td>
                   <td>Cas pratiques IS (MC Lenon Foster & Logistic de Boffa) : Détermination du résultat fiscal et calculs</td>
                   <td>Calculs et discussion</td>
-                </tr>
-                <tr>
-                  <td className="table-break" colSpan="3">
-                    10h45 – 11h00 : PAUSE
-                  </td>
                 </tr>
                 <tr>
                   <td>11h00 – 12h00</td>
@@ -215,6 +221,11 @@ export default function HomePage() {
                     Déductibilité des Redevances minières)
                   </td>
                   <td>Débat guidé</td>
+                </tr>
+                <tr>
+                  <td className="table-break" colSpan="4">
+                    10h45 – 11h00 : PAUSE
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -229,6 +240,7 @@ export default function HomePage() {
                   <th>Horaire</th>
                   <th>Thème / Activité</th>
                   <th>Méthode</th>
+                  <th>Contenu</th>
                 </tr>
               </thead>
               <tbody>
@@ -239,6 +251,7 @@ export default function HomePage() {
                     administratif et délais de l'Administration
                   </td>
                   <td>Présentation pratique</td>
+                  <td rowSpan="3"><ContentButton dayNumber={5} /></td>
                 </tr>
                 <tr>
                   <td>10h00 – 10h45</td>
@@ -249,11 +262,6 @@ export default function HomePage() {
                   <td>Mise en situation théorique</td>
                 </tr>
                 <tr>
-                  <td className="table-break" colSpan="3">
-                    10h45 – 11h00 : PAUSE
-                  </td>
-                </tr>
-                <tr>
                   <td>11h00 – 12h00</td>
                   <td>
                     Réflexes et bonnes pratiques pour la gestion des relations avec l’Administration fiscale / Synthèse
@@ -261,9 +269,16 @@ export default function HomePage() {
                   </td>
                   <td>Échanges finals</td>
                 </tr>
+                <tr>
+                  <td className="table-break" colSpan="4">
+                    10h45 – 11h00 : PAUSE
+                  </td>
+                </tr>
               </tbody>
             </table>
           </details>
+
+
         </section>
       </div>
     </>

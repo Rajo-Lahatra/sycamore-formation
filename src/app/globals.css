@@ -175,3 +175,52 @@ header {
         max-height: 50px; /* Réduire la taille des logos sur mobile */
     }
 }
+/* Style pour le bouton "Accéder Contenu" */
+.content-button {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: var(--sun); /* Couleur d'accentuation (Jaune/Orange) */
+    color: var(--saddle); /* Texte foncé sur fond clair */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 0.9em;
+    text-align: center;
+    width: 100%; /* S'étend sur toute la largeur de la cellule */
+    box-sizing: border-box;
+}
+
+.content-button:hover {
+    background-color: var(--fuel-yellow);
+    color: white; /* Rendre le texte blanc au survol */
+}
+
+/* Styles pour les pages de contenu (dayX/page.js) */
+.content-title {
+    color: var(--saddle);
+    border-bottom: 2px solid var(--sun);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.content-date {
+    font-style: italic;
+    color: var(--french-gray);
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+
+.slide-section {
+    padding: 20px;
+    border: 1px solid var(--pale-oyster);
+    border-left: 5px solid var(--sun);
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border-radius: 4px;
+}
+
+.slide-title {
+    color: var(--sepia);
+    margin-top: 0;
+}

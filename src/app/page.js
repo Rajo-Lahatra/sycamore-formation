@@ -1,6 +1,18 @@
 // src/app/page.js
 
-export default function HomePage() {
+import { createClient } from '@/lib/supabase/client';
+import { redirect } from 'next/navigation';
+import LogoutButton from './LogoutButton';
+
+export default async function HomePage() {
+  const supabase = createClient();
+  const { data: { session } } = await supabase.auth.getSession();
+
+  // Rediriger vers /login si pas connecté
+  if (!session) {
+    redirect('/login');
+  }
+
   // Fonction pour générer le lien de contenu
   const ContentButton = ({ dayNumber }) => (
     <a href={`/day${dayNumber}`} className="content-button">
@@ -10,6 +22,16 @@ export default function HomePage() {
     
   return (
     <>
+      {/* Bouton de déconnexion en position fixed */}
+      <div style={{ 
+        position: 'fixed', 
+        top: '20px', 
+        right: '20px', 
+        zIndex: 1000 
+      }}>
+        <LogoutButton />
+      </div>
+
       <header>
         <div className="logo-container">
           <img 
@@ -27,6 +49,17 @@ export default function HomePage() {
         <h1>PLANNING DÉTAILLÉ DE LA FORMATION</h1>
         <p>Fiscalité Minière Guinéenne</p>
         <p>Pour <strong>Sycamore Mine Guinée SAU</strong> | Du 20 au 24 octobre 2025</p>
+        
+        {/* Message de bienvenue avec l'email de l'utilisateur */}
+        <div style={{ 
+          marginTop: '10px', 
+          padding: '10px', 
+          backgroundColor: '#f0f8ff', 
+          borderRadius: '5px',
+          fontSize: '0.9em'
+        }}>
+          <strong>Connecté en tant que :</strong> {session.user.email}
+        </div>
       </header>
 
       <div className="container">
@@ -142,7 +175,6 @@ export default function HomePage() {
             </table>
           </details>
 
-          {/* ... Répétez ce modèle pour les Jours 3, 4 et 5 en ajustant rowSpan et dayNumber ... */}
           {/* Jour 3 */}
           <details>
             <summary>Jour 3 : Mercredi 22 octobre 2025 - TVA, PF, et Retenues à la Source (RNS).</summary>
@@ -189,7 +221,7 @@ export default function HomePage() {
 
           {/* Jour 4 */}
           <details>
-            <summary>Jour 4 : Jeudi 23 octobre 2025 - Maîtriser l’IS, l’IMF et le traitement fiscal des charges minières.</summary>
+            <summary>Jour 4 : Jeudi 23 octobre 2025 - Maîtriser l'IS, l'IMF et le traitement fiscal des charges minières.</summary>
             <table className="schedule-table">
               <thead>
                 <tr>
@@ -264,7 +296,7 @@ export default function HomePage() {
                 <tr>
                   <td>11h00 – 12h00</td>
                   <td>
-                    Réflexes et bonnes pratiques pour la gestion des relations avec l’Administration fiscale / Synthèse
+                    Réflexes et bonnes pratiques pour la gestion des relations avec l'Administration fiscale / Synthèse
                     générale et Évaluation
                   </td>
                   <td>Échanges finals</td>
@@ -277,8 +309,6 @@ export default function HomePage() {
               </tbody>
             </table>
           </details>
-
-
         </section>
       </div>
     </>

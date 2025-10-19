@@ -21,18 +21,6 @@ export default function AuthForm() {
   const router = useRouter();
   const supabase = createClient();
 
-  // Vérifier si l'utilisateur est déjà connecté
-  useEffect(() => {
-    const checkUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        router.push('/');
-        router.refresh();
-      }
-    };
-    checkUser();
-  }, [supabase.auth, router]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus(LOGIN_STATUS.LOADING);
@@ -99,7 +87,6 @@ export default function AuthForm() {
           type="submit" 
           disabled={isDisabled} 
           className="content-button"
-          aria-label={status === LOGIN_STATUS.LOADING ? 'Connexion en cours' : 'Se connecter'}
         >
           {status === LOGIN_STATUS.LOADING ? 'Connexion en cours...' : 'Se Connecter'}
         </button>

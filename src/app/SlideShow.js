@@ -1,6 +1,6 @@
 // src/app/SlideShow.js
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, isValidElement } from 'react'; // Import correct
 import { useSlide } from './contexts/SlideContext';
 
 export default function SlideShow({ slides }) {
@@ -30,7 +30,7 @@ export default function SlideShow({ slides }) {
     if (!currentSlide) return <p>Slide non disponible</p>;
     
     // Si le contenu est du JSX (Day1)
-    if (React.isValidElement(currentSlide.content)) {
+    if (isValidElement(currentSlide.content)) { // Utiliser isValidElement directement
       return currentSlide.content;
     }
     

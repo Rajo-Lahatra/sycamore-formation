@@ -2,6 +2,22 @@
 
 import Day4Client from './Day4Client';
 
+// Définition de createSlide
+function createSlide(title, content, subtitle = null) {
+  return {
+    content: (
+      <div className="slide-content">
+        {subtitle && <h3>{subtitle}</h3>}
+        <h2 className="slide-title">{title}</h2>
+        <div 
+          className="slide-body"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      </div>
+    )
+  };
+}
+
 // --- Contenu Détaillé du Jour 4 : Imposition du Revenu et Fiscalité Spécifique ---
 
 const slides = [

@@ -1,6 +1,21 @@
 // src/app/day3/page.js
 
 import Day3Client from './Day3Client';
+// Définition de createSlide
+function createSlide(title, content, subtitle = null) {
+  return {
+    content: (
+      <div className="slide-content">
+        {subtitle && <h3>{subtitle}</h3>}
+        <h2 className="slide-title">{title}</h2>
+        <div 
+          className="slide-body"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      </div>
+    )
+  };
+}
 
 // --- Contenu Détaillé du Jour 3 : RNS et TVA ---
 

@@ -1,6 +1,22 @@
 // src/app/day5/page.js
 import Day5Client from './Day5Client';
 
+// Définition de createSlide
+function createSlide(title, content, subtitle = null) {
+  return {
+    content: (
+      <div className="slide-content">
+        {subtitle && <h3>{subtitle}</h3>}
+        <h2 className="slide-title">{title}</h2>
+        <div 
+          className="slide-body"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      </div>
+    )
+  };
+}
+
 const slides = [
     
     // SLIDE 2: REMBOURSEMENT CRÉDIT TVA - TEXTES

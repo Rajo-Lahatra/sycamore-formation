@@ -2,7 +2,7 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 
@@ -23,17 +23,17 @@ export default function AuthForm() {
   const router = useRouter();
   const supabase = createClient();
 
-  // Vérifier si l'utilisateur est déjà connecté
-  useEffect(() => {
-    const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        router.push('/');
-        router.refresh();
-      }
-    };
-    checkSession();
-  }, [supabase.auth, router]);
+  // SUPPRIMEZ ce useEffect qui cause le clignotement
+  // useEffect(() => {
+  //   const checkSession = async () => {
+  //     const { data: { session } } = await supabase.auth.getSession();
+  //     if (session) {
+  //       router.push('/');
+  //       router.refresh();
+  //     }
+  //   };
+  //   checkSession();
+  // }, [supabase.auth, router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,7 +61,6 @@ export default function AuthForm() {
         result = await supabase.auth.signUp({
           email: email.trim(),
           password,
-          
         });
       } else {
         // CONNEXION
@@ -93,15 +92,11 @@ export default function AuthForm() {
           setStatus(AUTH_STATUS.IDLE);
         }
       } else {
-        // Après la connexion - Attendre un peu pour que la session soit disponible
+        // Après la connexion
         if (data.user) {
           setStatus(AUTH_STATUS.SUCCESS);
-          
-          // Attendre un court instant pour que la session soit mise à jour
-          setTimeout(() => {
-            router.push('/');
-            router.refresh();
-          }, 500);
+          // Redirection simple sans rafraîchissement forcé
+          window.location.href = '/'; // Utilisez window.location pour éviter les problèmes de cache
         }
       }
     } catch (error) {

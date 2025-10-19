@@ -403,5 +403,5 @@ const slides = [
 
 
 export default function Day2Page() {
-  return <Day1Client slides={slides} />;
+  return <Day2Client slides={slides} />;
 }

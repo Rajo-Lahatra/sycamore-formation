@@ -8,7 +8,7 @@ export default async function HomePage() {
   const supabase = createClient();
   const { data: { session } } = await supabase.auth.getSession();
 
-  // Rediriger vers /login si pas connecté
+  // Redirection SIMPLE sans logique complexe
   if (!session) {
     redirect('/login');
   }
@@ -22,13 +22,8 @@ export default async function HomePage() {
     
   return (
     <>
-      {/* Bouton de déconnexion en position fixed */}
-      <div style={{ 
-        position: 'fixed', 
-        top: '20px', 
-        right: '20px', 
-        zIndex: 1000 
-      }}>
+      {/* Bouton de déconnexion */}
+      <div style={{ position: 'fixed', top: '20px', right: '20px', zIndex: 1000 }}>
         <LogoutButton />
       </div>
 
@@ -50,7 +45,7 @@ export default async function HomePage() {
         <p>Fiscalité Minière Guinéenne</p>
         <p>Pour <strong>Sycamore Mine Guinée SAU</strong> | Du 20 au 24 octobre 2025</p>
         
-        {/* Message de bienvenue avec l'email de l'utilisateur */}
+        {/* Message de bienvenue */}
         <div style={{ 
           marginTop: '10px', 
           padding: '10px', 

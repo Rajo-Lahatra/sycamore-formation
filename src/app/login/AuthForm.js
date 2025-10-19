@@ -61,9 +61,7 @@ export default function AuthForm() {
         result = await supabase.auth.signUp({
           email: email.trim(),
           password,
-          options: {
-            emailRedirectTo: `${window.location.origin}/auth/callback`
-          }
+          
         });
       } else {
         // CONNEXION

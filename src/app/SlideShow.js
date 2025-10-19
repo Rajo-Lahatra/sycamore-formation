@@ -1,6 +1,6 @@
 // src/app/SlideShow.js
 'use client';
-import { useState, useEffect, isValidElement } from 'react'; // Import correct
+import { useState, useEffect } from 'react';
 import { useSlide } from './contexts/SlideContext';
 
 export default function SlideShow({ slides }) {
@@ -23,28 +23,53 @@ export default function SlideShow({ slides }) {
     setCurrentIndex(index);
   };
 
+  // Fonction pour détecter si c'est du JSX (méthode améliorée)
+  const isJSX = (content) => {
+    if (!content) return false;
+    
+    // Si c'est un élément React valide
+    if (typeof content === 'object' && content.$$typeof) {
+      return true;
+    }
+    
+    // Si c'est un fragment React
+    if (Array.isArray(content)) {
+      return content.some(item => typeof item === 'object' && item?.$$typeof);
+    }
+    
+    return false;
+  };
+
   // Fonction pour rendre le contenu selon le format
   const renderSlideContent = () => {
     const currentSlide = slides[currentIndex];
     
-    if (!currentSlide) return <p>Slide non disponible</p>;
+    if (!currentSlide || !currentSlide.content) {
+      return <p>Slide non disponible</p>;
+    }
+    
+    const { content } = currentSlide;
     
     // Si le contenu est du JSX (Day1)
-    if (isValidElement(currentSlide.content)) { // Utiliser isValidElement directement
-      return currentSlide.content;
+    if (isJSX(content)) {
+      return content;
     }
     
     // Si le contenu est une string HTML (Days 2-5)
-    if (typeof currentSlide.content === 'string') {
+    if (typeof content === 'string') {
       return (
         <div 
-          dangerouslySetInnerHTML={{ __html: currentSlide.content }} 
+          dangerouslySetInnerHTML={{ __html: content }} 
         />
       );
     }
     
-    // Fallback
-    return <p>Format de slide non supporté</p>;
+    // Fallback avec plus d'informations de debug
+    console.warn('Format de slide non supporté:', { 
+      type: typeof content,
+      content: content
+    });
+    return <p>Format de slide non supporté - Type: {typeof content}</p>;
   };
 
   return (

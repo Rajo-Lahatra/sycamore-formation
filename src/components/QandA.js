@@ -89,7 +89,7 @@ export default function QandA({ dayNumber, currentSlide = 1 }) {
       fetchQuestions();
     } else {
       console.error('Erreur lors de la réponse:', error);
-      alert('Erreur lors de l'envoi de la réponse');
+      alert("Erreur lors de l'envoi de la réponse");
     }
   };
 

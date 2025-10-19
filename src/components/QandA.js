@@ -3,8 +3,9 @@
 
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
+import { useSlide } from '@/app/contexts/SlideContext'; // Import du contexte
 
-export default function QandA({ dayNumber, currentSlide = 1 }) {
+export default function QandA({ dayNumber }) { // Retirer currentSlide des props
   const [questions, setQuestions] = useState([]);
   const [newText, setNewText] = useState('');
   const [userName, setUserName] = useState('');
@@ -13,17 +14,21 @@ export default function QandA({ dayNumber, currentSlide = 1 }) {
   const [respondentName, setRespondentName] = useState('');
   const [activeTab, setActiveTab] = useState('question');
   const supabase = createClient();
+  
+  // Utiliser le contexte pour obtenir le slide courant
+  const { currentSlide } = useSlide();
 
-  // Charger les questions et commentaires
+  // Charger les questions et commentaires - MAJ avec currentSlide
   useEffect(() => {
     fetchQuestions();
-  }, [dayNumber]);
+  }, [dayNumber, currentSlide]); // Ajouter currentSlide comme dépendance
 
   const fetchQuestions = async () => {
     const { data, error } = await supabase
       .from('formation_questions')
       .select('*')
       .eq('day_number', dayNumber)
+      .eq('slide_number', currentSlide) // Filtrer par le slide courant du contexte
       .order('created_at', { ascending: false });
 
     if (!error && data) {
@@ -42,7 +47,7 @@ export default function QandA({ dayNumber, currentSlide = 1 }) {
       .from('formation_questions')
       .insert([{
         day_number: dayNumber,
-        slide_number: currentSlide,
+        slide_number: currentSlide, // Utiliser currentSlide du contexte
         type: activeTab,
         question_text: newText.trim(),
         asked_by: userName.trim()

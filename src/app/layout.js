@@ -2,6 +2,7 @@
 
 import './globals.css'; 
 import './content.css'; // S'assure que le CSS de contenu est bien importé
+import { SlideProvider } from './contexts/SlideContext'; // Import du Provider
 
 export const metadata = {
   title: 'Formation Sycamore - Fiscalité Minière',
@@ -12,8 +13,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <body>
-        {/* Children est le contenu principal, y compris ContentWrapper */}
-        {children}
+        {/* Envelopper children avec SlideProvider */}
+        <SlideProvider>
+          {children}
+        </SlideProvider>
       </body>
     </html>
   );

@@ -1,92 +1,58 @@
 // src/app/SlideShow.js
-'use client'; 
-
-import React, { useState, useEffect } from 'react';
+'use client';
+import { useState, useEffect } from 'react';
+import { useSlide } from './contexts/SlideContext';
 
 export default function SlideShow({ slides }) {
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const { setCurrentSlide } = useSlide();
+
+  // Mettre à jour le slide courant dans le contexte
+  useEffect(() => {
+    setCurrentSlide(currentIndex + 1);
+  }, [currentIndex, setCurrentSlide]);
+
   const goToNext = () => {
-    setCurrentSlideIndex((prevIndex) => Math.min(prevIndex + 1, slides.length - 1));
+    setCurrentIndex((prev) => {
+      const newIndex = (prev + 1) % slides.length;
+      return newIndex;
+    });
   };
 
   const goToPrev = () => {
-    setCurrentSlideIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+    setCurrentIndex((prev) => {
+      const newIndex = (prev - 1 + slides.length) % slides.length;
+      return newIndex;
+    });
   };
-  
-  // Gestion de la navigation au clavier
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'ArrowRight' && currentSlideIndex < slides.length - 1) {
-        goToNext();
-      } else if (event.key === 'ArrowLeft' && currentSlideIndex > 0) {
-        goToPrev();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [currentSlideIndex, slides.length]); 
-  
-  const currentSlide = slides[currentSlideIndex];
-  
-  return (
-    <div className="slideshow-wrapper"> 
-      
-      <button 
-        onClick={goToPrev} 
-        disabled={currentSlideIndex === 0}
-        className="nav-button prev-button slide-nav-side"
-        aria-label="Diapositive précédente"
-      >
-        &#9664;
-      </button>
 
-      <div className="slideshow">
-        
-        <section className="slide-section">
-          <div className="slide-header">
-            <span className="slide-number">
-              Slide {currentSlideIndex + 1} sur {slides.length}
-            </span>
-          </div>
-          {currentSlide.content}
-        </section>
-        
-        <div className="slide-controls-bottom">
-          <button 
-            onClick={goToPrev} 
-            disabled={currentSlideIndex === 0}
-            className="nav-button"
-          >
-            Précédent
-          </button>
-          
-          <span className="slide-counter">
-            {currentSlideIndex + 1} / {slides.length}
-          </span>
-          
-          <button 
-            onClick={goToNext} 
-            disabled={currentSlideIndex === slides.length - 1}
-            className="nav-button"
-          >
-            Suivant
-          </button>
-        </div>
-        
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
+  return (
+    <div className="slideshow-container">
+      {/* Votre interface slideshow existante */}
+      <div className="slide-nav">
+        <button onClick={goToPrev} className="nav-button">←</button>
+        <span className="slide-counter">
+          Slide {currentIndex + 1} / {slides.length}
+        </span>
+        <button onClick={goToNext} className="nav-button">→</button>
       </div>
 
-      <button 
-        onClick={goToNext} 
-        disabled={currentSlideIndex === slides.length - 1}
-        className="nav-button next-button slide-nav-side"
-        aria-label="Diapositive suivante"
-      >
-        &#9654;
-      </button>
-      
+      {/* Navigation par miniatures si nécessaire */}
+      <div className="slide-thumbnails">
+        {slides.map((slide, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`thumbnail ${index === currentIndex ? 'active' : ''}`}
+          >
+            {index + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

@@ -21,8 +21,8 @@ export default function LogoutButton() {
         throw error;
       }
 
-      // Redirection vers la page de connexion après déconnexion
-      router.push('/login');
+      // Redirection vers la page d'authentification après déconnexion
+      router.push('/auth');
       router.refresh();
     } catch (error) {
       console.error('Erreur de déconnexion:', error.message);
@@ -47,7 +47,6 @@ export default function LogoutButton() {
         borderRadius: '4px',
         cursor: isLoading ? 'not-allowed' : 'pointer'
       }}
-      aria-label={isLoading ? 'Déconnexion en cours' : 'Se déconnecter'}
     >
       {isLoading ? 'Déconnexion...' : 'Se Déconnecter'}
     </button>

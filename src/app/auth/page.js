@@ -1,15 +1,18 @@
-// Fichier : src/app/login/AuthForm.js
+// Fichier : src/app/auth/page.js
 
 'use client';
 
 import React, { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
+import { useRouter } from 'next/navigation';
 
-export default function AuthForm() {
+export default function AuthPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isSignUp, setIsSignUp] = useState(false);
+  const router = useRouter();
   const supabase = createClient();
 
   const handleSubmit = async (e) => {
@@ -18,19 +21,36 @@ export default function AuthForm() {
     setError('');
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email.trim(),
-        password,
-      });
+      let result;
+      
+      if (isSignUp) {
+        result = await supabase.auth.signUp({
+          email: email.trim(),
+          password,
+        });
+      } else {
+        result = await supabase.auth.signInWithPassword({
+          email: email.trim(),
+          password,
+        });
+      }
+
+      const { data, error } = result;
 
       if (error) {
         setError(error.message);
         return;
       }
 
-      if (data.user) {
-        // Redirection FORCÉE vers la page d'accueil
-        window.location.href = '/';
+      if (isSignUp) {
+        alert('Inscription réussie ! Vous pouvez maintenant vous connecter.');
+        setIsSignUp(false);
+        setEmail('');
+        setPassword('');
+      } else {
+        // Redirection après connexion réussie
+        router.push('/');
+        router.refresh();
       }
     } catch (err) {
       setError('Une erreur est survenue');
@@ -42,8 +62,8 @@ export default function AuthForm() {
 
   return (
     <div className="auth-container">
-      <h1>Connexion</h1>
-      <p>Accédez à la formation ou à l'espace formateur.</p>
+      <h1>{isSignUp ? 'Créer un compte' : 'Connexion'}</h1>
+      <p>{isSignUp ? 'Créez votre compte pour accéder à la formation' : 'Accédez à la formation ou à l\'espace formateur.'}</p>
       
       <form onSubmit={handleSubmit} className="auth-form">
         <div className="form-group">
@@ -77,7 +97,10 @@ export default function AuthForm() {
           disabled={loading} 
           className="content-button"
         >
-          {loading ? 'Connexion en cours...' : 'Se Connecter'}
+          {loading 
+            ? (isSignUp ? 'Inscription en cours...' : 'Connexion en cours...') 
+            : (isSignUp ? 'S\'inscrire' : 'Se Connecter')
+          }
         </button>
         
         {error && (
@@ -85,6 +108,24 @@ export default function AuthForm() {
             {error}
           </p>
         )}
+
+        <div className="auth-switch">
+          <p>
+            {isSignUp ? 'Déjà un compte ?' : 'Pas encore de compte ?'}{' '}
+            <button
+              type="button"
+              onClick={() => {
+                setIsSignUp(!isSignUp);
+                setError('');
+                setEmail('');
+                setPassword('');
+              }}
+              className="link-button"
+            >
+              {isSignUp ? 'Se connecter' : 'Créer un compte'}
+            </button>
+          </p>
+        </div>
       </form>
     </div>
   );

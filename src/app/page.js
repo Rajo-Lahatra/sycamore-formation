@@ -8,9 +8,9 @@ export default async function HomePage() {
   const supabase = createClient();
   const { data: { session } } = await supabase.auth.getSession();
 
-  // Redirection SIMPLE sans logique complexe
+  // Rediriger vers /auth si pas connecté
   if (!session) {
-    redirect('/login');
+    redirect('/auth');
   }
 
   // Fonction pour générer le lien de contenu

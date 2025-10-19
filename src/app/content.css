@@ -620,3 +620,235 @@ textarea {
 .qanda-panel {
     display: none;
 }
+/* === STYLES SLIDESHOW POUR LES DEUX FORMATS === */
+
+.slideshow-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.main-slide-display {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  border: 1px solid var(--french-gray);
+  border-left: 5px solid var(--sun);
+  min-height: 500px;
+}
+
+.slide-content {
+  width: 100%;
+  padding: 40px;
+  text-align: left;
+}
+
+/* Styles pour le contenu JSX (Day1) et HTML (Days 2-5) */
+.slide-content h2,
+.slide-content .slide-title {
+  color: var(--saddle);
+  font-size: 1.8em;
+  border-bottom: 2px solid var(--tulip-tree);
+  padding-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.slide-content h3 {
+  color: var(--quincy);
+  font-size: 1.4em;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.slide-content h4 {
+  color: var(--sepia);
+  font-size: 1.2em;
+  margin-top: 18px;
+  margin-bottom: 12px;
+}
+
+.slide-content ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.slide-content ul li {
+  font-size: 1.1em;
+  margin-bottom: 12px;
+  padding-left: 20px;
+  border-left: 3px solid var(--sun);
+  line-height: 1.5;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.slide-content p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: var(--sepia);
+}
+
+/* Styles spécifiques pour le HTML des Days 2-5 */
+.slide-content strong {
+  color: var(--saddle);
+  font-weight: bold;
+}
+
+/* Styles pour les tableaux dans les deux formats */
+.slide-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.95em;
+}
+
+.slide-content table th {
+  background-color: var(--saddle);
+  color: white;
+  padding: 12px;
+  border: 1px solid var(--french-gray);
+  text-align: left;
+  font-weight: bold;
+}
+
+.slide-content table td {
+  padding: 10px;
+  border: 1px solid var(--french-gray);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.slide-content table tr:nth-child(even) td {
+  background-color: rgba(251, 165, 25, 0.05);
+}
+
+.slide-content table thead tr th {
+  background-color: var(--quincy);
+}
+
+/* Navigation */
+.slide-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.nav-button {
+  background: var(--saddle);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:hover {
+  background: var(--quincy);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.slide-counter {
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--saddle);
+  background: var(--sun);
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+/* Miniatures */
+.slide-thumbnails {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.thumbnail {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--french-gray);
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  color: var(--saddle);
+}
+
+.thumbnail.active {
+  border-color: var(--saddle);
+  background: var(--saddle);
+  color: white;
+  transform: scale(1.1);
+}
+
+.thumbnail:hover:not(.active) {
+  border-color: var(--sun);
+  background: var(--tulip-tree);
+  color: var(--saddle);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .slideshow-container {
+    padding: 10px;
+  }
+  
+  .slide-content {
+    padding: 20px;
+  }
+  
+  .slide-content h2,
+  .slide-content .slide-title {
+    font-size: 1.5em;
+  }
+  
+  .slide-content h3 {
+    font-size: 1.2em;
+  }
+  
+  .slide-nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .nav-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .thumbnail {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+  }
+  
+  .slide-content table {
+    font-size: 0.8em;
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .slide-content table th,
+  .slide-content table td {
+    padding: 6px;
+    white-space: nowrap;
+  }
+}

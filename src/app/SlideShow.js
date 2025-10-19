@@ -7,40 +7,56 @@ export default function SlideShow({ slides }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { setCurrentSlide } = useSlide();
 
-  // Mettre à jour le slide courant dans le contexte
   useEffect(() => {
     setCurrentSlide(currentIndex + 1);
   }, [currentIndex, setCurrentSlide]);
 
   const goToNext = () => {
-    setCurrentIndex((prev) => {
-      const newIndex = (prev + 1) % slides.length;
-      return newIndex;
-    });
+    setCurrentIndex((prev) => (prev + 1) % slides.length);
   };
 
   const goToPrev = () => {
-    setCurrentIndex((prev) => {
-      const newIndex = (prev - 1 + slides.length) % slides.length;
-      return newIndex;
-    });
+    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   const goToSlide = (index) => {
     setCurrentIndex(index);
   };
 
+  // Fonction pour rendre le contenu selon le format
+  const renderSlideContent = () => {
+    const currentSlide = slides[currentIndex];
+    
+    if (!currentSlide) return <p>Slide non disponible</p>;
+    
+    // Si le contenu est du JSX (Day1)
+    if (React.isValidElement(currentSlide.content)) {
+      return currentSlide.content;
+    }
+    
+    // Si le contenu est une string HTML (Days 2-5)
+    if (typeof currentSlide.content === 'string') {
+      return (
+        <div 
+          dangerouslySetInnerHTML={{ __html: currentSlide.content }} 
+        />
+      );
+    }
+    
+    // Fallback
+    return <p>Format de slide non supporté</p>;
+  };
+
   return (
     <div className="slideshow-container">
-      {/* AFFICHAGE DU SLIDE PRINCIPAL - CORRIGÉ */}
+      {/* SLIDE PRINCIPAL */}
       <div className="main-slide-display">
         <div className="slide-content">
-          {/* Afficher le contenu du slide actuel */}
-          {slides[currentIndex]?.content || <p>Slide non disponible</p>}
+          {renderSlideContent()}
         </div>
       </div>
 
-      {/* Navigation principale */}
+      {/* NAVIGATION */}
       <div className="slide-nav">
         <button onClick={goToPrev} className="nav-button">← Précédent</button>
         <span className="slide-counter">
@@ -49,7 +65,7 @@ export default function SlideShow({ slides }) {
         <button onClick={goToNext} className="nav-button">Suivant →</button>
       </div>
 
-      {/* Navigation par miniatures */}
+      {/* MINIATURES */}
       <div className="slide-thumbnails">
         {slides.map((slide, index) => (
           <button

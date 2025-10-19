@@ -32,16 +32,24 @@ export default function SlideShow({ slides }) {
 
   return (
     <div className="slideshow-container">
-      {/* Votre interface slideshow existante */}
+      {/* AFFICHAGE DU SLIDE PRINCIPAL - PARTIE MANQUANTE */}
+      <div className="main-slide-display">
+        <div className="slide-content">
+          {/* Afficher le contenu du slide actuel */}
+          {slides[currentIndex]}
+        </div>
+      </div>
+
+      {/* Navigation principale */}
       <div className="slide-nav">
-        <button onClick={goToPrev} className="nav-button">←</button>
+        <button onClick={goToPrev} className="nav-button">← Précédent</button>
         <span className="slide-counter">
           Slide {currentIndex + 1} / {slides.length}
         </span>
-        <button onClick={goToNext} className="nav-button">→</button>
+        <button onClick={goToNext} className="nav-button">Suivant →</button>
       </div>
 
-      {/* Navigation par miniatures si nécessaire */}
+      {/* Navigation par miniatures */}
       <div className="slide-thumbnails">
         {slides.map((slide, index) => (
           <button

@@ -1,4 +1,4 @@
-// src/app/page.js
+// src/app/page.js - VERSION SANS AUTHENTIFICATION
 
 export default function HomePage() {
   // Fonction pour générer le lien de contenu
@@ -10,7 +10,6 @@ export default function HomePage() {
     
   return (
     <>
-    
       <header>
         <div className="logo-container">
           <img 
@@ -28,24 +27,12 @@ export default function HomePage() {
         <h1>PLANNING DÉTAILLÉ DE LA FORMATION</h1>
         <p>Fiscalité Minière Guinéenne</p>
         <p>Pour <strong>Sycamore Mine Guinée SAU</strong> | Du 20 au 24 octobre 2025</p>
-        
-        {/* Message de bienvenue */}
-        <div style={{ 
-          marginTop: '10px', 
-          padding: '10px', 
-          backgroundColor: '#f0f8ff', 
-          borderRadius: '5px',
-          fontSize: '0.9em'
-        }}>
-          <strong>Connecté en tant que :</strong> {session.user.email}
-        </div>
       </header>
 
       <div className="container">
         
         <section id="apercu">
             <h2>Aperçu Thématique de la Formation</h2>
-            {/* Le contenu de la section Aperçu reste inchangé */}
             <ul>
                 <li><strong>Jour 1 : Introduction & Cadre Fiscal Minier</strong> (4h) - Les règles du jeu et le double encadrement légal (Code Minier / CGI).</li>
                 <li><strong>Jour 2 : Fiscalité du Personnel (RTS)</strong> (3h) - Maîtriser le calcul de la paie et les obligations déclaratives.</li>
@@ -67,7 +54,7 @@ export default function HomePage() {
                   <th>Horaire</th>
                   <th>Thème / Activité</th>
                   <th>Méthode</th>
-                  <th>Contenu</th> {/* NOUVEAU TITRE DE COLONNE */}
+                  <th>Contenu</th>
                 </tr>
               </thead>
               <tbody>
@@ -75,7 +62,7 @@ export default function HomePage() {
                   <td>09h00 – 09h30</td>
                   <td>Ouverture et présentation des objectifs de la formation</td>
                   <td>Exposé + échanges</td>
-                  <td rowSpan="4"><ContentButton dayNumber={1} /></td> {/* BOUTON */}
+                  <td rowSpan="4"><ContentButton dayNumber={1} /></td>
                 </tr>
                 <tr>
                   <td>09h30 – 10h15</td>
@@ -99,7 +86,7 @@ export default function HomePage() {
                 </tr>
                 
                 <tr>
-                  <td className="table-break" colSpan="4"> {/* COLSPAN AJUSTÉ À 4 */}
+                  <td className="table-break" colSpan="4">
                     11h15 – 11h30 : PAUSE
                   </td>
                 </tr>
@@ -107,7 +94,7 @@ export default function HomePage() {
                   <td>12h30 – 13h00</td>
                   <td>Synthèse et conclusion du jour</td>
                   <td>Discussion ouverte</td>
-                  <td></td> {/* LAISSER VIDE SI LE BOUTON EST DANS LE rowspan précédent */}
+                  <td></td>
                 </tr>
               </tbody>
             </table>
@@ -122,7 +109,7 @@ export default function HomePage() {
                   <th>Horaire</th>
                   <th>Thème / Activité</th>
                   <th>Méthode</th>
-                  <th>Contenu</th> {/* NOUVEAU TITRE DE COLONNE */}
+                  <th>Contenu</th>
                 </tr>
               </thead>
               <tbody>
@@ -133,7 +120,7 @@ export default function HomePage() {
                     cotisations sociales, <strong>Versement Forfaitaire (VF)</strong> (6%)
                   </td>
                   <td>Exposé détaillé</td>
-                  <td rowSpan="3"><ContentButton dayNumber={2} /></td> {/* BOUTON */}
+                  <td rowSpan="3"><ContentButton dayNumber={2} /></td>
                 </tr>
                 <tr>
                   <td>10h00 – 10h45</td>
@@ -146,7 +133,7 @@ export default function HomePage() {
                   <td>Exposé + échanges</td>
                 </tr>
                 <tr>
-                  <td className="table-break" colSpan="4"> {/* COLSPAN AJUSTÉ À 4 */}
+                  <td className="table-break" colSpan="4">
                     10h45 – 11h00 : PAUSE
                   </td>
                 </tr>

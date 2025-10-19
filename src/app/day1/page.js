@@ -1,8 +1,5 @@
 // Fichier : src/app/day1/page.js
-import ContentWrapper from '../ContentWrapper';
-import SlideShow from '../SlideShow';
-import QandA from '../../components/QandA';
-
+import Day1Client from './Day1Client';
 // Le contenu est structuré en un tableau de diapositives (SLIDES)
 const SLIDES = [
     {
@@ -407,16 +404,5 @@ const SLIDES = [
 ];
 
 export default function Day1Page() {
-  const [currentSlide, setCurrentSlide] = useState(1);
-
-  const handleSlideChange = (slideNumber) => {
-    setCurrentSlide(slideNumber);
-  };
-
-  return (
-    <ContentWrapper title="Jour 1: Poser les bases et contextualiser la fiscalité minière." date="20 octobre 2025">
-      <SlideShow slides={slides} onSlideChange={handleSlideChange} />
-      <QandA dayNumber={1} currentSlide={currentSlide} />
-    </ContentWrapper>
-  );
-}
+  return <Day1Client slides={slides} />;
+};

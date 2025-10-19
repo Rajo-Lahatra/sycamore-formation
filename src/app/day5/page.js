@@ -1,22 +1,7 @@
 // src/app/day5/page.js
+import Day5Client from './Day5Client';
 
-import SlideShow from '../SlideShow';
-import ContentWrapper from '../ContentWrapper';
-import React from 'react';
-import QandA from '../../components/QandA';
-
-const createSlide = (title, content, citation) => ({
-    title,
-    content: (
-        <>
-            <h2 className="slide-title">{title}</h2>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
-            {citation && <p className="contact-info" style={{ textAlign: 'left', fontStyle: 'italic', fontSize: '0.9em' }}>{citation}</p>}
-        </>
-    )
-});
-
-const slidesData = [
+const slides = [
     
     // SLIDE 2: REMBOURSEMENT CRÉDIT TVA - TEXTES
     createSlide(
@@ -1516,4 +1501,7 @@ export default function Day5Page() {
       <QandA dayNumber={5} currentSlide={currentSlide} />
     </ContentWrapper>
   );
+}
+export default function Day5Page() {
+  return <Day5Client slides={slides} />;
 }

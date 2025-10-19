@@ -1,25 +1,10 @@
 // src/app/day2/page.js
 
-import SlideShow from '../SlideShow';
-import ContentWrapper from '../ContentWrapper';
-import React from 'react';
-import QandA from '../../components/QandA';
-
-// Utiliser une fonction d'aide pour générer une structure de slide uniforme
-const createSlide = (title, content, citation) => ({
-    title,
-    content: (
-        <>
-            <h2 className="slide-title">{title}</h2>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
-            {citation && <p className="contact-info" style={{ textAlign: 'left', fontStyle: 'italic', fontSize: '0.9em' }}>{citation}</p>}
-        </>
-    )
-});
+import Day2Client from './Day2Client';
 
 // --- Contenu Détaillé du Jour 2 : Fiscalité du Personnel ---
 
-const slidesData = [
+const slides = [
     // SLIDE 1: INTRODUCTION JOUR 2
     createSlide(
         "Jour 2 : Fiscalité du Personnel (RTS, VF, TA/ONFPP)",
@@ -403,16 +388,5 @@ const slidesData = [
 
 
 export default function Day2Page() {
-  const [currentSlide, setCurrentSlide] = useState(1);
-
-  const handleSlideChange = (slideNumber) => {
-    setCurrentSlide(slideNumber);
-  };
-
-  return (
-    <ContentWrapper title="Jour 2: Maîtriser la fiscalité du personnel" date="21 octobre 2025">
-      <SlideShow slides={slides} onSlideChange={handleSlideChange} />
-      <QandA dayNumber={2} currentSlide={currentSlide} />
-    </ContentWrapper>
-  );
+  return <Day1Client slides={slides} />;
 }

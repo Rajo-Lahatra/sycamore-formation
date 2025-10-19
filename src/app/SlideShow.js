@@ -3,16 +3,9 @@
 
 import React, { useState, useEffect } from 'react';
 
-export default function SlideShow({ slides, onSlideChange }) {
+export default function SlideShow({ slides }) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   
-  // Notifier le parent du changement de slide
-  useEffect(() => {
-    if (onSlideChange) {
-      onSlideChange(currentSlideIndex + 1);
-    }
-  }, [currentSlideIndex, onSlideChange]);
-
   const goToNext = () => {
     setCurrentSlideIndex((prevIndex) => Math.min(prevIndex + 1, slides.length - 1));
   };

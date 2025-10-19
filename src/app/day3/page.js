@@ -1,25 +1,10 @@
 // src/app/day3/page.js
 
-import SlideShow from '../SlideShow';
-import ContentWrapper from '../ContentWrapper';
-import React from 'react';
-import QandA from '../../components/QandA';
-
-// Fonction d'aide pour générer une structure de slide uniforme
-const createSlide = (title, content, citation) => ({
-    title,
-    content: (
-        <>
-            <h2 className="slide-title">{title}</h2>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
-            {citation && <p className="contact-info" style={{ textAlign: 'left', fontStyle: 'italic', fontSize: '0.9em' }}>{citation}</p>}
-        </>
-    )
-});
+import Day3Client from './Day3Client';
 
 // --- Contenu Détaillé du Jour 3 : RNS et TVA ---
 
-const slidesData = [
+const slides = [
     // SLIDE 1: INTRODUCTION JOUR 3
     createSlide(
         "Jour 3 : Retenue sur les Revenus Non Salariaux (RNS) et TVA",
@@ -302,16 +287,5 @@ const slidesData = [
 
 
 export default function Day3Page() {
-  const [currentSlide, setCurrentSlide] = useState(1);
-
-  const handleSlideChange = (slideNumber) => {
-    setCurrentSlide(slideNumber);
-  };
-
-  return (
-    <ContentWrapper title="Jour 3: TVA, PF, et Retenues à la Source" date="22 octobre 2025">
-      <SlideShow slides={slides} onSlideChange={handleSlideChange} />
-      <QandA dayNumber={3} currentSlide={currentSlide} />
-    </ContentWrapper>
-  );
+  return <Day3Client slides={slides} />;
 }

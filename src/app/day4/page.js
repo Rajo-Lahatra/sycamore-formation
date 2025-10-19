@@ -1,25 +1,10 @@
 // src/app/day4/page.js
 
-import SlideShow from '../SlideShow';
-import ContentWrapper from '../ContentWrapper';
-import React from 'react';
-import QandA from '../../components/QandA';
-
-// Utiliser une fonction d'aide pour générer une structure de slide uniforme
-const createSlide = (title, content, citation) => ({
-    title,
-    content: (
-        <>
-            <h2 className="slide-title">{title}</h2>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
-            {citation && <p className="contact-info" style={{ textAlign: 'left', fontStyle: 'italic', fontSize: '0.9em' }}>{citation}</p>}
-        </>
-    )
-});
+import Day4Client from './Day4Client';
 
 // --- Contenu Détaillé du Jour 4 : Imposition du Revenu et Fiscalité Spécifique ---
 
-const slidesData = [
+const slides = [
     // SLIDE 1: INTRODUCTION JOUR 4
     createSlide(
         "Jour 4 : Imposition du Revenu & Fiscalité Spécifique au Secteur Minier",
@@ -685,16 +670,5 @@ const slidesData = [
 ];
 
 export default function Day4Page() {
-  const [currentSlide, setCurrentSlide] = useState(1);
-
-  const handleSlideChange = (slideNumber) => {
-    setCurrentSlide(slideNumber);
-  };
-
-  return (
-    <ContentWrapper title="Jour 4: Maîtriser l'IS, l'IMF et le traitement fiscal des charges minières" date="23 octobre 2025">
-      <SlideShow slides={slides} onSlideChange={handleSlideChange} />
-      <QandA dayNumber={4} currentSlide={currentSlide} />
-    </ContentWrapper>
-  );
+  return <Day4Client slides={slides} />;
 }

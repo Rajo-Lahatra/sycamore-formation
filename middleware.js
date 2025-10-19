@@ -7,21 +7,20 @@ export async function middleware(req) {
   const res = NextResponse.next()
   const supabase = createMiddlewareClient({ req, res })
 
+  // Rafraîchir la session
   const { data: { session } } = await supabase.auth.getSession()
   const { pathname } = req.nextUrl
 
-  // Routes protégées
-  const protectedRoutes = ['/', '/day1', '/day2', '/day3', '/day4', '/day5']
-  const isProtectedRoute = protectedRoutes.includes(pathname)
-
-  // Rediriger vers /login si non connecté et accès à une route protégée
-  if (!session && isProtectedRoute) {
-    return NextResponse.redirect(new URL('/login', req.url))
+  // Si l'utilisateur n'est PAS connecté et essaie d'accéder à une route protégée
+  if (!session && pathname === '/') {
+    const redirectUrl = new URL('/login', req.url)
+    return NextResponse.redirect(redirectUrl)
   }
 
-  // Rediriger vers / si connecté et sur /login
+  // Si l'utilisateur EST connecté et essaie d'accéder à /login
   if (session && pathname === '/login') {
-    return NextResponse.redirect(new URL('/', req.url))
+    const redirectUrl = new URL('/', req.url)
+    return NextResponse.redirect(redirectUrl)
   }
 
   return res
@@ -29,6 +28,6 @@ export async function middleware(req) {
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 }

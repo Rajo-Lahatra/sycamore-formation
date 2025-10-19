@@ -17,7 +17,7 @@ export default function Day1Client({ slides }) {
   return (
     <ContentWrapper title="Jour 1: Introduction" date="20 octobre 2025">
       <SlideShow slides={slides} onSlideChange={handleSlideChange} />
-      <QandA dayNumber={1} currentSlide={currentSlide} />
+      <QandA dayNumber={1} />
     </ContentWrapper>
   );
 }

@@ -17,7 +17,7 @@ export default function Day2Client({ slides }) {
   return (
     <ContentWrapper title="Jour 2: Fiscalité du Personnel" date="21 octobre 2025">
       <SlideShow slides={slides} onSlideChange={handleSlideChange} />
-      <QandA dayNumber={2} currentSlide={currentSlide} />
+      <QandA dayNumber={2} />
     </ContentWrapper>
   );
 }

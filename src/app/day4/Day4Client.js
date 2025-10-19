@@ -17,7 +17,7 @@ export default function Day4Client({ slides }) {
   return (
     <ContentWrapper title="Jour 4: IS & IMF" date="23 octobre 2025">
       <SlideShow slides={slides} onSlideChange={handleSlideChange} />
-      <QandA dayNumber={4} currentSlide={currentSlide} />
+      <QandA dayNumber={4} />
     </ContentWrapper>
   );
 }

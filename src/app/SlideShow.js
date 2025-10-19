@@ -32,11 +32,11 @@ export default function SlideShow({ slides }) {
 
   return (
     <div className="slideshow-container">
-      {/* AFFICHAGE DU SLIDE PRINCIPAL - PARTIE MANQUANTE */}
+      {/* AFFICHAGE DU SLIDE PRINCIPAL - CORRIGÉ */}
       <div className="main-slide-display">
         <div className="slide-content">
           {/* Afficher le contenu du slide actuel */}
-          {slides[currentIndex]}
+          {slides[currentIndex]?.content || <p>Slide non disponible</p>}
         </div>
       </div>
 
@@ -56,6 +56,7 @@ export default function SlideShow({ slides }) {
             key={index}
             onClick={() => goToSlide(index)}
             className={`thumbnail ${index === currentIndex ? 'active' : ''}`}
+            title={slide.title}
           >
             {index + 1}
           </button>

@@ -17,7 +17,7 @@ export default function Day5Client({ slides }) {
   return (
     <ContentWrapper title="Jour 5: Cas pratiques sur Remboursement TVA & Contrôle Fiscal" date="24 octobre 2025">
       <SlideShow slides={slides} onSlideChange={handleSlideChange} />
-      <QandA dayNumber={5} currentSlide={currentSlide} />
+      <QandA dayNumber={5} />
     </ContentWrapper>
   );
 }

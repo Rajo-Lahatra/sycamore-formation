@@ -1,6 +1,6 @@
-// Fichier : src/app/day3/page.js
+// src/app/day3/page.js
+'use client';
 
-// Utilisation du chemin relatif correct (parent direct)
 import SlideShow from '../SlideShow';
 import ContentWrapper from '../ContentWrapper';
 import React from 'react';

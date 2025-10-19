@@ -1,6 +1,6 @@
-// Fichier : src/app/day2/page.js
+// src/app/day2/page.js
+'use client';
 
-// CORRECTION DE L'IMPORT : Utilisation du chemin relatif correct (parent direct)
 import SlideShow from '../SlideShow';
 import ContentWrapper from '../ContentWrapper';
 import React from 'react';

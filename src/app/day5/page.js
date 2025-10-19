@@ -1,4 +1,5 @@
-// Fichier : src/app/day5/page.js
+// src/app/day5/page.js
+'use client';
 
 import SlideShow from '../SlideShow';
 import ContentWrapper from '../ContentWrapper';
@@ -17,24 +18,7 @@ const createSlide = (title, content, citation) => ({
 });
 
 const slidesData = [
-    // SLIDE 1: INTRODUCTION JOUR 5
-    createSlide(
-        "Jour 5 : Support de formation – Remboursement TVA & Procédures Fiscales",
-        `
-        <div style="font-size: 1.1em;">
-            <p><strong>5ème Partie : Exercices pratiques et études de cas</strong></p>
-            <p style="font-size: 1.2em; color: var(--fuel-yellow);"><strong>Objectifs pédagogiques :</strong></p>
-            <ul>
-                <li>Mettre en pratique les notions fiscales vues pendant la formation</li>
-                <li>Développer la capacité à identifier les erreurs fréquentes en matière fiscale</li>
-                <li>Renforcer les compétences dans la préparation et la sécurisation des déclarations fiscales</li>
-                <li>Favoriser une interaction dynamique par la résolution de cas réels et simulés</li>
-            </ul>
-        </div>
-        `,
-        "JOE-ADAMS & MADISON - SYCAMORE - Fiscalité minière - 24 octobre 2025"
-    ),
-
+    
     // SLIDE 2: REMBOURSEMENT CRÉDIT TVA - TEXTES
     createSlide(
         "REMBOURSEMENT DE CRÉDIT DE TVA - Textes applicables",
@@ -1279,7 +1263,25 @@ createSlide(
         </tr>
     </table>
     `
-),    
+),
+// SLIDE : INTRODUCTION Cas pratiques
+    createSlide(
+        "Jour 5 : Cas pratiques sur le remboursement de crédit TVA & Procédures Fiscales",
+        `
+        <div style="font-size: 1.1em;">
+            <p><strong>5ème Partie : Exercices pratiques et études de cas</strong></p>
+            <p style="font-size: 1.2em; color: var(--fuel-yellow);"><strong>Objectifs pédagogiques :</strong></p>
+            <ul>
+                <li>Mettre en pratique les notions fiscales vues pendant la formation</li>
+                <li>Développer la capacité à identifier les erreurs fréquentes en matière fiscale</li>
+                <li>Renforcer les compétences dans la préparation et la sécurisation des déclarations fiscales</li>
+                <li>Favoriser une interaction dynamique par la résolution de cas réels et simulés</li>
+            </ul>
+        </div>
+        `,
+        "JOE-ADAMS & MADISON - SYCAMORE - Fiscalité minière - 24 octobre 2025"
+    ),
+
     createSlide(
         "EXERCICE 1 : Simulation de calcul d'une redevance minière",
         `

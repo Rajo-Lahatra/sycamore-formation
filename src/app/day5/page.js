@@ -3,6 +3,7 @@
 import SlideShow from '../SlideShow';
 import ContentWrapper from '../ContentWrapper';
 import React from 'react';
+import QandA from '../components/QandA';
 
 const createSlide = (title, content, citation) => ({
     title,
@@ -1508,6 +1509,7 @@ export default function Day5Page() {
             date="Vendredi 24 octobre 2025"
         >
             <SlideShow slides={slidesData} />
+            <QandA dayNumber={5} />
         </ContentWrapper>
     );
 }

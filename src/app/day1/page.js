@@ -2,6 +2,7 @@
 
 import ContentWrapper from '../ContentWrapper';
 import SlideShow from '../SlideShow';
+import QandA from '../components/QandA';
 
 // Le contenu est structuré en un tableau de diapositives (SLIDES)
 const SLIDES = [
@@ -414,6 +415,7 @@ export default function Day1Page() {
     >
         {/* Le composant SlideShow utilise le tableau de slides nettoyé */}
         <SlideShow slides={SLIDES} />
+        <QandA dayNumber={1} />
     </ContentWrapper>
   );
 }

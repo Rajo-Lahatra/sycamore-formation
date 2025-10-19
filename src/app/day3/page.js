@@ -4,6 +4,7 @@
 import SlideShow from '../SlideShow';
 import ContentWrapper from '../ContentWrapper';
 import React from 'react';
+import QandA from '../components/QandA';
 
 // Fonction d'aide pour générer une structure de slide uniforme
 const createSlide = (title, content, citation) => ({
@@ -308,6 +309,7 @@ export default function Day3Page() {
             date="Mercredi 22 octobre 2025"
         >
             <SlideShow slides={slidesData} />
+            <QandA dayNumber={3} />
         </ContentWrapper>
     );
 }

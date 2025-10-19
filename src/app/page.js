@@ -1,18 +1,6 @@
 // src/app/page.js
 
-import { createClient } from '@/lib/supabase/client';
-import { redirect } from 'next/navigation';
-import LogoutButton from './LogoutButton';
-
-export default async function HomePage() {
-  const supabase = createClient();
-  const { data: { session } } = await supabase.auth.getSession();
-
-  // Rediriger vers /auth si pas connecté
-  if (!session) {
-    redirect('/auth');
-  }
-
+export default function HomePage() {
   // Fonction pour générer le lien de contenu
   const ContentButton = ({ dayNumber }) => (
     <a href={`/day${dayNumber}`} className="content-button">
@@ -22,11 +10,7 @@ export default async function HomePage() {
     
   return (
     <>
-      {/* Bouton de déconnexion */}
-      <div style={{ position: 'fixed', top: '20px', right: '20px', zIndex: 1000 }}>
-        <LogoutButton />
-      </div>
-
+    
       <header>
         <div className="logo-container">
           <img 

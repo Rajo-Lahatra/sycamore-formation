@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 
-const LOGIN_STATUS = {
+const AUTH_STATUS = {
     IDLE: 'IDLE',
     LOADING: 'LOADING',
     SUCCESS: 'SUCCESS',
@@ -16,44 +16,93 @@ const LOGIN_STATUS = {
 export default function AuthForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [status, setStatus] = useState(LOGIN_STATUS.IDLE);
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [status, setStatus] = useState(AUTH_STATUS.IDLE);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isSignUp, setIsSignUp] = useState(false);
   const router = useRouter();
   const supabase = createClient();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus(LOGIN_STATUS.LOADING);
+    setStatus(AUTH_STATUS.LOADING);
     setErrorMessage('');
-    
+
+    // Validation
+    if (isSignUp && password !== confirmPassword) {
+      setErrorMessage('Les mots de passe ne correspondent pas');
+      setStatus(AUTH_STATUS.ERROR);
+      return;
+    }
+
+    if (password.length < 6) {
+      setErrorMessage('Le mot de passe doit contenir au moins 6 caractères');
+      setStatus(AUTH_STATUS.ERROR);
+      return;
+    }
+
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email.trim(),
-        password,
-      });
+      let result;
+      
+      if (isSignUp) {
+        // INSCRIPTION
+        result = await supabase.auth.signUp({
+          email: email.trim(),
+          password,
+          options: {
+            emailRedirectTo: `${window.location.origin}/auth/callback`
+          }
+        });
+      } else {
+        // CONNEXION
+        result = await supabase.auth.signInWithPassword({
+          email: email.trim(),
+          password,
+        });
+      }
+
+      const { data, error } = result;
 
       if (error) {
         throw error;
       }
 
-      if (data.user) {
-        setStatus(LOGIN_STATUS.SUCCESS);
-        router.push('/');
-        router.refresh();
+      if (isSignUp) {
+        // Après l'inscription
+        if (data.user && !data.user.identities?.length) {
+          setErrorMessage('Un compte avec cet email existe déjà');
+          setStatus(AUTH_STATUS.ERROR);
+          return;
+        }
+        
+        if (data.user) {
+          alert('Inscription réussie ! Vous pouvez maintenant vous connecter.');
+          setIsSignUp(false); // Basculer vers le mode connexion
+          setPassword('');
+          setConfirmPassword('');
+          setStatus(AUTH_STATUS.IDLE);
+        }
+      } else {
+        // Après la connexion
+        if (data.user) {
+          setStatus(AUTH_STATUS.SUCCESS);
+          router.push('/');
+          router.refresh();
+        }
       }
     } catch (error) {
-      console.error('Erreur de connexion:', error.message);
-      setErrorMessage(error.message || 'Erreur de connexion');
-      setStatus(LOGIN_STATUS.ERROR);
+      console.error('Erreur:', error.message);
+      setErrorMessage(error.message || `Erreur lors de ${isSignUp ? 'l\'inscription' : 'la connexion'}`);
+      setStatus(AUTH_STATUS.ERROR);
     }
   };
 
-  const isDisabled = status === LOGIN_STATUS.LOADING;
+  const isDisabled = status === AUTH_STATUS.LOADING;
 
   return (
     <div className="auth-container">
-      <h1>Connexion</h1>
-      <p>Accédez à la formation ou à l'espace formateur.</p>
+      <h1>{isSignUp ? 'Créer un compte' : 'Connexion'}</h1>
+      <p>{isSignUp ? 'Créez votre compte pour accéder à la formation' : 'Accédez à la formation ou à l\'espace formateur.'}</p>
       
       <form onSubmit={handleSubmit} className="auth-form">
         <div className="form-group">
@@ -82,13 +131,32 @@ export default function AuthForm() {
             minLength={6}
           />
         </div>
+
+        {isSignUp && (
+          <div className="form-group">
+            <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
+            <input
+              id="confirmPassword"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              disabled={isDisabled}
+              placeholder="Confirmez votre mot de passe"
+              minLength={6}
+            />
+          </div>
+        )}
         
         <button 
           type="submit" 
           disabled={isDisabled} 
           className="content-button"
         >
-          {status === LOGIN_STATUS.LOADING ? 'Connexion en cours...' : 'Se Connecter'}
+          {status === AUTH_STATUS.LOADING 
+            ? (isSignUp ? 'Inscription en cours...' : 'Connexion en cours...') 
+            : (isSignUp ? 'S\'inscrire' : 'Se Connecter')
+          }
         </button>
         
         {errorMessage && (
@@ -96,6 +164,24 @@ export default function AuthForm() {
             {errorMessage}
           </p>
         )}
+
+        <div className="auth-switch">
+          <p>
+            {isSignUp ? 'Déjà un compte ?' : 'Pas encore de compte ?'}{' '}
+            <button
+              type="button"
+              onClick={() => {
+                setIsSignUp(!isSignUp);
+                setErrorMessage('');
+                setPassword('');
+                setConfirmPassword('');
+              }}
+              className="link-button"
+            >
+              {isSignUp ? 'Se connecter' : 'Créer un compte'}
+            </button>
+          </p>
+        </div>
       </form>
     </div>
   );

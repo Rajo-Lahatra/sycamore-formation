@@ -2,7 +2,7 @@
 
 import ContentWrapper from '../ContentWrapper';
 import SlideShow from '../SlideShow';
-import QandA from '../components/QandA';
+import QandA from '../../components/QandA';
 
 // Le contenu est structuré en un tableau de diapositives (SLIDES)
 const SLIDES = [

@@ -3,7 +3,7 @@
 import SlideShow from '../SlideShow';
 import ContentWrapper from '../ContentWrapper';
 import React from 'react';
-import QandA from '../components/QandA';
+import QandA from '../../components/QandA';
 
 const createSlide = (title, content, citation) => ({
     title,

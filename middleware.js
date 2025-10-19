@@ -11,21 +11,19 @@ export async function middleware(req) {
     data: { session },
   } = await supabase.auth.getSession()
 
-  // Routes protégées - rediriger vers /login si non authentifié
-  const protectedRoutes = ['/', '/dashboard', '/profile']; // Ajoutez vos routes protégées
-  const isProtectedRoute = protectedRoutes.some(route => 
-    req.nextUrl.pathname.startsWith(route)
-  );
-
-  if (!session && isProtectedRoute && req.nextUrl.pathname !== '/login') {
-    const redirectUrl = new URL('/login', req.url);
-    return NextResponse.redirect(redirectUrl);
+  // Si l'utilisateur n'est pas connecté ET essaie d'accéder à une route protégée
+  if (!session) {
+    // Rediriger vers /login si on essaie d'accéder à la racine
+    if (req.nextUrl.pathname === '/') {
+      const redirectUrl = new URL('/login', req.url)
+      return NextResponse.redirect(redirectUrl)
+    }
   }
 
-  // Si l'utilisateur est connecté et essaie d'accéder à /login, rediriger vers la page d'accueil
+  // Si l'utilisateur est connecté ET essaie d'accéder à /login
   if (session && req.nextUrl.pathname === '/login') {
-    const redirectUrl = new URL('/', req.url);
-    return NextResponse.redirect(redirectUrl);
+    const redirectUrl = new URL('/', req.url)
+    return NextResponse.redirect(redirectUrl)
   }
 
   return res
@@ -33,13 +31,6 @@ export async function middleware(req) {
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - public folder
-     */
     '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 }

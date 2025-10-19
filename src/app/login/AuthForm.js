@@ -23,6 +23,18 @@ export default function AuthForm() {
   const router = useRouter();
   const supabase = createClient();
 
+  // Vérifier si l'utilisateur est déjà connecté
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        router.push('/');
+        router.refresh();
+      }
+    };
+    checkSession();
+  }, [supabase.auth, router]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus(AUTH_STATUS.LOADING);
@@ -77,17 +89,21 @@ export default function AuthForm() {
         
         if (data.user) {
           alert('Inscription réussie ! Vous pouvez maintenant vous connecter.');
-          setIsSignUp(false); // Basculer vers le mode connexion
+          setIsSignUp(false);
           setPassword('');
           setConfirmPassword('');
           setStatus(AUTH_STATUS.IDLE);
         }
       } else {
-        // Après la connexion
+        // Après la connexion - Attendre un peu pour que la session soit disponible
         if (data.user) {
           setStatus(AUTH_STATUS.SUCCESS);
-          router.push('/');
-          router.refresh();
+          
+          // Attendre un court instant pour que la session soit mise à jour
+          setTimeout(() => {
+            router.push('/');
+            router.refresh();
+          }, 500);
         }
       }
     } catch (error) {

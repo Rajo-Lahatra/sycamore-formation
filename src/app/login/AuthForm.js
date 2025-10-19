@@ -2,9 +2,9 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '@/lib/supabase/client'; // Assurez-vous que le chemin est correct
+import { createClient } from '@/lib/supabase/client';
 
 const LOGIN_STATUS = {
     IDLE: 'IDLE',
@@ -17,28 +17,46 @@ export default function AuthForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [status, setStatus] = useState(LOGIN_STATUS.IDLE);
+  const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
   const supabase = createClient();
+
+  // Vérifier si l'utilisateur est déjà connecté
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        router.push('/');
+        router.refresh();
+      }
+    };
+    checkUser();
+  }, [supabase.auth, router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus(LOGIN_STATUS.LOADING);
+    setErrorMessage('');
     
-    // Tentative de connexion (sign-in)
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email.trim(),
+        password,
+      });
 
-    if (error) {
+      if (error) {
+        throw error;
+      }
+
+      if (data.user) {
+        setStatus(LOGIN_STATUS.SUCCESS);
+        router.push('/');
+        router.refresh();
+      }
+    } catch (error) {
       console.error('Erreur de connexion:', error.message);
-      alert(`Erreur: ${error.message}`);
+      setErrorMessage(error.message || 'Erreur de connexion');
       setStatus(LOGIN_STATUS.ERROR);
-    } else {
-      setStatus(LOGIN_STATUS.SUCCESS);
-      // Redirection vers la page d'accueil après une connexion réussie
-      router.push('/');
-      router.refresh(); // Force le rafraîchissement des données de session
     }
   };
 
@@ -59,6 +77,7 @@ export default function AuthForm() {
             onChange={(e) => setEmail(e.target.value)}
             required
             disabled={isDisabled}
+            placeholder="votre@email.com"
           />
         </div>
         
@@ -71,17 +90,25 @@ export default function AuthForm() {
             onChange={(e) => setPassword(e.target.value)}
             required
             disabled={isDisabled}
+            placeholder="Votre mot de passe"
+            minLength={6}
           />
         </div>
         
-        <button type="submit" disabled={isDisabled} className="content-button">
+        <button 
+          type="submit" 
+          disabled={isDisabled} 
+          className="content-button"
+          aria-label={status === LOGIN_STATUS.LOADING ? 'Connexion en cours' : 'Se connecter'}
+        >
           {status === LOGIN_STATUS.LOADING ? 'Connexion en cours...' : 'Se Connecter'}
         </button>
         
-        {status === LOGIN_STATUS.ERROR && (
-            <p className="error-message">Échec de la connexion. Vérifiez vos identifiants.</p>
+        {errorMessage && (
+          <p className="error-message" role="alert">
+            {errorMessage}
+          </p>
         )}
-        
       </form>
     </div>
   );

@@ -2,40 +2,54 @@
 
 'use client';
 
+import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 
 export default function LogoutButton() {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const supabase = createClient();
 
   const handleLogout = async () => {
-    // Déconnexion de Supabase
-    const { error } = await supabase.auth.signOut();
+    setIsLoading(true);
+    
+    try {
+      const { error } = await supabase.auth.signOut();
 
-    if (!error) {
+      if (error) {
+        throw error;
+      }
+
       // Redirection vers la page de connexion après déconnexion
       router.push('/login');
-      router.refresh(); 
-    } else {
+      router.refresh();
+    } catch (error) {
       console.error('Erreur de déconnexion:', error.message);
-      alert('Erreur lors de la déconnexion.');
+      alert('Erreur lors de la déconnexion: ' + error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <button 
       onClick={handleLogout} 
+      disabled={isLoading}
       className="content-button" 
       style={{ 
         padding: '5px 15px', 
         fontSize: '0.8em', 
-        backgroundColor: '#cc0000', 
+        backgroundColor: isLoading ? '#666' : '#cc0000', 
         display: 'inline-block',
-        color: 'white'
+        color: 'white',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: isLoading ? 'not-allowed' : 'pointer'
       }}
+      aria-label={isLoading ? 'Déconnexion en cours' : 'Se déconnecter'}
     >
-      Se Déconnecter
+      {isLoading ? 'Déconnexion...' : 'Se Déconnecter'}
     </button>
   );
 }

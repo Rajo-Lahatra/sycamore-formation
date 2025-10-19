@@ -1489,19 +1489,5 @@ createSlide(
 ];
 
 export default function Day5Page() {
-  const [currentSlide, setCurrentSlide] = useState(1);
-
-  const handleSlideChange = (slideNumber) => {
-    setCurrentSlide(slideNumber);
-  };
-
-  return (
-    <ContentWrapper title="Jour 5: Renforcer les compétences pratiques et la gestion du risque fiscal." date="24 octobre 2025">
-      <SlideShow slides={slides} onSlideChange={handleSlideChange} />
-      <QandA dayNumber={5} currentSlide={currentSlide} />
-    </ContentWrapper>
-  );
-}
-export default function Day5Page() {
   return <Day5Client slides={slides} />;
 }

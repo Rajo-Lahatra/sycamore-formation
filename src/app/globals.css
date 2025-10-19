@@ -18,9 +18,8 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    /* Fond très clair, mais moins froid que blanc */
     background-color: #fcfbf8; 
-    color: #333;
+    color: var(--saddle); /* Utilise saddle pour le texte principal */
 }
 .container {
     width: 95%;
@@ -29,23 +28,23 @@ body {
     padding: 0 20px;
 }
 
-/* Header Styling (Utilise les couleurs les plus foncées et les plus vives) */
+/* Header Styling */
 header {
-    /* saddle pour le fond du header */
     background-color: var(--saddle); 
     color: white;
     padding: 40px 20px;
     text-align: center;
-    /* fuel-yellow pour la bordure percutante */
-    border-bottom: 5px solid var(--fuel-yellow); 
+    border-bottom: 5px solid var(--sun); /* Sun pour la bordure */
 }
 header h1 {
     margin: 0 0 10px 0;
     font-size: 2.5em;
+    color: white;
 }
 header p {
     font-size: 1.1em;
     opacity: 0.9;
+    color: white;
 }
 
 /* Section Styling */
@@ -55,34 +54,31 @@ section {
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--french-gray);
 }
 h2 {
-    /* sepia pour le titre de section */
     color: var(--sepia); 
-    /* french-gray ou pale-oyster pour la ligne de séparation */
-    border-bottom: 2px solid var(--french-gray); 
+    border-bottom: 2px solid var(--tulip-tree); /* Tulip-tree pour les séparateurs */
     padding-bottom: 8px;
     margin-top: 0;
 }
 
 /* Accordion (Details/Summary) Styling for Daily Schedule */
 details {
-    border: 1px solid var(--french-gray);
+    border: 1px solid var(--pale-oyster);
     border-radius: 6px;
     padding: 10px;
     margin-bottom: 15px;
     transition: all 0.3s;
 }
 details[open] {
-    /* tulip-tree (une nuance de jaune/orange clair) pour le fond ouvert */
     background-color: #fff9e6; 
-    border-color: var(--tulip-tree);
+    border-color: var(--sun); /* Sun pour le bord ouvert */
 }
 summary {
     font-weight: bold;
     font-size: 1.3em;
-    /* sun comme couleur principale d'accentuation pour les jours */
-    color: var(--sun); 
+    color: var(--quincy); /* Quincy pour le texte des summaries */
     padding: 10px 0;
     cursor: pointer;
     outline: none;
@@ -92,7 +88,6 @@ summary::before {
     margin-right: 10px;
     font-size: 0.8em;
     transition: transform 0.3s;
-    /* sun comme couleur de la flèche */
     color: var(--sun); 
     display: inline-block;
 }
@@ -110,13 +105,12 @@ details[open] summary::before {
     overflow: hidden;
 }
 .schedule-table th, .schedule-table td {
-    border: 1px solid #cfd8dc;
+    border: 1px solid var(--french-gray);
     padding: 12px 15px;
     text-align: left;
 }
 .schedule-table th {
-    /* saddle pour les entêtes de colonnes */
-    background-color: var(--saddle); 
+    background-color: var(--quincy); /* Quincy pour les entêtes */
     color: white;
     font-weight: normal;
     text-transform: uppercase;
@@ -131,69 +125,72 @@ details[open] summary::before {
     width: 10%;
 }
 .table-break {
-    /* Utilisation d'une couleur chaude pour les pauses */
     background-color: var(--tulip-tree) !important; 
     font-style: italic;
     text-align: center !important;
     font-weight: bold !important;
     color: var(--saddle) !important;
 }
-/* Conteneur pour gérer l'alignement vertical et horizontal */
+
+/* Logo Container */
 header {
-    /* Remplacer text-align: center; par display: flex; */
     display: flex;
-    flex-direction: column; /* Garder l'alignement vertical pour le texte */
+    flex-direction: column;
     align-items: center;
-    /* On retire la hauteur fixe pour laisser le contenu définir la taille */
-    padding: 20px 20px 40px 20px; /* Réduire le padding top pour les logos */
+    padding: 20px 20px 40px 20px;
 }
 
-/* Conteneur spécifique aux deux logos */
 .logo-container {
     width: 100%;
     max-width: 1000px;
     display: flex;
-    justify-content: space-between; /* Espacer les deux logos */
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
     padding: 0 20px;
 }
 
-/* Style commun pour les images de logo */
 .logo {
-    max-height: 80px; /* Définir une hauteur maximale pour les logos */
+    max-height: 80px;
     width: auto;
     object-fit: contain;
-    background-color: white; /* Aide à la visibilité si les logos ont des fonds transparents */
+    background-color: white;
     padding: 10px;
     border-radius: 8px;
+    border: 1px solid var(--french-gray);
 }
 
-/* Ajustements pour les écrans plus petits */
-@media (max-width: 768px) {
-    .logo {
-        max-height: 50px; /* Réduire la taille des logos sur mobile */
-    }
-}
 /* Style pour le bouton "Accéder Contenu" */
 .content-button {
     display: inline-block;
-    padding: 8px 12px;
-    background-color: var(--sun); /* Couleur d'accentuation (Jaune/Orange) */
-    color: var(--saddle); /* Texte foncé sur fond clair */
+    padding: 10px 20px;
+    background-color: var(--sun);
+    color: var(--saddle);
     text-decoration: none;
     font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    font-size: 0.9em;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
     text-align: center;
-    width: 100%; /* S'étend sur toute la largeur de la cellule */
+    width: 100%;
     box-sizing: border-box;
+    border: none;
+    cursor: pointer;
 }
 
 .content-button:hover {
     background-color: var(--fuel-yellow);
-    color: white; /* Rendre le texte blanc au survol */
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.content-button:disabled {
+    background-color: var(--french-gray);
+    color: var(--pale-oyster);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 /* Styles pour les pages de contenu (dayX/page.js) */
@@ -206,7 +203,7 @@ header {
 
 .content-date {
     font-style: italic;
-    color: var(--french-gray);
+    color: var(--pale-oyster);
     margin-top: -10px;
     margin-bottom: 30px;
 }
@@ -224,33 +221,34 @@ header {
     color: var(--sepia);
     margin-top: 0;
 }
-/* --- Styles pour la page de Connexion (Login) --- */
 
+/* --- Styles pour la page de Connexion (Login) --- */
 .login-page-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f4f4f4; /* Fond clair */
+    background: linear-gradient(135deg, var(--saddle) 0%, var(--quincy) 100%);
 }
 
 .auth-container {
     background: white;
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 400px;
     text-align: center;
+    border-top: 4px solid var(--sun);
 }
 
 .auth-container h1 {
-    color: var(--saddle, #4a3e2a); /* Utilise la variable si définie, sinon une couleur par défaut */
+    color: var(--saddle);
     margin-bottom: 5px;
 }
 
 .auth-container p {
-    color: #666;
+    color: var(--pale-oyster);
     margin-bottom: 25px;
 }
 
@@ -263,19 +261,26 @@ header {
     display: block;
     margin-bottom: 5px;
     font-weight: 600;
-    color: #333;
+    color: var(--quincy);
 }
 
 .auth-form input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 12px;
+    border: 1px solid var(--french-gray);
     border-radius: 4px;
     box-sizing: border-box;
+    transition: border-color 0.3s;
+    font-size: 1rem;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--sun);
+    box-shadow: 0 0 0 2px rgba(251, 165, 25, 0.2);
 }
 
 .auth-form button {
-    /* Réutilise le style content-button pour la cohérence */
     width: 100%;
     padding: 12px;
     font-size: 1.1em;
@@ -283,59 +288,139 @@ header {
     margin-top: 10px;
 }
 
-.auth-form button:disabled {
-    background-color: var(--french-gray, #bcbdc0);
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
 .error-message {
-    color: red;
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 4px;
     margin-top: 15px;
     font-size: 0.9em;
 }
+
 /* Styles de base pour les composants réutilisables */
-.content-button {
-  padding: 10px 20px;
-  background: #3498db;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.content-button:hover {
-  background: #2980b9;
-}
-
-.content-button:disabled {
-  background: #bdc3c7;
-  cursor: not-allowed;
-}
-
 .form-group {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .name-input, textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 1rem;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--french-gray);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.name-input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--sun);
+    box-shadow: 0 0 0 2px rgba(251, 165, 25, 0.2);
 }
 
 textarea {
-  resize: vertical;
-  min-height: 80px;
+    resize: vertical;
+    min-height: 80px;
 }
 
 /* Styles responsives globaux */
 @media (max-width: 768px) {
-  .content-button {
-    padding: 8px 16px;
+    .content-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .logo {
+        max-height: 50px;
+    }
+    
+    header {
+        padding: 15px 15px 30px 15px;
+    }
+    
+    .auth-container {
+        padding: 25px;
+        margin: 20px;
+    }
+    
+    .container {
+        width: 100%;
+        padding: 0 15px;
+    }
+}
+
+/* Styles pour la navigation des slides */
+.nav-button {
+    background-color: var(--sun);
+    color: var(--saddle);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover:not(:disabled) {
+    background-color: var(--fuel-yellow);
+    color: white;
+}
+
+.nav-button:disabled {
+    background-color: var(--french-gray);
+    color: var(--pale-oyster);
+    cursor: not-allowed;
+}
+
+.slide-nav-side {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
+
+/* Styles pour le compteur de slides */
+.slide-counter {
+    color: var(--sepia);
+    font-weight: bold;
+    padding: 5px 15px;
+    background-color: rgba(251, 165, 25, 0.1);
+    border-radius: 20px;
+}
+
+.slide-number {
+    background-color: var(--quincy);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
     font-size: 0.9rem;
-  }
+}
+
+/* Améliorations visuelles générales */
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: var(--sun);
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--fuel-yellow);
+}
+
+/* Effets de focus accessibilité */
+button:focus, a:focus, input:focus, textarea:focus {
+    outline: 2px solid var(--sun);
+    outline-offset: 2px;
 }

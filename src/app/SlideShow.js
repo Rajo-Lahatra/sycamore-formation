@@ -1,22 +1,28 @@
-// Fichier : src/app/SlideShow.js
-
+// src/app/SlideShow.js
 'use client'; 
 
 import React, { useState, useEffect } from 'react';
 
-export default function SlideShow({ slides }) {
+export default function SlideShow({ slides, onSlideChange }) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   
-  // Fonctions pour naviguer
   const goToNext = () => {
-    setCurrentSlideIndex((prevIndex) => Math.min(prevIndex + 1, slides.length - 1));
+    const newIndex = Math.min(currentSlideIndex + 1, slides.length - 1);
+    setCurrentSlideIndex(newIndex);
+    if (onSlideChange) {
+      onSlideChange(newIndex + 1); // +1 car les slides commencent à 1
+    }
   };
 
   const goToPrev = () => {
-    setCurrentSlideIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+    const newIndex = Math.max(currentSlideIndex - 1, 0);
+    setCurrentSlideIndex(newIndex);
+    if (onSlideChange) {
+      onSlideChange(newIndex + 1);
+    }
   };
   
-  // Gestion de la navigation au clavier (optionnel, mais pratique)
+  // Gestion de la navigation au clavier
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'ArrowRight' && currentSlideIndex < slides.length - 1) {
@@ -36,40 +42,57 @@ export default function SlideShow({ slides }) {
   return (
     <div className="slideshow-wrapper"> 
       
-      {/* Bouton de navigation Précédent (Gauche) */}
       <button 
         onClick={goToPrev} 
         disabled={currentSlideIndex === 0}
         className="nav-button prev-button slide-nav-side"
         aria-label="Diapositive précédente"
       >
-        &#9664; {/* Flèche gauche */}
+        &#9664;
       </button>
 
       <div className="slideshow">
         
-        {/* 1. Affichage de la diapositive actuelle */}
         <section className="slide-section">
+          <div className="slide-header">
+            <span className="slide-number">
+              Slide {currentSlideIndex + 1} sur {slides.length}
+            </span>
+          </div>
           {currentSlide.content}
         </section>
         
-        {/* 2. Affichage du compteur de diapositives en bas (nouveau) */}
         <div className="slide-controls-bottom">
+          <button 
+            onClick={goToPrev} 
+            disabled={currentSlideIndex === 0}
+            className="nav-button"
+          >
+            Précédent
+          </button>
+          
           <span className="slide-counter">
-            Diapositive {currentSlideIndex + 1} / {slides.length}
+            {currentSlideIndex + 1} / {slides.length}
           </span>
+          
+          <button 
+            onClick={goToNext} 
+            disabled={currentSlideIndex === slides.length - 1}
+            className="nav-button"
+          >
+            Suivant
+          </button>
         </div>
         
       </div>
 
-      {/* Bouton de navigation Suivant (Droite) */}
       <button 
         onClick={goToNext} 
         disabled={currentSlideIndex === slides.length - 1}
         className="nav-button next-button slide-nav-side"
         aria-label="Diapositive suivante"
       >
-        &#9654; {/* Flèche droite */}
+        &#9654;
       </button>
       
     </div>

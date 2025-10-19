@@ -404,14 +404,16 @@ const slidesData = [
 
 
 export default function Day2Page() {
-    return (
-        <ContentWrapper
-            title="Fiscalité du Personnel : RTS, VF, TA/ONFPP"
-            date="Mardi 21 octobre 2025"
-        >
-            <SlideShow slides={slidesData} />
-            <QandA dayNumber={2} />
-        </ContentWrapper>
+  const [currentSlide, setCurrentSlide] = useState(1);
 
-    );
+  const handleSlideChange = (slideNumber) => {
+    setCurrentSlide(slideNumber);
+  };
+
+  return (
+    <ContentWrapper title="Jour 2: Maîtriser la fiscalité du personnel" date="21 octobre 2025">
+      <SlideShow slides={slides} onSlideChange={handleSlideChange} />
+      <QandA dayNumber={2} currentSlide={currentSlide} />
+    </ContentWrapper>
+  );
 }

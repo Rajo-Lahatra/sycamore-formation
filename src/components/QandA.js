@@ -4,21 +4,23 @@
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
-export default function QandA({ dayNumber }) {
+export default function QandA({ dayNumber, currentSlide }) {
   const [questions, setQuestions] = useState([]);
   const [newText, setNewText] = useState('');
   const [userName, setUserName] = useState('');
-  const [currentSlide, setCurrentSlide] = useState(1);
   const [loading, setLoading] = useState(false);
   const [answerInputs, setAnswerInputs] = useState({});
   const [respondentName, setRespondentName] = useState('');
-  const [activeTab, setActiveTab] = useState('question'); // 'question' ou 'commentaire'
+  const [activeTab, setActiveTab] = useState('question');
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
   const supabase = createClient();
 
   // Charger les questions et commentaires
   useEffect(() => {
-    fetchQuestions();
-  }, [dayNumber]);
+    if (isPanelOpen) {
+      fetchQuestions();
+    }
+  }, [dayNumber, isPanelOpen]);
 
   const fetchQuestions = async () => {
     const { data, error } = await supabase
@@ -90,121 +92,139 @@ export default function QandA({ dayNumber }) {
   const commentsOnly = questions.filter(q => q.type === 'commentaire');
 
   return (
-    <div className="qanda-section">
-      <h3>Questions & Commentaires - Jour {dayNumber}</h3>
-      
-      {/* Indicateur de slide actuel */}
-      <div className="slide-indicator">
-        <strong>Slide actuelle :</strong>
-        <input
-          type="number"
-          min="1"
-          value={currentSlide}
-          onChange={(e) => setCurrentSlide(parseInt(e.target.value) || 1)}
-          className="slide-input"
-        />
-      </div>
+    <>
+      {/* Bouton flottant pour ouvrir le panneau */}
+      <button 
+        className="qanda-toggle-button"
+        onClick={() => setIsPanelOpen(true)}
+      >
+        💬 Questions & Commentaires
+      </button>
 
-      {/* Onglets Question/Commentaire */}
-      <div className="tabs">
-        <button 
-          className={`tab ${activeTab === 'question' ? 'active' : ''}`}
-          onClick={() => setActiveTab('question')}
-        >
-          ❓ Poser une Question
-        </button>
-        <button 
-          className={`tab ${activeTab === 'commentaire' ? 'active' : ''}`}
-          onClick={() => setActiveTab('commentaire')}
-        >
-          💬 Faire un Commentaire
-        </button>
-      </div>
+      {/* Panneau latéral */}
+      {isPanelOpen && (
+        <div className="qanda-panel-overlay">
+          <div className="qanda-panel">
+            <div className="qanda-panel-header">
+              <h3>Questions & Commentaires - Jour {dayNumber}</h3>
+              <button 
+                className="close-button"
+                onClick={() => setIsPanelOpen(false)}
+              >
+                &times;
+              </button>
+            </div>
 
-      {/* Formulaire dynamique */}
-      <div className="entry-form">
-        <h4>
-          {activeTab === 'question' ? 'Poser une question' : 'Faire un commentaire'} 
-          <span className="slide-ref">(Slide {currentSlide})</span>
-        </h4>
-        <div className="form-group">
-          <input
-            type="text"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-            placeholder="Votre nom"
-            className="name-input"
-          />
-        </div>
-        <div className="form-group">
-          <textarea
-            value={newText}
-            onChange={(e) => setNewText(e.target.value)}
-            placeholder={
-              activeTab === 'question' 
-                ? `Posez votre question concernant le slide ${currentSlide}...`
-                : `Partagez votre commentaire ou votre réponse sur le slide ${currentSlide}...`
-            }
-            rows="3"
-            disabled={loading}
-          />
-        </div>
-        <button 
-          onClick={addEntry} 
-          className="content-button"
-          disabled={loading}
-        >
-          {loading ? 'Envoi en cours...' : 
-            activeTab === 'question' ? 'Poser la question' : 'Publier le commentaire'
-          }
-        </button>
-      </div>
+            <div className="qanda-panel-content">
+              {/* Indicateur de slide actuel */}
+              <div className="slide-indicator">
+                <strong>Slide actuelle : {currentSlide}</strong>
+              </div>
 
-      {/* Section pour répondre aux questions */}
-      <div className="respondent-section">
-        <h4>Répondre aux questions</h4>
-        <div className="form-group">
-          <input
-            type="text"
-            value={respondentName}
-            onChange={(e) => setRespondentName(e.target.value)}
-            placeholder="Votre nom (pour les réponses)"
-            className="name-input"
-          />
-        </div>
-      </div>
+              {/* Onglets Question/Commentaire */}
+              <div className="tabs">
+                <button 
+                  className={`tab ${activeTab === 'question' ? 'active' : ''}`}
+                  onClick={() => setActiveTab('question')}
+                >
+                  ❓ Poser une Question
+                </button>
+                <button 
+                  className={`tab ${activeTab === 'commentaire' ? 'active' : ''}`}
+                  onClick={() => setActiveTab('commentaire')}
+                >
+                  💬 Faire un Commentaire
+                </button>
+              </div>
 
-      {/* Affichage avec onglets */}
-      <div className="display-tabs">
-        <div className="display-tab-header">
-          <button 
-            className={`display-tab ${activeTab === 'question' ? 'active' : ''}`}
-            onClick={() => setActiveTab('question')}
-          >
-            Questions ({questionsOnly.length})
-          </button>
-          <button 
-            className={`display-tab ${activeTab === 'commentaire' ? 'active' : ''}`}
-            onClick={() => setActiveTab('commentaire')}
-          >
-            Commentaires ({commentsOnly.length})
-          </button>
-        </div>
+              {/* Formulaire dynamique */}
+              <div className="entry-form">
+                <h4>
+                  {activeTab === 'question' ? 'Poser une question' : 'Faire un commentaire'} 
+                  <span className="slide-ref">(Slide {currentSlide})</span>
+                </h4>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    placeholder="Votre nom"
+                    className="name-input"
+                  />
+                </div>
+                <div className="form-group">
+                  <textarea
+                    value={newText}
+                    onChange={(e) => setNewText(e.target.value)}
+                    placeholder={
+                      activeTab === 'question' 
+                        ? `Posez votre question concernant le slide ${currentSlide}...`
+                        : `Partagez votre commentaire ou votre réponse sur le slide ${currentSlide}...`
+                    }
+                    rows="3"
+                    disabled={loading}
+                  />
+                </div>
+                <button 
+                  onClick={addEntry} 
+                  className="content-button"
+                  disabled={loading}
+                >
+                  {loading ? 'Envoi en cours...' : 
+                    activeTab === 'question' ? 'Poser la question' : 'Publier le commentaire'
+                  }
+                </button>
+              </div>
 
-        <div className="display-content">
-          {activeTab === 'question' ? (
-            <QuestionsList 
-              questions={questionsOnly}
-              answerInputs={answerInputs}
-              setAnswerInputs={setAnswerInputs}
-              submitAnswer={submitAnswer}
-            />
-          ) : (
-            <CommentsList comments={commentsOnly} />
-          )}
+              {/* Section pour répondre aux questions */}
+              <div className="respondent-section">
+                <h4>Répondre aux questions</h4>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    value={respondentName}
+                    onChange={(e) => setRespondentName(e.target.value)}
+                    placeholder="Votre nom (pour les réponses)"
+                    className="name-input"
+                  />
+                </div>
+              </div>
+
+              {/* Affichage avec onglets */}
+              <div className="display-tabs">
+                <div className="display-tab-header">
+                  <button 
+                    className={`display-tab ${activeTab === 'question' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('question')}
+                  >
+                    Questions ({questionsOnly.length})
+                  </button>
+                  <button 
+                    className={`display-tab ${activeTab === 'commentaire' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('commentaire')}
+                  >
+                    Commentaires ({commentsOnly.length})
+                  </button>
+                </div>
+
+                <div className="display-content">
+                  {activeTab === 'question' ? (
+                    <QuestionsList 
+                      questions={questionsOnly}
+                      answerInputs={answerInputs}
+                      setAnswerInputs={setAnswerInputs}
+                      submitAnswer={submitAnswer}
+                    />
+                  ) : (
+                    <CommentsList comments={commentsOnly} />
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 

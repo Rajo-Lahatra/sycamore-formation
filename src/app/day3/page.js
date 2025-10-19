@@ -303,13 +303,16 @@ const slidesData = [
 
 
 export default function Day3Page() {
-    return (
-        <ContentWrapper
-            title="RNS & TVA : Régime de la Fiscalité Indirecte Minière"
-            date="Mercredi 22 octobre 2025"
-        >
-            <SlideShow slides={slidesData} />
-            <QandA dayNumber={3} />
-        </ContentWrapper>
-    );
+  const [currentSlide, setCurrentSlide] = useState(1);
+
+  const handleSlideChange = (slideNumber) => {
+    setCurrentSlide(slideNumber);
+  };
+
+  return (
+    <ContentWrapper title="Jour 3: TVA, PF, et Retenues à la Source" date="22 octobre 2025">
+      <SlideShow slides={slides} onSlideChange={handleSlideChange} />
+      <QandA dayNumber={3} currentSlide={currentSlide} />
+    </ContentWrapper>
+  );
 }

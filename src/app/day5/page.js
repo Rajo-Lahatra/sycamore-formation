@@ -1503,13 +1503,16 @@ createSlide(
 ];
 
 export default function Day5Page() {
-    return (
-        <ContentWrapper
-            title="Jour 5 : Remboursement TVA, Contrôles Fiscaux et Procédures Contentieuses"
-            date="Vendredi 24 octobre 2025"
-        >
-            <SlideShow slides={slidesData} />
-            <QandA dayNumber={5} />
-        </ContentWrapper>
-    );
+  const [currentSlide, setCurrentSlide] = useState(1);
+
+  const handleSlideChange = (slideNumber) => {
+    setCurrentSlide(slideNumber);
+  };
+
+  return (
+    <ContentWrapper title="Jour 5: Renforcer les compétences pratiques et la gestion du risque fiscal." date="24 octobre 2025">
+      <SlideShow slides={slides} onSlideChange={handleSlideChange} />
+      <QandA dayNumber={5} currentSlide={currentSlide} />
+    </ContentWrapper>
+  );
 }

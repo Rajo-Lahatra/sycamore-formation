@@ -408,14 +408,16 @@ const SLIDES = [
 ];
 
 export default function Day1Page() {
+  const [currentSlide, setCurrentSlide] = useState(1);
+
+  const handleSlideChange = (slideNumber) => {
+    setCurrentSlide(slideNumber);
+  };
+
   return (
-    <ContentWrapper 
-        title="Jour 1 : Support de formation – Introduction & Cadre Fiscal Minier" 
-        date="20 octobre 2025"
-    >
-        {/* Le composant SlideShow utilise le tableau de slides nettoyé */}
-        <SlideShow slides={SLIDES} />
-        <QandA dayNumber={1} />
+    <ContentWrapper title="Jour 1: Poser les bases et contextualiser la fiscalité minière." date="20 octobre 2025">
+      <SlideShow slides={slides} onSlideChange={handleSlideChange} />
+      <QandA dayNumber={1} currentSlide={currentSlide} />
     </ContentWrapper>
   );
 }

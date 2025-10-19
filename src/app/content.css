@@ -212,287 +212,170 @@
     opacity: 1;
     text-decoration: underline;
 }
-/* === SYSTÈME Q&A - Questions & Commentaires === */
+/* === PANEL LATERAL Q&A === */
 
-.qanda-section {
-  margin: 3rem 0;
-  padding: 2rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  background: #f8f9fa;
-}
-
-.qanda-section h3 {
-  color: #2c3e50;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 0.5rem;
-}
-
-.qanda-section h4 {
-  color: #34495e;
-  margin: 1.5rem 0 1rem 0;
-}
-
-/* Indicateur de slide */
-.slide-indicator {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background: white;
-  border-radius: 8px;
-  border-left: 4px solid #3498db;
-}
-
-.slide-input {
-  width: 60px;
-  margin-left: 10px;
-  padding: 5px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  text-align: center;
-}
-
-/* Onglets */
-.tabs {
-  display: flex;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid #e0e0e0;
-}
-
-.tab {
-  flex: 1;
-  padding: 12px 16px;
-  background: #f8f9fa;
+/* Bouton flottant pour ouvrir le panneau */
+.qanda-toggle-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 15px 25px;
+  background: #3498db;
+  color: white;
   border: none;
-  border-bottom: 3px solid transparent;
+  border-radius: 50px;
   cursor: pointer;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  z-index: 1000;
   font-size: 1rem;
+  font-weight: bold;
   transition: all 0.3s ease;
 }
 
-.tab.active {
+.qanda-toggle-button:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+/* Overlay du panneau */
+.qanda-panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Panneau latéral */
+.qanda-panel {
+  width: 90%;
+  max-width: 500px;
+  height: 100%;
   background: white;
-  border-bottom: 3px solid #3498db;
-  font-weight: bold;
-  color: #3498db;
+  box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease;
 }
 
-.tab:hover:not(.active) {
-  background: #e9ecef;
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
 }
 
-/* Formulaires */
-.entry-form, .respondent-section {
-  margin-bottom: 2rem;
+/* En-tête du panneau */
+.qanda-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 2px solid #e0e0e0;
+  background: #f8f9fa;
+}
+
+.qanda-panel-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #7f8c8d;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: #e74c3c;
+  color: white;
+}
+
+/* Contenu du panneau */
+.qanda-panel-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+/* Adaptation des styles existants pour le panneau */
+.qanda-panel-content .slide-indicator {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #e3f2fd;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+  text-align: center;
+}
+
+.qanda-panel-content .entry-form,
+.qanda-panel-content .respondent-section {
+  margin-bottom: 1.5rem;
   padding: 1.5rem;
   background: white;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.entry-form .slide-ref {
-  background: #9b59b6;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  margin-left: 10px;
+.qanda-panel-content .display-tabs {
+  margin-top: 1.5rem;
 }
 
-/* Onglets d'affichage */
-.display-tabs {
-  margin-top: 2rem;
+/* Scrollbar personnalisée */
+.qanda-panel-content::-webkit-scrollbar {
+  width: 6px;
 }
 
-.display-tab-header {
-  display: flex;
-  border-bottom: 2px solid #e0e0e0;
+.qanda-panel-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
-.display-tab {
-  padding: 10px 20px;
-  background: #f8f9fa;
-  border: none;
-  border-bottom: 3px solid transparent;
-  cursor: pointer;
-  font-size: 1rem;
+.qanda-panel-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
 }
 
-.display-tab.active {
-  background: white;
-  border-bottom: 3px solid #e74c3c;
-  font-weight: bold;
-  color: #e74c3c;
-}
-
-.display-content {
-  padding: 1rem 0;
-}
-
-/* Listes */
-.questions-list, .comments-list {
-  space-y: 1rem;
-}
-
-.no-entries {
-  text-align: center;
-  color: #7f8c8d;
-  font-style: italic;
-  padding: 3rem;
-  background: white;
-  border-radius: 8px;
-  border: 2px dashed #bdc3c7;
-}
-
-/* Items de questions */
-.question-item {
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.question-item.pending {
-  border-left: 4px solid #e74c3c;
-}
-
-.question-item.answered {
-  border-left: 4px solid #27ae60;
-}
-
-.question-header, .comment-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.user-name {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-.slide-ref {
-  background: #3498db;
-  color: white;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-}
-
-.timestamp {
-  color: #7f8c8d;
-  font-size: 0.8rem;
-}
-
-.question-content {
-  margin-bottom: 1rem;
-  color: #2c3e50;
-  line-height: 1.5;
-  font-size: 1.1rem;
-}
-
-/* Réponses */
-.answer {
-  padding: 1rem;
-  background: #d5f4e6;
-  border-radius: 6px;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-.answer-header {
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-.answer-time {
-  font-size: 0.8rem;
-  color: #28a745;
-  margin-left: 10px;
-  font-weight: normal;
-}
-
-.answer-text {
-  line-height: 1.5;
-}
-
-.answer-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 1rem;
-}
-
-.answer-button {
-  align-self: flex-end;
-  padding: 8px 16px;
-  background: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.answer-button:hover {
-  background: #218838;
-}
-
-/* Commentaires */
-.comment-item {
-  padding: 1.5rem;
-  background: white;
-  border-radius: 8px;
-  border-left: 4px solid #f39c12;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.comment-content {
-  line-height: 1.5;
-  font-size: 1.1rem;
-  color: #2c3e50;
-}
-
-.comment-response {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: #fff3cd;
-  border-radius: 6px;
-  border-left: 3px solid #ffc107;
-}
-
-.response-header {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #856404;
-}
-
-.response-text {
-  line-height: 1.5;
-  color: #856404;
+.qanda-panel-content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .qanda-section {
-    padding: 1rem;
-    margin: 2rem 0;
-  }
-  
-  .question-header, .comment-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .tabs, .display-tab-header {
-    flex-direction: column;
-  }
-  
-  .tab, .display-tab {
+  .qanda-panel {
     width: 100%;
+    max-width: none;
   }
+  
+  .qanda-toggle-button {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Supprimez l'ancienne section Q&A qui était en bas */
+.qanda-section {
+  display: none;
 }

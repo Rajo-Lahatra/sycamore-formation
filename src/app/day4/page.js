@@ -685,13 +685,16 @@ const slidesData = [
 ];
 
 export default function Day4Page() {
-    return (
-        <ContentWrapper
-            title="Imposition du Revenu & Fiscalité Spécifique au Secteur Minier"
-            date="Jeudi 23 octobre 2025"
-        >
-            <SlideShow slides={slidesData} />
-            <QandA dayNumber={4} />
-        </ContentWrapper>
-    );
+  const [currentSlide, setCurrentSlide] = useState(1);
+
+  const handleSlideChange = (slideNumber) => {
+    setCurrentSlide(slideNumber);
+  };
+
+  return (
+    <ContentWrapper title="Jour 4: Maîtriser l'IS, l'IMF et le traitement fiscal des charges minières" date="23 octobre 2025">
+      <SlideShow slides={slides} onSlideChange={handleSlideChange} />
+      <QandA dayNumber={4} currentSlide={currentSlide} />
+    </ContentWrapper>
+  );
 }

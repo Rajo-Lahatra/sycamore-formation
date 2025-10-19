@@ -1,7 +1,7 @@
 // Fichier : src/app/day1/page.js
 import Day1Client from './Day1Client';
 // Le contenu est structuré en un tableau de diapositives (SLIDES)
-const SLIDES = [
+const slides = [
     {
         title: 'Diapositive 1 : Introduction',
         content: (

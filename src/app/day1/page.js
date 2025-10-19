@@ -1,6 +1,4 @@
 // Fichier : src/app/day1/page.js
-'use client';
-
 import ContentWrapper from '../ContentWrapper';
 import SlideShow from '../SlideShow';
 import QandA from '../../components/QandA';

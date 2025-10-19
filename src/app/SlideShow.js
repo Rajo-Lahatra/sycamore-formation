@@ -6,20 +6,19 @@ import React, { useState, useEffect } from 'react';
 export default function SlideShow({ slides, onSlideChange }) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   
-  const goToNext = () => {
-    const newIndex = Math.min(currentSlideIndex + 1, slides.length - 1);
-    setCurrentSlideIndex(newIndex);
+  // Notifier le parent du changement de slide
+  useEffect(() => {
     if (onSlideChange) {
-      onSlideChange(newIndex + 1); // +1 car les slides commencent à 1
+      onSlideChange(currentSlideIndex + 1);
     }
+  }, [currentSlideIndex, onSlideChange]);
+
+  const goToNext = () => {
+    setCurrentSlideIndex((prevIndex) => Math.min(prevIndex + 1, slides.length - 1));
   };
 
   const goToPrev = () => {
-    const newIndex = Math.max(currentSlideIndex - 1, 0);
-    setCurrentSlideIndex(newIndex);
-    if (onSlideChange) {
-      onSlideChange(newIndex + 1);
-    }
+    setCurrentSlideIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
   
   // Gestion de la navigation au clavier

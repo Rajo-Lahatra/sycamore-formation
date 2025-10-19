@@ -1,5 +1,4 @@
 // src/app/day3/page.js
-'use client';
 
 import SlideShow from '../SlideShow';
 import ContentWrapper from '../ContentWrapper';

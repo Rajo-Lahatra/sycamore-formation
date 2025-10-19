@@ -224,3 +224,73 @@ header {
     color: var(--sepia);
     margin-top: 0;
 }
+/* --- Styles pour la page de Connexion (Login) --- */
+
+.login-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4; /* Fond clair */
+}
+
+.auth-container {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.auth-container h1 {
+    color: var(--saddle, #4a3e2a); /* Utilise la variable si définie, sinon une couleur par défaut */
+    margin-bottom: 5px;
+}
+
+.auth-container p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.auth-form .form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.auth-form button {
+    /* Réutilise le style content-button pour la cohérence */
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.auth-form button:disabled {
+    background-color: var(--french-gray, #bcbdc0);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.error-message {
+    color: red;
+    margin-top: 15px;
+    font-size: 0.9em;
+}

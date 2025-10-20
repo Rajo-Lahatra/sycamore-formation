@@ -80,7 +80,7 @@ const slides = [
     createSlide(
         "RTS - Exonérations Principales",
         `
-        <p>Les rémunérations ci-après sont exemptées (Art. __) :</p>
+        <p>Les rémunérations ci-après sont exemptées :</p>
         <ul>
             <li>Les <strong>allocations familiales</strong>.</li>
             <li>Le <strong>remboursement des frais professionnels</strong>.</li>

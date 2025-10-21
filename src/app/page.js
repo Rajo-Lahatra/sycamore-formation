@@ -143,7 +143,7 @@ export default function HomePage() {
 
           {/* Jour 3 */}
           <details>
-            <summary>Jour 3 : Mercredi 22 octobre 2025 - TVA, PF, et Retenues à la Source (RNS).</summary>
+            <summary>Jour 3 : Mercredi 22 octobre 2025 - Maîtriser la TVA, le PF, et la Retenue à la Source (RNS).</summary>
             <table className="schedule-table">
               <thead>
                 <tr>

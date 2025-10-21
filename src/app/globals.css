@@ -1,17 +1,19 @@
 /* src/app/globals.css */
 
 /* Définition des variables de couleur (Palette Sycamore) */
+/* Dans src/app/globals.css - Ajout de couleurs plus claires */
 :root {
-    --sun: #fba519;
-    --saddle: #503326;
-    --french-gray: #bcbdc0;
-    --tulip-tree: #e8a83d;
-    --sepia: #714112;
-    --pale-oyster: #9b877a;
-    --quincy: #654530;
-    --fuel-yellow: #eea125;
+  --saddle: #8B4513;      /* Marron saddle original */
+  --saddle-light: #A05A2C; /* Marron plus clair pour l'en-tête */
+  --saddle-lighter: #B56F3F; /* Encore plus clair si besoin */
+  --sun: #FBA519;         /* Or sun */
+  --tulip-tree: #E8A83D;  /* Or clair */
+  --fuel-yellow: #F2A725; /* Or moyen */
+  --quincy: #614112;      /* Marron foncé */
+  --sepia: #714112;       /* Marron sépia */
+  --french-gray: #BCBDC0; /* Gris clair */
+  --pale-oyster: #9F8E7B; /* Beige */
 }
-
 /* Base Styling */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

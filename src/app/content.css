@@ -17,18 +17,19 @@
 }
 
 /* Titre principal de la page (Nom du jour de formation) */
+/* Alternative : en-tête encore plus clair */
 .content-title-header {
-    background-color: var(--saddle);
-    color: white;
+    background: linear-gradient(135deg, var(--tulip-tree) 0%, var(--saddle-light) 100%);
+    color: var(--quincy); /* Texte plus foncé pour mieux contraster */
     padding: 30px 20px;
     margin-bottom: 40px;
     text-align: center;
     border-bottom: 5px solid var(--sun);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .content-title-header h1 {
-    color: white;
+    color: var(--quincy);
     font-size: 2.2em;
     margin: 0 0 10px 0;
 }
@@ -37,24 +38,25 @@
     font-style: italic;
     font-weight: 600;
     margin-top: 5px;
-    color: var(--tulip-tree);
+    color: var(--saddle);
 }
 
 .back-button {
     display: inline-block;
     margin-top: 15px;
-    color: var(--sun);
+    color: var(--quincy);
     text-decoration: none;
     font-size: 0.9em;
     padding: 8px 16px;
-    border: 1px solid var(--sun);
+    border: 1px solid var(--quincy);
     border-radius: 4px;
     transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .back-button:hover {
-    background-color: var(--sun);
-    color: var(--saddle);
+    background-color: var(--quincy);
+    color: white;
     text-decoration: none;
 }
 
@@ -70,7 +72,7 @@
 
 .logo {
     height: auto;
-    max-height: 40px;
+    max-height: 70px;
     transition: transform 0.3s;
 }
 

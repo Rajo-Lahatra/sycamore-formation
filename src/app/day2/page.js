@@ -243,7 +243,7 @@ const slides = [
         <h3>Assiette et Taux (TA)</h3>
         <ul>
             <li>Assiette : Montant du <strong>salaire brut</strong>.</li>
-            <li>Taux d’Imposition : <strong>3%</strong>.</li>
+            <li>Taux d’Imposition : <strong>2%</strong>.</li>
         </ul>
         <h3>Précision importante sur l'ONFPP</h3>
         <ul>

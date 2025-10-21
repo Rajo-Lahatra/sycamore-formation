@@ -102,7 +102,7 @@ export default function HomePage() {
 
           {/* Jour 2 */}
           <details>
-            <summary>Jour 2 : Mardi 21 octobre 2025 - Maîtriser la fiscalité du personnel (RTS).</summary>
+            <summary>Jour 2 : Mardi 21 octobre 2025 - Maîtriser la fiscalité du personnel (RTS, VF, CNSS, TA, ONFPP).</summary>
             <table className="schedule-table">
               <thead>
                 <tr>
@@ -124,7 +124,7 @@ export default function HomePage() {
                 </tr>
                 <tr>
                   <td>10h00 – 10h45</td>
-                  <td>Cas pratiques RTS (calcul de la paie nette)</td>
+                  <td>Cas pratiques</td>
                   <td>Exercices individuels + correction</td>
                 </tr>
                 <tr>

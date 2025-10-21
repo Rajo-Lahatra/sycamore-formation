@@ -278,7 +278,7 @@ const slides = [
         title: 'Diapositive 15 : Le Système Déclaratif',
         content: (
             <>
-                <h2 className="slide-title">SYSTEM DECLARATIF: Qu’est - ce que c’est?</h2>
+                <h2 className="slide-title">SYSTÈME DÉCLARATIF: Qu’est - ce que c’est?</h2>
                 <p>C'est un mécanisme fiscal où il est laissé au contribuable le soin de déclarer lui-même le montant de ses revenus, bénéfices ou la valeur des biens, en vue du calcul de son impôt.</p>
                 <p>L'administration fiscale ne détermine pas directement ce que le contribuable doit payer ; c'est le contribuable qui, par l'intermédiaire d'une déclaration fiscale, présente la base de calcul de chaque obligation fiscale.</p>
                 

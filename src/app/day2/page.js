@@ -265,7 +265,7 @@ const slides = [
         </ul>
         <h3>Échéance</h3>
         <ul>
-            <li>Pour l'<strong>ONFPP</strong> (applicable à Sycamore) : Au plus tard le <strong>20 de chaque mois</strong>.</li>
+            <li>Pour l'<strong>ONFPP</strong> : Au plus tard le <strong>20 de chaque mois</strong>.</li>
             <li>Pour la <strong>TA</strong> (entreprises < 30 employés) : Déclaration et paiement annuels au plus tard le <strong>15 février</strong> de chaque année.</li>
         </ul>
         <h3>Sanctions</h3>

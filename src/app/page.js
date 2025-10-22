@@ -173,7 +173,7 @@ export default function HomePage() {
                 </tr>
                 <tr>
                   <td>10h45 – 12h00</td>
-                  <td>Cas pratiques TVA (Sycamore & Auritrans) : Application du précompte et calcul de la déclaration mensuelle</td>
+                  <td>Cas pratiques TVA et RNS</td>
                   <td>Exercices + corrections collectives</td>
                 </tr>
                 <tr>

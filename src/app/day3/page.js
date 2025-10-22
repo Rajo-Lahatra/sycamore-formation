@@ -249,7 +249,7 @@ const slides = [
         "CAS PRATIQUE N°1 : RNS - Application des Conventions",
         `
         <h3>Contexte</h3>
-        <p>Sycamore a procédé à trois paiements de services à des prestataires non-résidents au cours du mois de septembre. Les règlements ont été effectués en octobre, sans application de RNS.</p>
+        <p>Sycamore a procédé à trois paiements de services à des prestataires non-résidents au cours du mois de août. Les règlements ont été effectués en septembre, sans application de RNS.</p>
         <table style="width: 100%; text-align: right; border-collapse: collapse; margin-top: 15px;">
             <thead>
                 <tr style="background-color: var(--french-gray);">
@@ -269,7 +269,7 @@ const slides = [
         <ol>
             <li>Déterminer si la RNS est due pour chaque paiement en appliquant la Convention de NDI (si applicable).</li>
             <li>Calculer le montant total de la RNS à régulariser.</li>
-            <li>Identifier les risques de pénalités de retard (octobre : échéance 10 novembre).</li>
+            <li>Identifier les risques de pénalités de retard (septembre : échéance 10 octobre).</li>
         </ol>
         `,
         null

@@ -243,7 +243,70 @@ const slides = [
         </ul>
         `
     ),
+// SLIDE 1: LE PRELEVEMENT FORFAITAIRE (PF)
+createSlide(
+    "LE PRELEVEMENT FORFAITAIRE (PF)",
+    `
+    <h3>DÉFINITION</h3>
+    <p><strong>Qu'est-ce que c'est ?</strong></p>
+    <p>Le PF est un prélèvement obligatoire perçu sur les achats locaux de biens et services effectués par un certain nombre d'entités, auprès des fournisseurs non immatriculés à la TVA. Parmi les entités soumises à l'obligation de ce prélèvement se trouvent les sociétés de télécommunications et leurs sous-traitants.</p>
+    
+    <p><strong>Qui supporte l'impôt ? Qui le déclare ?</strong></p>
+    <p>Le PF est une charge fiscale pour le fournisseur local non immatriculé à la TVA (redevable réel). Il est prélevé par l'acheteur des biens ou services, en l'occurrence la société de télécommunication (redevable légal) lors du paiement, puis déclaré et remis à l'Administration Fiscale.</p>
+    `
+),
 
+// SLIDE 2: PRELEVEMENT FORFAITAIRE (PF) Suite
+createSlide(
+    "PRELEVEMENT FORFAITAIRE (PF) Suite",
+    `
+    <h3>PERSONNE IMPOSABLE</h3>
+    <p>Le PF est dû par le fournisseur non immatriculé à la TVA.</p>
+    
+    <h3>MAITIERE IMPOSABLE</h3>
+    <p>La matière imposable est le revenu perçu en contrepartie des biens ou prestation de services rendues par le fournisseur local non immatriculée à la TVA.</p>
+    
+    <h3>ASSIETTE ET TAUX</h3>
+    <p>Le PF est perçu au taux de 10% sur le prix à payer en contre partie de la livraison ou prestation de services du fournisseur local. (le taux de 20% s'applique pour les fournisseurs qui ne sont ni immatriculés fiscalement, ni immatriculés à la TVA)</p>
+    
+    <h3>MODALITE ET ECHEANCE DE DECLARATION</h3>
+    <p>Le PF est déclaré et payé au plus tard le 15 du mois suivant le paiement du prix, sur un formulaire via la plateforme Etax, avec les annexes relatives aux transactions ayant fait l'objet de PF.</p>
+    
+    <h3>SANCTIONS</h3>
+    <p>Les sanctions du défaut de déclaration et paiement, ou tardif sont présentées dans le tableau en annexe.</p>
+    `
+),
+
+// SLIDE 3: PRELEVEMENT FORFAITAIRE (PF) Suite
+createSlide(
+    "PRELEVEMENT FORFAITAIRE (PF) Suite",
+    `
+    <h3>POINTS D'ATTENTION CONCERNANT LE PF</h3>
+    <p><strong>Tragabilité des achats</strong></p>
+    <ul>
+        <li>Obligation de conserver toutes les pièces justificatives (factures, bons de commande, preuves de paiement).</li>
+        <li>La traçabilité garantit que les montants soumis au PF sont clairement identifiés.</li>
+        <li>En l'absence de justificatifs, l'administration fiscale peut réintégrer les montants dans le résultat imposable.</li>
+    </ul>
+
+    <h3>Exigences de l'Administration fiscale</h3>
+    <ul>
+        <li>Les sociétés minières, considérées comme grands contribuables, font l'objet d'un suivi renforcé.</li>
+        <li>Les inspecteurs exigent systématiquement :</li>
+        <ul>
+            <li>La preuve de la retenue du PF lors du règlement des fournisseurs non assujettis à la TVA.</li>
+            <li>Les preuves de reversement du PF au Trésor (reçus, attestations, extraits de déclaration ETAX).</li>
+        </ul>
+    </ul>
+
+    <h3>Conséquences en cas de manquement</h3>
+    <ul>
+        <li>Redressement fiscal avec <strong>imposition d'office du PF non reversé</strong>.</li>
+        <li>Application de <strong>pénalités et intérêts de retard</strong>.</li>
+        <li>Risque d'image : perception d'un manquement grave à la conformité fiscale.</li>
+    </ul>
+    `
+),
     // SLIDE 12: CAS PRATIQUE N°1 - RNS
     createSlide(
         "CAS PRATIQUE N°1 : RNS - Application des Conventions",

@@ -670,7 +670,6 @@ const slides = [
             <li>Anticiper les déclarations d'IS et IMF selon le calendrier fiscal</li>
             <li>Documenter les spécificités du régime minier dans la comptabilité</li>
             <li>Maintenir une traçabilité des contributions au développement local</li>
-            <li>Vérifier régulièrement la conformité avec la convention minière</li>
         </ul>
 
         <h3>PROCHAINES ÉTAPES</h3>

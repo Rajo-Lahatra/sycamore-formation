@@ -719,6 +719,213 @@ createSlide(
     </ol>
     `,
     "4ème PARTIE - ÉTUDES DE CAS PRATIQUES"
+),// SLIDE 31: BALANCE COMPLÈTE MC LENON FOSTER - PARTIE 1
+createSlide(
+    "BALANCE MC LENON FOSTER - PARTIE 1",
+    `
+    <div class="balance-full">
+        <table class="balance-table-full">
+            <thead>
+                <tr>
+                    <th>Compte</th>
+                    <th>Intitulé</th>
+                    <th>Mouvements Débit</th>
+                    <th>Mouvements Crédit</th>
+                    <th>Solde Débit</th>
+                    <th>Solde Crédit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>101300</td><td>CAPITAL</td><td></td><td>9 300 000 000</td><td></td><td>9 300 000 000</td></tr>
+                <tr><td>234300</td><td>Installation à caractère spécifique</td><td>485 430 000</td><td></td><td>485 430 000</td><td></td></tr>
+                <tr><td>241100</td><td>Matériel industriel</td><td>300 731 200</td><td></td><td>300 731 200</td><td></td></tr>
+                <tr><td>244200</td><td>Matériel informatique</td><td>29 400 000</td><td></td><td>29 400 000</td><td></td></tr>
+                <tr><td>244400</td><td>Mobiliers de bureau</td><td>380 964 000</td><td></td><td>380 964 000</td><td></td></tr>
+                <tr><td>245100</td><td>Matériel automobile</td><td>1 719 562 150</td><td></td><td>1 719 562 150</td><td></td></tr>
+                <tr><td>248800</td><td>Divers matériels mobiliers</td><td>8 400 000</td><td></td><td>8 400 000</td><td></td></tr>
+                <tr><td>272800</td><td>Autres prêts au personnel</td><td>5 000 000</td><td></td><td>5 000 000</td><td></td></tr>
+                <tr><td>275700</td><td>Cautionsements sur autres opération</td><td>2 678 770 664</td><td></td><td>2 678 770 664</td><td></td></tr>
+                <tr><td>284100</td><td>Amortissements du matériel et outil</td><td></td><td>106 794 600</td><td></td><td>106 794 600</td></tr>
+                <tr><td>284400</td><td>Amortissements du matériel et mobil</td><td></td><td>159 858 237</td><td></td><td>159 858 237</td></tr>
+                <tr><td>284500</td><td>Amortissement du matériel de transp</td><td></td><td>166 764 849</td><td></td><td>166 764 849</td></tr>
+                <tr><td>401100</td><td>Fournisseurs</td><td>15 366 582 898</td><td>21 415 889 206</td><td></td><td>6 049 306 308</td></tr>
+                <tr><td>411100</td><td>Client</td><td>25 751 972 140</td><td>15 400 092 635</td><td>10 351 879 505</td><td></td></tr>
+                <tr><td>421100</td><td>Personne avance</td><td>33 338 000</td><td></td><td>33 338 000</td><td></td></tr>
+                <tr><td>422000</td><td>Personnel, rénumérations dues</td><td>1 842 697 840</td><td>2 463 643 181</td><td></td><td>620 945 341</td></tr>
+                <tr><td>428100</td><td>Dettes Provisionnées pour congé à p</td><td></td><td>29 195 500</td><td></td><td>29 195 500</td></tr>
+                <tr><td>431000</td><td>CNSS</td><td>281 415 922</td><td>465 527 615</td><td></td><td>184 111 693</td></tr>
+                <tr><td>442800</td><td>Autres impôts et taxes</td><td></td><td>2 248 984 087</td><td></td><td>2 248 984 087</td></tr>
+                <tr><td>444900</td><td>Credit de TVA</td><td>58 728 843</td><td></td><td>58 728 843</td><td></td></tr>
+                <tr><td>445400</td><td>TVA RECUPERABLE SUR SERVICE</td><td>73 436 252</td><td>58 728 843</td><td>14 707 409</td><td></td></tr>
+                <tr><td>447200</td><td>Impôts sur les salaires</td><td>28 898 966</td><td>67 378 844</td><td></td><td>38 479 878</td></tr>
+                <tr><td>447210</td><td>Versement forfaitaire</td><td>65 325 951</td><td>149 552 124</td><td></td><td>84 226 173</td></tr>
+                <tr><td>447215</td><td>Taxe d'apprentissage</td><td>97 800</td><td>97 800</td><td></td><td></td></tr>
+                <tr><td>447800</td><td>Autres impôts et contributions</td><td>20 788 729</td><td>39 160 107</td><td></td><td>18 371 378</td></tr>
+                <tr><td>461500</td><td>Apporteurs, versements reçus sur au</td><td>9 300 000 000</td><td>9 300 000 000</td><td></td><td></td></tr>
+                <tr><td>466001</td><td>MC LENON BVI</td><td>800 369 700</td><td>9 914 500 000</td><td></td><td>9 114 130 300</td></tr>
+                <tr><td>474600</td><td>Compte de repartition peridioque</td><td></td><td>4 343 759 742</td><td></td><td>4 343 759 742</td></tr>
+                <tr><td>476000</td><td>Charges constatées d'avances</td><td>60 061 260</td><td></td><td>60 061 260</td><td></td></tr>
+                <tr><td>478100</td><td>Diminution des creance d'exploitatif</td><td>381 767 534</td><td></td><td>381 767 534</td><td></td></tr>
+                <tr><td>479300</td><td>Dimunition des dettes d'exploitation</td><td></td><td>848 060 358</td><td></td><td>848 060 358</td></tr>
+                <tr><td>481200</td><td>Fournisseurs d'investiments</td><td>2 610 105 300</td><td>2 994 721 599</td><td></td><td>384 616 299</td></tr>
+                <tr><td>521100</td><td>BANQUE SGBG GNF</td><td>9 245 004 690</td><td>8 608 491 807</td><td>636 512 883</td><td></td></tr>
+                <tr><td>521200</td><td>BANQUE SGBG DOLLAR</td><td>31 455 553 686</td><td>26 315 156 308</td><td>5 140 397 378</td><td></td></tr>
+                <tr><td>571100</td><td>CAISSE GNF</td><td>2 915 000 000</td><td>2 711 159 200</td><td>203 840 800</td><td></td></tr>
+                <tr><td>571200</td><td>CAISSE DOLLARS</td><td>3 557 640 000</td><td>3 252 176 733</td><td>305 463 267</td><td></td></tr>
+                <tr><td>585000</td><td>VIREMENT INTERNE</td><td>15 612 056 235</td><td>15 612 056 235</td><td></td><td></td></tr>
+                <tr><td>599000</td><td>Provisions pour risque à court term</td><td></td><td>381 767 534</td><td></td><td>381 767 534</td></tr>
+            </tbody>
+        </table>
+    </div>
+    `,
+    "ANNEXES - BALANCES COMPTABLES"
+),
+
+// SLIDE 32: BALANCE COMPLÈTE MC LENON FOSTER - PARTIE 2
+createSlide(
+    "BALANCE MC LENON FOSTER - PARTIE 2",
+    `
+    <div class="balance-full">
+        <table class="balance-table-full">
+            <thead>
+                <tr>
+                    <th>Compte</th>
+                    <th>Intitulé</th>
+                    <th>Mouvements Débit</th>
+                    <th>Mouvements Crédit</th>
+                    <th>Solde Débit</th>
+                    <th>Solde Crédit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>604600</td><td>Fourniture de magasin</td><td>614 172 000</td><td></td><td>614 172 000</td><td></td></tr>
+                <tr><td>604700</td><td>Fourniture de bureau</td><td>10 000 000</td><td></td><td>10 000 000</td><td></td></tr>
+                <tr><td>605300</td><td>Fournitures non stockables_Autres e</td><td>4 404 936 742</td><td></td><td>4 404 936 742</td><td></td></tr>
+                <tr><td>605400</td><td>Produit d'entretien non stockables</td><td>71 073 450</td><td></td><td>71 073 450</td><td></td></tr>
+                <tr><td>605500</td><td>Fourniture de bureau non stockables</td><td>268 125 400</td><td></td><td>268 125 400</td><td></td></tr>
+                <tr><td>605600</td><td>Achat de petit matériels et outilla</td><td>1 124 572 910</td><td></td><td>1 124 572 910</td><td></td></tr>
+                <tr><td>605800</td><td>Achat de travaux, matériels et equi</td><td>629 414 171</td><td></td><td>629 414 171</td><td></td></tr>
+                <tr><td>614000</td><td>Transport du personnel</td><td>266 384 728</td><td></td><td>266 384 728</td><td></td></tr>
+                <tr><td>618120</td><td>Voyage et déplacement avion</td><td>2 096 241 816</td><td></td><td>2 096 241 816</td><td></td></tr>
+                <tr><td>622200</td><td>Location de batiment</td><td>680 704 920</td><td></td><td>680 704 920</td><td></td></tr>
+                <tr><td>622300</td><td>Location de matériel et outillages</td><td>910 358 498</td><td></td><td>910 358 498</td><td></td></tr>
+                <tr><td>624100</td><td>Entretien et réparation des biens m</td><td>50 350 000</td><td></td><td>50 350 000</td><td></td></tr>
+                <tr><td>624200</td><td>Entretien et réparations des biens</td><td>58 481 000</td><td></td><td>58 481 000</td><td></td></tr>
+                <tr><td>625800</td><td>Autres primes d'assurances</td><td>200 307 741</td><td></td><td>200 307 741</td><td></td></tr>
+                <tr><td>628800</td><td>Autres frais de telecommunication</td><td>76 340 000</td><td></td><td>76 340 000</td><td></td></tr>
+                <tr><td>631800</td><td>Frais bancaires</td><td>248 254 673</td><td></td><td>248 254 673</td><td></td></tr>
+                <tr><td>632400</td><td>Honoraires des professions règlementes</td><td>560 832 296</td><td></td><td>560 832 296</td><td></td></tr>
+                <tr><td>632402</td><td>Honoraires assistance technique</td><td>12 828 331 042</td><td></td><td>12 828 331 042</td><td></td></tr>
+                <tr><td>632700</td><td>Rénumeration des autres prestataires</td><td>4 450 592 566</td><td></td><td>4 450 592 566</td><td></td></tr>
+                <tr><td>632800</td><td>Divers frais</td><td>15 775 965</td><td></td><td>15 775 965</td><td></td></tr>
+                <tr><td>638100</td><td>Frais de recrutement du personnel</td><td>5 120 000</td><td></td><td>5 120 000</td><td></td></tr>
+                <tr><td>638300</td><td>Réception</td><td>1 408 165 895</td><td></td><td>1 408 165 895</td><td></td></tr>
+                <tr><td>638400</td><td>Mission</td><td>199 687 728</td><td></td><td>199 687 728</td><td></td></tr>
+                <tr><td>641300</td><td>Taxe sur appointements et salaires</td><td>149 552 124</td><td></td><td>149 552 124</td><td></td></tr>
+                <tr><td>641400</td><td>Taxe d'apprentissage</td><td>97 800</td><td></td><td>97 800</td><td></td></tr>
+                <tr><td>641500</td><td>Formation Professionnelle continue</td><td>39 160 107</td><td></td><td>39 160 107</td><td></td></tr>
+                <tr><td>641800</td><td>Autres impôts et taxes</td><td>1 055 725 967</td><td></td><td>1 055 725 967</td><td></td></tr>
+                <tr><td>646800</td><td>Autres droits</td><td>382 706 528</td><td></td><td>382 706 528</td><td></td></tr>
+                <tr><td>658200</td><td>Dons</td><td>9 600 000</td><td></td><td>9 600 000</td><td></td></tr>
+                <tr><td>658801</td><td>AUTRES CHARGES/PERTE SUR REGLEMENT</td><td>334 925</td><td></td><td>334 925</td><td></td></tr>
+                <tr><td>661100</td><td>Appointements salaires et commission</td><td>1 290 169 057</td><td></td><td>1 290 169 057</td><td></td></tr>
+                <tr><td>661200</td><td>Primes et gratification</td><td>27 842 000</td><td></td><td>27 842 000</td><td></td></tr>
+                <tr><td>661201</td><td>Primes heures supplémentaires</td><td>235 796 148</td><td></td><td>235 796 148</td><td></td></tr>
+                <tr><td>661300</td><td>Congés payés</td><td>29 195 500</td><td></td><td>29 195 500</td><td></td></tr>
+                <tr><td>662100</td><td>Appointement salaires et commission</td><td>836 660 549</td><td></td><td>836 660 549</td><td></td></tr>
+                <tr><td>663100</td><td>Indemnité de logement</td><td>81 237 399</td><td></td><td>81 237 399</td><td></td></tr>
+                <tr><td>663400</td><td>Indemnité de transport</td><td>81 337 399</td><td></td><td>81 337 399</td><td></td></tr>
+                <tr><td>663800</td><td>Indemnité cherté de vie</td><td>60 891 157</td><td></td><td>60 891 157</td><td></td></tr>
+                <tr><td>664100</td><td>Charge sociales sur renumeration du</td><td>281 508 528</td><td></td><td>281 508 528</td><td></td></tr>
+                <tr><td>664200</td><td>Charges sociales personnel non nati</td><td>101 107 403</td><td></td><td>101 107 403</td><td></td></tr>
+                <tr><td>668400</td><td>Médecine du travail et pharmacie</td><td>124 257 774</td><td></td><td>124 257 774</td><td></td></tr>
+                <tr><td>676000</td><td>Perte de charge financières</td><td>294 726 853</td><td></td><td>294 726 853</td><td></td></tr>
+                <tr><td>679100</td><td>Charges pour dépréciations et provi</td><td>381 767 534</td><td></td><td>381 767 534</td><td></td></tr>
+                <tr><td>681300</td><td>Dotations aux amortissement des imo</td><td>433 417 686</td><td></td><td>433 417 686</td><td></td></tr>
+                <tr><td>706100</td><td>Services vendus dans la région</td><td></td><td>25 751 972 140</td><td></td><td>25 751 972 140</td></tr>
+                <tr><td>758801</td><td>AUTRES PRODUIT/ GAIN SUR REGLEMENT</td><td></td><td>588 455</td><td></td><td>588 455</td></tr>
+            </tbody>
+        </table>
+    </div>
+    `,
+    "ANNEXES - BALANCES COMPTABLES"
+),
+
+// SLIDE 33: BALANCE COMPLÈTE LOGISTIC DE BOFFA - PARTIE 1
+createSlide(
+    "BALANCE LOGISTIC DE BOFFA - PARTIE 1",
+    `
+    <div class="balance-full">
+        <table class="balance-table-full">
+            <thead>
+                <tr>
+                    <th>Compte</th>
+                    <th>Intitulé</th>
+                    <th>Mouvements Débit</th>
+                    <th>Mouvements Crédit</th>
+                    <th>Solde Débit</th>
+                    <th>Solde Crédit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>130100</td><td>Resultat en instance : Benefice</td><td></td><td>3 958 133 901</td><td></td><td>3 958 133 901</td></tr>
+                <tr><td>185100</td><td>Compte permanent non Bloqué</td><td>355 376 952 468</td><td>196 336 904 504</td><td>374 826 890 229</td><td>533 866 938 193</td></tr>
+                <tr><td>239301</td><td>Travaux sur la base vie</td><td>5 243 195 184</td><td>3 389 105 494</td><td>8 632 300 678</td><td></td></tr>
+                <tr><td>239302</td><td>Dortoir 1</td><td>1 657 641 622</td><td>39 470 538</td><td>1 697 112 160</td><td></td></tr>
+                <tr><td>239303</td><td>Dortoir 2</td><td>2 435 280 902</td><td>58 316 192</td><td>2 493 597 094</td><td></td></tr>
+                <tr><td>239304</td><td>Salle de conciergerie</td><td>114 164 464</td><td></td><td>114 164 464</td><td></td></tr>
+                <tr><td>244400</td><td>Mobilier de Bureau</td><td>12 000 000</td><td>56 507 066</td><td>68 507 066</td><td></td></tr>
+                <tr><td>245100</td><td>Materiel de transport</td><td>683 263 200</td><td>521 610 802</td><td>1 204 874 002</td><td></td></tr>
+                <tr><td>245401</td><td>YIck Barge 501</td><td>118 098 673 715</td><td></td><td>118 098 673 715</td><td></td></tr>
+                <tr><td>245402</td><td>Yick Barge 502</td><td>117 031 371 389</td><td></td><td>117 031 371 389</td><td></td></tr>
+                <tr><td>245403</td><td>Prosperité</td><td>19 615 218 355</td><td></td><td>19 615 218 355</td><td></td></tr>
+                <tr><td>245404</td><td>YIck You</td><td>167 038 571 933</td><td></td><td>167 038 571 933</td><td></td></tr>
+                <tr><td>245405</td><td>YIck Shan</td><td>166 933 454 240</td><td></td><td>166 933 454 240</td><td></td></tr>
+                <tr><td>249501</td><td>Prosperité</td><td>15 795 242 706</td><td>3 819 975 649</td><td>19 615 218 355</td><td></td></tr>
+                <tr><td>249502</td><td>Barge YI BO 501</td><td>84 627 941 105</td><td>33 470 732 610</td><td>118 098 673 715</td><td></td></tr>
+                <tr><td>249503</td><td>Barge YI BO 502</td><td>84 500 261 105</td><td>32 531 110 284</td><td>117 031 371 389</td><td></td></tr>
+                <tr><td>249504</td><td>Grue YI SHAN</td><td>111 364 795 688</td><td>55 568 658 552</td><td>166 933 454 240</td><td></td></tr>
+                <tr><td>249505</td><td>Grue YI YOU</td><td>111 479 377 688</td><td>55 559 194 245</td><td>167 038 571 933</td><td></td></tr>
+                <tr><td>252000</td><td>Avance et acompte verse sur immo</td><td>281 964 775</td><td>1 037 424 221</td><td>281 964 775</td><td>1 037 424 221</td></tr>
+                <tr><td>275300</td><td>Dépôts de caution pour l'eau</td><td>85 300 000</td><td>19 700 000</td><td>65 600 000</td><td></td></tr>
+                <tr><td>284400</td><td>Amortissement du materiel et mobili</td><td>133 333</td><td>5 202 871</td><td></td><td>5 336 204</td></tr>
+                <tr><td>284500</td><td>Amortissement du materiel de transp</td><td>59 975 326</td><td>29 660 805 430</td><td></td><td>29 720 780 756</td></tr>
+                <tr><td>331010</td><td>Stock de carburant</td><td>9 551 046 128</td><td></td><td>9 551 046 128</td><td></td></tr>
+                <tr><td>331020</td><td>Stock pièces de rechange</td><td>487 826 277</td><td></td><td>487 826 277</td><td></td></tr>
+                <tr><td>331030</td><td>Stock huile glissante</td><td>451 980 320</td><td></td><td>451 980 320</td><td></td></tr>
+                <tr><td>331040</td><td>Stock materiaux</td><td>2 926 922 794</td><td></td><td>2 926 922 794</td><td></td></tr>
+                <tr><td>331050</td><td>Stock peinture</td><td>184 268 278</td><td></td><td>184 268 278</td><td></td></tr>
+                <tr><td>401100</td><td>Fournisseurs</td><td>955 603 245</td><td>1 886 097 317</td><td></td><td>250 646 268 462</td></tr>
+                <tr><td>401101</td><td>Fournisseurs retenue de garantie</td><td>24 304 514</td><td>751 473 379</td><td></td><td>129 186 999</td></tr>
+                <tr><td>401102</td><td>Fournisseur note debit</td><td>7 190 124 877</td><td>15 450 062 915</td><td>8 259 938 038</td><td></td></tr>
+                <tr><td>401200</td><td>Fournisseur groupes</td><td>2 959 535 462</td><td>53 100 110 145</td><td></td><td>54 208 381 249</td></tr>
+                <tr><td>408100</td><td>Fournisseurs factures non parvenues</td><td>95 573 548</td><td>95 573 548</td><td></td><td>1 938 243 135</td></tr>
+                <tr><td>411100</td><td>Clients</td><td>5 777 959 751</td><td>17 614 308</td><td>163 516 366 885</td><td>151 929 391 485</td></tr>
+                <tr><td>411101</td><td>Clients retenues de garantie</td><td>1 749 809 187</td><td>95 899 679</td><td>7 065 882 677</td><td>6 319 362 313</td></tr>
+                <tr><td>422000</td><td>Personnel rénumeration dues</td><td>133 985 830</td><td>7 860 802 508</td><td></td><td>7 881 989 669</td></tr>
+                <tr><td>431800</td><td>CNSS</td><td>101 055 741</td><td>280 169 992</td><td></td><td>494 022 893</td></tr>
+                <tr><td>444900</td><td>Credit de TVA</td><td>5 371 200</td><td></td><td>5 371 200</td><td></td></tr>
+                <tr><td>445400</td><td>TVA,Recuperable sur biens et servic</td><td>16 779 051</td><td></td><td>16 779 051</td><td></td></tr>
+                <tr><td>447001</td><td>Prélevement Forfaitaire</td><td>9 948 049</td><td>102 261 044</td><td></td><td>128 652 942</td></tr>
+                <tr><td>447002</td><td>RNS</td><td>7 190 124 877</td><td></td><td>7 190 124 877</td><td></td></tr>
+                <tr><td>447201</td><td>RTS</td><td>56 019 047</td><td>684 774 719</td><td></td><td>678 793 598</td></tr>
+                <tr><td>447202</td><td>VF</td><td>40 799 978</td><td>512 980 279</td><td></td><td>512 558 270</td></tr>
+                <tr><td>471100</td><td>Debiteurs divers</td><td>8 242 890</td><td>1 208 502 472</td><td>1 216 231 362</td><td>514 000</td></tr>
+                <tr><td>471101</td><td>DIALLO MAMADOU BAILO</td><td>15 000 000</td><td>211 391 000</td><td>226 391 000</td><td></td></tr>
+                <tr><td>471103</td><td>MAITRE NAVIRE</td><td>92 820 000</td><td>90 279 286</td><td>183 099 286</td><td></td></tr>
+                <tr><td>478100</td><td>Dimunition des creances d'exploitat</td><td>113 513 987</td><td>60 988 106</td><td>113 513 987</td><td>60 988 106</td></tr>
+                <tr><td>479300</td><td>Dimunition des dettes d'exploitatio</td><td>14 754 922 967</td><td>14 754 922 967</td><td></td><td>41 559 763 447</td></tr>
+                <tr><td>521100</td><td>Banque SGBG GNF</td><td>71 128 150</td><td>51 555 666 628</td><td>50 616 659 515</td><td>1 010 135 263</td></tr>
+                <tr><td>521200</td><td>Banque SGBG Dollar</td><td>407 979 005</td><td>53 048 171 444</td><td>51 980 842 788</td><td>1 475 307 661</td></tr>
+                <tr><td>571100</td><td>Caisse GNF</td><td>68 786 000</td><td>4 703 276 000</td><td>4 380 878 500</td><td>391 183 500</td></tr>
+                <tr><td>571200</td><td>Caisse Dollar</td><td>82 027 173</td><td>1 470 758 432</td><td>1 364 639 078</td><td>188 146 527</td></tr>
+                <tr><td>585000</td><td>Virements de Fond</td><td>63 662 873 920</td><td>63 662 873 920</td><td></td><td></td></tr>
+                <tr><td>599000</td><td>Provision pour risque à court terme</td><td>113 513 987</td><td>113 513 987</td><td></td><td>60 988 106</td></tr>
+            </tbody>
+        </table>
+    </div>
+    `,
+    "ANNEXES - BALANCES COMPTABLES"
 ),
     // SLIDE 25: SYNTHÈSE ET RECOMMANDATIONS
     createSlide(

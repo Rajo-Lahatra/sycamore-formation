@@ -187,7 +187,7 @@ export default function HomePage() {
 
           {/* Jour 4 */}
           <details>
-            <summary>Jour 4 : Jeudi 23 octobre 2025 - Maîtriser l'IS, l'IMF et le traitement fiscal des charges minières.</summary>
+            <summary>Jour 4 : Jeudi 23 octobre 2025 - Maîtriser l'IS, l'IMF, CFU, Droit d'enregistrement, patente et le traitement fiscal des charges minières.</summary>
             <table className="schedule-table">
               <thead>
                 <tr>
@@ -201,7 +201,7 @@ export default function HomePage() {
                 <tr>
                   <td>09h00 – 09h45</td>
                   <td>
-                    <strong>IS (Impôt sur les Sociétés)</strong> : base imposable (résultat fiscal), charges déductibles,
+                    <strong>IS (Impôt sur les Sociétés)</strong> : base imposable (résultat fiscal), CFU, Patente, droits d'enregistrement, charges déductibles,
                     amortissements miniers, <strong>IMF (Impôt Minimum Forfaitaire)</strong>
                   </td>
                   <td>Exposé technique</td>

@@ -42,20 +42,19 @@ export default function SlideShow({ slides }) {
         </button>
       </div>
 
-      {/* Contenu de la slide - Compatible avec les deux formats */}
+      {/* Conteneur principal avec une seule slide visible */}
       <div className="slides-wrapper">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            id={`slide-${index}`}
-            className={`slide-content ${index === currentIndex ? 'active' : 'hidden'}`}
-          >
-            {/* Ceci fonctionne pour les deux formats :
-                - Jour 1: slide.content directement (JSX)
-                - Jours 2-5: slide.content (JSX avec dangerouslySetInnerHTML) */}
-            {slide.content}
-          </div>
-        ))}
+        <div className="slide-viewport">
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              id={`slide-${index}`}
+              className={`slide-content ${index === currentIndex ? 'active' : 'hidden'}`}
+            >
+              {slide.content}
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Indicateur de progression */}

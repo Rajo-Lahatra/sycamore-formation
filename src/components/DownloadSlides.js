@@ -5,127 +5,42 @@ export default function DownloadSlides({ dayNumber, slides }) {
   const { currentSlide } = useSlide();
 
   const downloadCurrentSlide = () => {
-    const slideContent = document.getElementById(`slide-${currentSlide - 1}`);
-    
-    if (slideContent) {
-      const printWindow = window.open('', '_blank');
-      printWindow.document.write(`
-        <html>
-          <head>
-            <title>Jour ${dayNumber} - Slide ${currentSlide}</title>
-            <style>
-              body { 
-                font-family: Arial, sans-serif; 
-                margin: 40px;
-                line-height: 1.6;
-              }
-              .slide-title { 
-                color: #8B4513; 
-                border-bottom: 2px solid #8B4513;
-                padding-bottom: 10px;
-              }
-              h3 { color: #333; margin-top: 20px; }
-              ul { margin: 15px 0; padding-left: 20px; }
-              li { margin: 8px 0; }
-              table { 
-                width: 100%; 
-                border-collapse: collapse; 
-                margin: 15px 0;
-              }
-              th, td { 
-                border: 1px solid #ddd; 
-                padding: 8px; 
-                text-align: left;
-              }
-              th { 
-                background-color: #8B4513; 
-                color: white; 
-              }
-              .logo-container { 
-                display: flex; 
-                justify-content: space-between; 
-                margin-bottom: 20px;
-              }
-              .logo { max-height: 60px; }
-              .slide-body { margin-top: 20px; }
-            </style>
-          </head>
-          <body>
-            <div class="logo-container">
-              <img src="${window.location.origin}/logo-jm.png" alt="JM Consulting" class="logo" />
-              <img src="${window.location.origin}/logo-sycamore.png" alt="Sycamore" class="logo" />
-            </div>
-            <h1>Formation Sycamore - Jour ${dayNumber}</h1>
-            <h2>Slide ${currentSlide}</h2>
-            ${slideContent.innerHTML}
-            <div style="margin-top: 30px; text-align: center; color: #666;">
-              Téléchargé le ${new Date().toLocaleDateString('fr-FR')}
-            </div>
-          </body>
-        </html>
-      `);
-      printWindow.document.close();
-      printWindow.print();
-    }
-  };
+    // Approche plus simple et fiable
+    const currentSlideData = slides[currentSlide - 1];
+    if (!currentSlideData) return;
 
-  const downloadAllSlides = () => {
     const printWindow = window.open('', '_blank');
-    let allSlidesContent = '';
     
-    slides.forEach((slide, index) => {
-      const slideElement = document.getElementById(`slide-${index}`);
-      if (slideElement) {
-        allSlidesContent += `
-          <div style="page-break-after: always; margin-bottom: 40px;">
-            ${slideElement.innerHTML}
-          </div>
-        `;
-      }
-    });
+    // Extraire le contenu texte de manière sécurisée
+    let slideHTML = '';
+    if (currentSlideData.content.props?.dangerouslySetInnerHTML) {
+      // Cas des jours 2-5
+      slideHTML = currentSlideData.content.props.dangerouslySetInnerHTML.__html;
+    } else {
+      // Cas du jour 1 - on utilise une représentation texte simple
+      slideHTML = `<div>${currentSlideData.title || `Slide ${currentSlide}`}</div>`;
+    }
 
     printWindow.document.write(`
       <html>
         <head>
-          <title>Formation Sycamore - Jour ${dayNumber} - Slides Complets</title>
+          <title>Jour ${dayNumber} - Slide ${currentSlide}</title>
           <style>
             body { 
               font-family: Arial, sans-serif; 
               margin: 40px;
               line-height: 1.6;
+              color: #333;
             }
-            .slide-title { 
-              color: #8B4513; 
-              border-bottom: 2px solid #8B4513;
-              padding-bottom: 10px;
-            }
-            h3 { color: #333; margin-top: 20px; }
-            ul { margin: 15px 0; padding-left: 20px; }
+            h1, h2, h3 { color: #8B4513; }
+            ul { margin: 15px 0; }
             li { margin: 8px 0; }
-            table { 
-              width: 100%; 
-              border-collapse: collapse; 
-              margin: 15px 0;
-            }
-            th, td { 
-              border: 1px solid #ddd; 
-              padding: 8px; 
-              text-align: left;
-            }
-            th { 
-              background-color: #8B4513; 
-              color: white; 
-            }
             .logo-container { 
               display: flex; 
               justify-content: space-between; 
               margin-bottom: 20px;
             }
             .logo { max-height: 60px; }
-            .slide-body { margin-top: 20px; }
-            @media print {
-              body { margin: 20px; }
-            }
           </style>
         </head>
         <body>
@@ -133,12 +48,56 @@ export default function DownloadSlides({ dayNumber, slides }) {
             <img src="${window.location.origin}/logo-jm.png" alt="JM Consulting" class="logo" />
             <img src="${window.location.origin}/logo-sycamore.png" alt="Sycamore" class="logo" />
           </div>
-          <h1>Formation Sycamore - Fiscalité Minière</h1>
-          <h2>Jour ${dayNumber} - Slides Complets</h2>
-          ${allSlidesContent}
+          <h1>Formation Sycamore - Jour ${dayNumber}</h1>
+          <h2>Slide ${currentSlide}</h2>
+          <div>${slideHTML}</div>
           <div style="margin-top: 30px; text-align: center; color: #666;">
-            Document téléchargé le ${new Date().toLocaleDateString('fr-FR')}
+            Téléchargé le ${new Date().toLocaleDateString('fr-FR')}
           </div>
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+  };
+
+  const downloadAllSlides = () => {
+    const printWindow = window.open('', '_blank');
+    let allSlidesContent = '';
+    
+    slides.forEach((slide, index) => {
+      let slideHTML = '';
+      if (slide.content.props?.dangerouslySetInnerHTML) {
+        slideHTML = slide.content.props.dangerouslySetInnerHTML.__html;
+      } else {
+        slideHTML = `<div>${slide.title || `Slide ${index + 1}`}</div>`;
+      }
+      
+      allSlidesContent += `
+        <div style="page-break-after: always; padding: 20px 0;">
+          <h3>Slide ${index + 1}</h3>
+          <div>${slideHTML}</div>
+        </div>
+      `;
+    });
+
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Formation Sycamore - Jour ${dayNumber}</title>
+          <style>
+            body { font-family: Arial; margin: 40px; color: #333; }
+            h1, h2, h3 { color: #8B4513; }
+            @media print { body { margin: 20px; } }
+          </style>
+        </head>
+        <body>
+          <div class="logo-container">
+            <img src="${window.location.origin}/logo-jm.png" alt="JM Consulting" class="logo" />
+            <img src="${window.location.origin}/logo-sycamore.png" alt="Sycamore" class="logo" />
+          </div>
+          <h1>Formation Sycamore - Jour ${dayNumber}</h1>
+          ${allSlidesContent}
         </body>
       </html>
     `);

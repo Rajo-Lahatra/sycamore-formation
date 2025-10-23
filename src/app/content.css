@@ -17,10 +17,9 @@
 }
 
 /* Titre principal de la page (Nom du jour de formation) */
-/* Alternative : en-tête encore plus clair */
 .content-title-header {
     background: linear-gradient(135deg, var(--tulip-tree) 0%, var(--saddle-light) 100%);
-    color: var(--quincy); /* Texte plus foncé pour mieux contraster */
+    color: var(--quincy);
     padding: 30px 20px;
     margin-bottom: 40px;
     text-align: center;
@@ -88,74 +87,163 @@
     transform: scale(1.05);
 }
 
-/* --- DIAPORAMA & NAVIGATION --- */
-.slideshow-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* === STYLES CRITIQUES POUR LE SLIDESHOW === */
+
+.slideshow-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
     position: relative;
-    margin-bottom: 30px;
 }
 
-.slideshow {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+/* Conteneur principal des slides */
+.slides-wrapper {
+    position: relative;
+    min-height: 500px;
+    margin: 20px 0;
 }
 
-/* Boutons de navigation latéraux */
-.slide-nav-side {
-    background-color: var(--sun);
-    color: var(--saddle);
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    font-size: 18px;
+.slide-viewport {
+    position: relative;
+    width: 100%;
+}
+
+/* Styles ESSENTIELS pour l'affichage des slides */
+.slide-content {
+    width: 100%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--french-gray);
+    border-left: 5px solid var(--sun);
+    padding: 40px;
+    margin-bottom: 20px;
+    transition: opacity 0.3s ease;
+}
+
+/* FORCER l'affichage une seule slide à la fois */
+.slide-content.active {
+    display: block;
+    opacity: 1;
+}
+
+.slide-content.hidden {
+    display: none !important;
+    opacity: 0;
+}
+
+/* FORCER la visibilité du texte */
+.slide-content,
+.slide-content * {
+    color: #333 !important;
+}
+
+.slide-content h1,
+.slide-content h2,
+.slide-content h3,
+.slide-content h4,
+.slide-content p,
+.slide-content li,
+.slide-content strong {
+    color: #333 !important;
+}
+
+/* Styles spécifiques pour les titres */
+.slide-content h2,
+.slide-content .slide-title {
+    color: var(--saddle) !important;
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--tulip-tree);
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.slide-content h3 {
+    color: var(--quincy) !important;
+    font-size: 1.4em;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.slide-content h4 {
+    color: var(--sepia) !important;
+    font-size: 1.2em;
+    margin-top: 18px;
+    margin-bottom: 12px;
+}
+
+/* Styles pour les listes */
+.slide-content ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.slide-content ul li {
+    font-size: 1.1em;
+    margin-bottom: 12px;
+    padding-left: 20px;
+    border-left: 3px solid var(--sun);
+    line-height: 1.5;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.slide-content p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* Styles pour les éléments en gras */
+.slide-content strong {
+    color: var(--saddle) !important;
     font-weight: bold;
-    flex-shrink: 0;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 10;
 }
 
-.slide-nav-side:hover:not(:disabled) {
-    background-color: var(--fuel-yellow);
-    transform: scale(1.1);
+/* Styles pour les tableaux */
+.slide-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.95em;
 }
 
-.slide-nav-side:disabled {
-    background-color: var(--french-gray);
-    color: var(--pale-oyster);
-    cursor: not-allowed;
-    opacity: 0.4;
+.slide-content table th {
+    background-color: var(--saddle);
+    color: white !important;
+    padding: 12px;
+    border: 1px solid var(--french-gray);
+    text-align: left;
+    font-weight: bold;
 }
 
-.prev-button {
-    position: absolute;
-    left: -60px;
+.slide-content table td {
+    padding: 10px;
+    border: 1px solid var(--french-gray);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333 !important;
 }
 
-.next-button {
-    position: absolute;
-    right: -60px;
+.slide-content table tr:nth-child(even) td {
+    background-color: rgba(251, 165, 25, 0.05);
 }
 
-/* Contrôles de navigation en bas */
-.slide-controls-bottom {
+/* Navigation des slides */
+.slide-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 15px;
     background-color: rgba(251, 165, 25, 0.1);
     border-radius: 8px;
     border: 1px solid var(--french-gray);
 }
 
-.slide-controls-bottom .nav-button {
+.nav-button {
     background-color: var(--sun);
     color: var(--saddle);
     border: none;
@@ -166,12 +254,12 @@
     transition: all 0.3s ease;
 }
 
-.slide-controls-bottom .nav-button:hover:not(:disabled) {
+.nav-button:hover:not(:disabled) {
     background-color: var(--fuel-yellow);
     color: white;
 }
 
-.slide-controls-bottom .nav-button:disabled {
+.nav-button:disabled {
     background-color: var(--french-gray);
     color: var(--pale-oyster);
     cursor: not-allowed;
@@ -187,91 +275,62 @@
     border: 1px solid var(--french-gray);
 }
 
-/* En-tête de slide */
-.slide-header {
-    text-align: right;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--french-gray);
-}
-
-.slide-number {
-    background-color: var(--quincy);
-    color: white;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-
-/* Styles des slides */
-.slide-section {
-    background-color: white;
-    border: 1px solid var(--french-gray);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    padding: 30px 40px;
-    margin-bottom: 30px;
-    border-radius: 8px;
-    border-left: 5px solid var(--sun);
-    min-height: 250px;
-}
-
-.slide-title {
-    color: var(--saddle);
-    font-size: 1.8em;
-    border-bottom: 2px solid var(--tulip-tree);
-    padding-bottom: 10px;
-    margin-top: 0;
-    margin-bottom: 25px;
-}
-
-.slide-section h2 {
-    color: var(--sepia);
-    border-bottom: 1px solid var(--tulip-tree);
-    padding-bottom: 8px;
-    margin-top: 25px;
-    margin-bottom: 15px;
-}
-
-.slide-section h3 {
-    color: var(--quincy);
-    font-size: 1.4em;
+/* Barre de progression */
+.slide-progress {
+    width: 100%;
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
     margin-top: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--fuel-yellow);
+    transition: width 0.3s ease;
+    border-radius: 3px;
+}
+
+/* === STYLES POUR LE TÉLÉCHARGEMENT === */
+.download-section {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid var(--saddle);
+}
+
+.download-section h3 {
     margin-bottom: 15px;
+    color: var(--saddle);
 }
 
-.slide-section ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-bottom: 20px;
+.download-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
-.slide-section ul li {
-    font-size: 1.1em;
-    margin-bottom: 12px;
-    padding-left: 20px;
-    border-left: 3px solid var(--sun);
-    line-height: 1.5;
-    padding-top: 5px;
-    padding-bottom: 5px;
+.download-button {
+    background: var(--saddle);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    flex: 1;
+    min-width: 200px;
 }
 
-.slide-section p {
-    font-size: 1.1em;
-    margin-bottom: 15px;
-    line-height: 1.6;
-}
-
-.contact-info {
-    border-left: none;
-    border-top: 2px dashed var(--french-gray);
-    padding-top: 25px;
-    text-align: center;
-    margin-top: 30px;
+.download-button:hover {
+    background: var(--fuel-yellow);
+    color: var(--saddle);
 }
 
 /* === SYSTÈME Q&A - Questions & Commentaires === */
-
 .qanda-section {
     margin: 3rem 0;
     padding: 2rem;
@@ -559,7 +618,64 @@ textarea {
     color: var(--sepia);
 }
 
-/* Responsive */
+/* === STYLES POUR L'AUTHENTIFICATION === */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--saddle) 0%, var(--fuel-yellow) 100%);
+    padding: 20px;
+}
+
+.auth-form {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.auth-form .logo-container {
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.code-form {
+    margin: 30px 0;
+}
+
+.code-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.code-input:focus {
+    border-color: var(--saddle);
+    outline: none;
+}
+
+.error-message {
+    color: #e74c3c;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.loading {
+    text-align: center;
+    padding: 50px;
+    font-size: 18px;
+}
+
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
     .content-container {
         width: 100%;
@@ -579,22 +695,16 @@ textarea {
         max-height: 35px;
     }
     
-    .slide-nav-side {
-        width: 35px;
-        height: 35px;
-        font-size: 14px;
-    }
-    
-    .prev-button {
-        left: -45px;
-    }
-    
-    .next-button {
-        right: -45px;
-    }
-    
-    .slide-section {
+    .slide-content {
         padding: 20px;
+    }
+    
+    .download-buttons {
+        flex-direction: column;
+    }
+    
+    .download-button {
+        min-width: auto;
     }
     
     .question-header, .comment-header {
@@ -614,299 +724,13 @@ textarea {
         padding: 1rem;
         margin: 2rem 0;
     }
-}
-
-/* Suppression des styles du panneau latéral puisque nous utilisons l'affichage en bas */
-.qanda-toggle-button,
-.qanda-panel-overlay,
-.qanda-panel {
-    display: none;
-}
-/* === STYLES SLIDESHOW POUR LES DEUX FORMATS === */
-
-.slideshow-container {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.main-slide-display {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-  border: 1px solid var(--french-gray);
-  border-left: 5px solid var(--sun);
-  min-height: 500px;
-}
-
-.slide-content {
-  width: 100%;
-  padding: 40px;
-  text-align: left;
-}
-
-/* Styles pour le contenu JSX (Day1) et HTML (Days 2-5) */
-.slide-content h2,
-.slide-content .slide-title {
-  color: var(--saddle);
-  font-size: 1.8em;
-  border-bottom: 2px solid var(--tulip-tree);
-  padding-bottom: 10px;
-  margin-top: 0;
-  margin-bottom: 25px;
-}
-
-.slide-content h3 {
-  color: var(--quincy);
-  font-size: 1.4em;
-  margin-top: 20px;
-  margin-bottom: 15px;
-}
-
-.slide-content h4 {
-  color: var(--sepia);
-  font-size: 1.2em;
-  margin-top: 18px;
-  margin-bottom: 12px;
-}
-
-.slide-content ul {
-  list-style-type: none;
-  padding-left: 0;
-  margin-bottom: 20px;
-}
-
-.slide-content ul li {
-  font-size: 1.1em;
-  margin-bottom: 12px;
-  padding-left: 20px;
-  border-left: 3px solid var(--sun);
-  line-height: 1.5;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.slide-content p {
-  font-size: 1.1em;
-  margin-bottom: 15px;
-  line-height: 1.6;
-  color: var(--sepia);
-}
-
-/* Styles spécifiques pour le HTML des Days 2-5 */
-.slide-content strong {
-  color: var(--saddle);
-  font-weight: bold;
-}
-
-/* Styles pour les tableaux dans les deux formats */
-.slide-content table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 0.95em;
-}
-
-.slide-content table th {
-  background-color: var(--saddle);
-  color: white;
-  padding: 12px;
-  border: 1px solid var(--french-gray);
-  text-align: left;
-  font-weight: bold;
-}
-
-.slide-content table td {
-  padding: 10px;
-  border: 1px solid var(--french-gray);
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.slide-content table tr:nth-child(even) td {
-  background-color: rgba(251, 165, 25, 0.05);
-}
-
-.slide-content table thead tr th {
-  background-color: var(--quincy);
-}
-
-/* Navigation */
-.slide-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  padding: 0 20px;
-}
-
-.nav-button {
-  background: var(--saddle);
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.nav-button:hover {
-  background: var(--quincy);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.slide-counter {
-  font-weight: bold;
-  font-size: 18px;
-  color: var(--saddle);
-  background: var(--sun);
-  padding: 8px 16px;
-  border-radius: 20px;
-}
-
-/* Miniatures */
-.slide-thumbnails {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.thumbnail {
-  width: 40px;
-  height: 40px;
-  border: 2px solid var(--french-gray);
-  background: white;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  color: var(--saddle);
-}
-
-.thumbnail.active {
-  border-color: var(--saddle);
-  background: var(--saddle);
-  color: white;
-  transform: scale(1.1);
-}
-
-.thumbnail:hover:not(.active) {
-  border-color: var(--sun);
-  background: var(--tulip-tree);
-  color: var(--saddle);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .slideshow-container {
-    padding: 10px;
-  }
-  
-  .slide-content {
-    padding: 20px;
-  }
-  
-  .slide-content h2,
-  .slide-content .slide-title {
-    font-size: 1.5em;
-  }
-  
-  .slide-content h3 {
-    font-size: 1.2em;
-  }
-  
-  .slide-nav {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .nav-button {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  .thumbnail {
-    width: 35px;
-    height: 35px;
-    font-size: 12px;
-  }
-  
-  .slide-content table {
-    font-size: 0.8em;
-    display: block;
-    overflow-x: auto;
-  }
-  
-  .slide-content table th,
-  .slide-content table td {
-    padding: 6px;
-    white-space: nowrap;
-  }
-}
-/* Styles pour l'authentification */
-.auth-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--saddle) 0%, var(--fuel-yellow) 100%);
-  padding: 20px;
-}
-
-.auth-form {
-  background: white;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  text-align: center;
-  max-width: 400px;
-  width: 100%;
-}
-
-.auth-form .logo-container {
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.code-form {
-  margin: 30px 0;
-}
-
-.code-input {
-  width: 100%;
-  padding: 15px;
-  border: 2px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
-  margin-bottom: 15px;
-  text-align: center;
-  letter-spacing: 2px;
-}
-
-.code-input:focus {
-  border-color: var(--saddle);
-  outline: none;
-}
-
-.error-message {
-  color: #e74c3c;
-  margin: 10px 0;
-  font-weight: bold;
-}
-
-.loading {
-  text-align: center;
-  padding: 50px;
-  font-size: 18px;
+    
+    .slide-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .nav-button {
+        width: 100%;
+    }
 }

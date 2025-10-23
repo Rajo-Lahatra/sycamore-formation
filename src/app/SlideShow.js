@@ -1,107 +1,69 @@
-// src/app/SlideShow.js
 'use client';
-import { useState, useEffect } from 'react';
 import { useSlide } from './contexts/SlideContext';
 
 export default function SlideShow({ slides }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const { setCurrentSlide } = useSlide();
+  const { currentSlide, setCurrentSlide } = useSlide();
+  const currentIndex = currentSlide - 1;
 
-  useEffect(() => {
-    setCurrentSlide(currentIndex + 1);
-  }, [currentIndex, setCurrentSlide]);
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % slides.length);
+  const nextSlide = () => {
+    if (currentIndex < slides.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+    }
   };
 
-  const goToPrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
-
-  // Fonction pour détecter si c'est du JSX (méthode améliorée)
-  const isJSX = (content) => {
-    if (!content) return false;
-    
-    // Si c'est un élément React valide
-    if (typeof content === 'object' && content.$$typeof) {
-      return true;
+  const prevSlide = () => {
+    if (currentIndex > 0) {
+      setCurrentSlide(currentSlide - 1);
     }
-    
-    // Si c'est un fragment React
-    if (Array.isArray(content)) {
-      return content.some(item => typeof item === 'object' && item?.$$typeof);
-    }
-    
-    return false;
-  };
-
-  // Fonction pour rendre le contenu selon le format
-  const renderSlideContent = () => {
-    const currentSlide = slides[currentIndex];
-    
-    if (!currentSlide || !currentSlide.content) {
-      return <p>Slide non disponible</p>;
-    }
-    
-    const { content } = currentSlide;
-    
-    // Si le contenu est du JSX (Day1)
-    if (isJSX(content)) {
-      return content;
-    }
-    
-    // Si le contenu est une string HTML (Days 2-5)
-    if (typeof content === 'string') {
-      return (
-        <div 
-          dangerouslySetInnerHTML={{ __html: content }} 
-        />
-      );
-    }
-    
-    // Fallback avec plus d'informations de debug
-    console.warn('Format de slide non supporté:', { 
-      type: typeof content,
-      content: content
-    });
-    return <p>Format de slide non supporté - Type: {typeof content}</p>;
   };
 
   return (
     <div className="slideshow-container">
-      {/* SLIDE PRINCIPAL */}
-      <div className="main-slide-display">
-        <div className="slide-content">
-          {renderSlideContent()}
-        </div>
-      </div>
-
-      {/* NAVIGATION */}
-      <div className="slide-nav">
-        <button onClick={goToPrev} className="nav-button">← Précédent</button>
+      {/* Contrôles de navigation */}
+      <div className="slide-controls">
+        <button 
+          onClick={prevSlide} 
+          disabled={currentIndex === 0}
+          className="nav-button"
+        >
+          ← Précédent
+        </button>
+        
         <span className="slide-counter">
-          Slide {currentIndex + 1} / {slides.length}
+          Slide {currentSlide} / {slides.length}
         </span>
-        <button onClick={goToNext} className="nav-button">Suivant →</button>
+        
+        <button 
+          onClick={nextSlide} 
+          disabled={currentIndex === slides.length - 1}
+          className="nav-button"
+        >
+          Suivant →
+        </button>
       </div>
 
-      {/* MINIATURES */}
-      <div className="slide-thumbnails">
+      {/* Contenu de la slide - Compatible avec les deux formats */}
+      <div className="slides-wrapper">
         {slides.map((slide, index) => (
-          <button
+          <div
             key={index}
-            onClick={() => goToSlide(index)}
-            className={`thumbnail ${index === currentIndex ? 'active' : ''}`}
-            title={slide.title}
+            id={`slide-${index}`}
+            className={`slide-content ${index === currentIndex ? 'active' : 'hidden'}`}
           >
-            {index + 1}
-          </button>
+            {/* Ceci fonctionne pour les deux formats :
+                - Jour 1: slide.content directement (JSX)
+                - Jours 2-5: slide.content (JSX avec dangerouslySetInnerHTML) */}
+            {slide.content}
+          </div>
         ))}
+      </div>
+
+      {/* Indicateur de progression */}
+      <div className="slide-progress">
+        <div 
+          className="progress-bar" 
+          style={{ width: `${((currentIndex + 1) / slides.length) * 100}%` }}
+        ></div>
       </div>
     </div>
   );

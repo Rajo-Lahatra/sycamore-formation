@@ -223,13 +223,13 @@ function QuestionsList({ questions, answerInputs, setAnswerInputs, submitAnswer 
             </span>
           </div>
           <div className="question-content">
-            <strong>Q:</strong> {q.question_text}
+            <strong>Question:</strong> {q.question_text}
           </div>
           
           {q.is_answered ? (
             <div className="answer">
               <div className="answer-header">
-                <strong>R:</strong> par {q.answered_by} 
+                <strong>Réponse:</strong> par {q.answered_by} 
                 <span className="answer-time">
                   ({new Date(q.answered_at).toLocaleString('fr-FR')})
                 </span>

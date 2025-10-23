@@ -651,7 +651,75 @@ const slides = [
         </ul>
         `
     ),
+// SLIDE 25: CAS N°1 - MC LENON FOSTER
+createSlide(
+    "CAS PRATIQUE - DÉTERMINATION DU RÉSULTAT FISCAL",
+    `
+    <h3>CAS N°1: MC LENON FOSTER</h3>
+    
+    <div class="case-header">
+        <p><strong>Exercice clos le:</strong> 31 Décembre 2021</p>
+        <p><strong>Résultat comptable:</strong> <span class="deficit">Déficitaire de GNF 11 322 755 384</span></p>
+    </div>
 
+    <h3>TRAVAIL DEMANDÉ</h3>
+    <ul>
+        <li>Analyser la balance des comptes fournie</li>
+        <li>Déterminer le résultat fiscal après réintégrations et déductions</li>
+        <li>Calculer l'impôt sur les sociétés applicable</li>
+        <li>Préparer la déclaration de résultat fiscale</li>
+    </ul>
+
+    <h3>ÉTAPES CLÉS</h3>
+    <ul>
+        <li>Identification des charges non déductibles</li>
+        <li>Vérification des produits imposables</li>
+        <li>Application du barème de l'IS</li>
+        <li>Rédaction de la liasse fiscale</li>
+    </ul>
+    `,
+    "4ème PARTIE - ÉTUDES DE CAS PRATIQUES"
+),
+
+// SLIDE 26: CAS N°2 - SOCIÉTÉ LOGISTIC DE BOFFA
+createSlide(
+    "CAS PRATIQUE - DÉTERMINATION DU RÉSULTAT FISCAL",
+    `
+    <h3>CAS N°2: SOCIÉTÉ LOGISTIC DE BOFFA</h3>
+    
+    <div class="case-header">
+        <p><strong>Exercice clos le:</strong> 31 Décembre 2023</p>
+        <p><strong>Résultat comptable:</strong> <span class="deficit">Déficitaire de GNF 9 155 466 297</span></p>
+    </div>
+
+    <h3>TRAVAIL DEMANDÉ</h3>
+    <ul>
+        <li>Examiner la balance des comptes jointe</li>
+        <li>Calculer le résultat fiscal corrigé</li>
+        <li>Déterminer l'impôt sur les sociétés dû</li>
+        <li>Établir la déclaration fiscale</li>
+    </ul>
+
+    <h3>POINTS D'ATTENTION</h3>
+    <ul>
+        <li>Réintégration des charges non déductibles</li>
+        <li>Déduction des produits non imposables</li>
+        <li>Respect des délais de déclaration</li>
+        <li>Vérification des reports déficitaires</li>
+    </ul>
+
+    <h3>APPROCHE MÉTHODOLOGIQUE</h3>
+    <p>Utiliser le plan de traitement fiscal standard :</p>
+    <ol>
+        <li>Analyse de la balance comptable</li>
+        <li>Identification des différences temporaires et permanentes</li>
+        <li>Calcul des réintégrations et déductions</li>
+        <li>Détermination de la base imposable</li>
+        <li>Calcul de l'impôt</li>
+    </ol>
+    `,
+    "4ème PARTIE - ÉTUDES DE CAS PRATIQUES"
+),
     // SLIDE 25: SYNTHÈSE ET RECOMMANDATIONS
     createSlide(
         "SYNTHÈSE ET RECOMMANDATIONS POUR SYCAMORE",
@@ -675,9 +743,8 @@ const slides = [
         <h3>PROCHAINES ÉTAPES</h3>
         <ul>
             <li>Révision des procédures de détermination du résultat fiscal</li>
-            <li>Formation des équipes aux spécificités du code minier</li>
             <li>Mise en place du suivi des régimes dérogatoires</li>
-            <li>Préparation des dossiers pour les avantages fiscaux</li>
+            <li>Préparation des dossiers pour les avantages fiscaux et les demandes de remboursement de crédit de TVA</li>
         </ul>
         `,
         null

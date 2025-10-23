@@ -657,7 +657,35 @@ createSlide(
         `,
         "3ème PARTIE - FISCALITÉ SPÉCIFIQUE AU SECTEUR MINIER"
     ),
-
+// SLIDE xx: taxe à l'exportation
+createSlide(
+    "Taxe à l'exportation",
+    `
+    <h3>TAUX DE LA TAXE À L'EXPORTATION SUR LES PIERRES PRÉCIEUSES ET AUTRES PIERRES GEMMES</h3>
+    <table border="1" style="width:100%; border-collapse:collapse; text-align:left">
+        <thead>
+            <tr>
+                <th>SUBSTANCE EXPORTEE</th>
+                <th>UNITE DE TAXATION</th>
+                <th>TAXE</th>
+                <th>ASSIETTE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td colspan="4"><strong>Pierres précieuses</strong></td></tr>
+            <tr><td colspan="4"><strong>Diamants bruts :</strong></td></tr>
+            <tr><td style="padding-left:20px">Taxe sur la production industrielle</td><td>Ct</td><td>3,0%</td><td>Estimation Bureau National d'Expertise (BNE)</td></tr>
+            <tr><td style="padding-left:20px">Taxe sur la production semi-industrielle</td><td>Ct</td><td>3,0%</td><td>Estimation Bureau National d'Expertise (BNE)</td></tr>
+            <tr><td style="padding-left:20px">Pierre d'une valeur unitaire égale ou supérieure à cinq cent mille (500 000) USD</td><td>Ct</td><td>5,0%</td><td>Estimation Bureau National d'Expertise (BNE)</td></tr>
+            <tr><td colspan="4"><strong>Pierres précieuses autres que les Diamants (Emeraude, Rubis, Saphir, etc.) et autres Pierres Gemmes</strong></td></tr>
+            <tr><td style="padding-left:20px">Taxe sur la production industrielle</td><td>Ct</td><td>1,5%</td><td>Estimation Bureau National d'Expertise (BNE)</td></tr>
+            <tr><td style="padding-left:20px">Taxe sur la production semi-industrielle</td><td>Ct</td><td>1,5%</td><td>Estimation Bureau National d'Expertise (BNE)</td></tr>
+            <tr><td style="padding-left:20px">Pierre d'une valeur unitaire égale ou supérieure à cinq cent mille (500 000) USD</td><td>Ct</td><td>5,0%</td><td>Estimation Bureau National d'Expertise (BNE)</td></tr>
+        </tbody>
+    </table>
+    <p style="font-style:italic; margin-top:10px">Ct : Carat = 0,20519655 gramme</p>
+    `
+),
     // SLIDE 24: CONTRIBUTIONS DÉVELOPPEMENT LOCAL
     createSlide(
         "CONTRIBUTIONS AU DÉVELOPPEMENT LOCAL",

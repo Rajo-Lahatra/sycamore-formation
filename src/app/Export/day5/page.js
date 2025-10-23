@@ -2,6 +2,7 @@ import DayExport from '../DayExport';
 // Importez les slides du jour 5 existant  
 const slides = [
     
+
     // SLIDE 2: REMBOURSEMENT CRÉDIT TVA - TEXTES
     createSlide(
         "REMBOURSEMENT DE CRÉDIT DE TVA - Textes applicables",

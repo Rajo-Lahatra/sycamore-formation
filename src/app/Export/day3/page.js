@@ -1,6 +1,20 @@
 import DayExport from '../DayExport';
 // Importez les slides du jour 3 existant  
-
+// Définition de createSlide
+function createSlide(title, content, subtitle = null) {
+  return {
+    content: (
+      <div className="slide-content">
+        {subtitle && <h3>{subtitle}</h3>}
+        <h2 className="slide-title">{title}</h2>
+        <div 
+          className="slide-body"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      </div>
+    )
+  };
+}
 const slides = [
     // SLIDE 1: INTRODUCTION JOUR 3
     createSlide(

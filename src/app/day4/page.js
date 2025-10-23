@@ -238,7 +238,38 @@ const slides = [
         </ul>
         `
     ),
-
+// SLIDE 10: AMORTISSEMENTS
+createSlide(
+    "IS - CHARGES DÉDUCTIBLES - Amortissements",
+    `
+    <h3>TABLEAU DES AMORTISSEMENTS FISCALEMENT ADMIS EN DEDUCTION</h3>
+    <table border="1" style="width:100%; border-collapse:collapse; text-align:left">
+        <thead>
+            <tr>
+                <th>IMMOBILISATIONS AMORTISSABLES</th>
+                <th>DUREE D'UTILISATION</th>
+                <th>TAUX D'AMORTISSEMENT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Construction à usage commercial, artisanal ou agricole</td><td>20 ans</td><td>5%</td></tr>
+            <tr><td colspan="3"><strong>Matériel de transport :</strong></td></tr>
+            <tr><td style="padding-left:20px">- Véhicule de tourisme</td><td>3 ans</td><td>33,33%</td></tr>
+            <tr><td style="padding-left:20px">- Camions et véhicules tout terrain</td><td>5 ans</td><td>20%</td></tr>
+            <tr><td>Matériel et outillage</td><td>5 ans</td><td>20%</td></tr>
+            <tr><td>Mobilier et matériel de bureau</td><td>10 ans</td><td>10%</td></tr>
+            <tr><td>Installation, aménagement et agencements</td><td>10 ans</td><td>10%</td></tr>
+            <tr><td>Matériel informatique</td><td>3 ans</td><td>33,33%</td></tr>
+            <tr><td colspan="3"><strong>Actifs Biologiques :</strong></td></tr>
+            <tr><td style="padding-left:20px">- Animaux de trait</td><td>10 ans</td><td>10%</td></tr>
+            <tr><td style="padding-left:20px">- Animaux producteurs</td><td>10 ans</td><td>10%</td></tr>
+            <tr><td style="padding-left:20px">- Animaux de garde</td><td>10 ans</td><td>10%</td></tr>
+            <tr><td style="padding-left:20px">- Plantations agricoles</td><td>20 ans</td><td>5%</td></tr>
+            <tr><td style="padding-left:20px">- Autres actifs biologiques</td><td>10 ans</td><td>10%</td></tr>
+        </tbody>
+    </table>
+    `
+),
     // SLIDE 10: SPÉCIFICITÉ SECTEUR MINIER - AMORTISSEMENTS
     createSlide(
         "IS - SPÉCIFICITÉ SECTEUR MINIER",

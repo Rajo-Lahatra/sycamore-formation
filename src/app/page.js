@@ -276,6 +276,41 @@ export default function HomePage() {
             </table>
           </details>
         </section>
+
+        {/* NOUVELLE SECTION : ÉVALUATION */}
+        <section id="evaluation" style={{ 
+          marginTop: '3rem', 
+          padding: '2rem', 
+          backgroundColor: '#f8f9fa', 
+          borderRadius: '8px',
+          border: '1px solid #e9ecef',
+          textAlign: 'center'
+        }}>
+          <h2 style={{ color: '#48281b', marginBottom: '1rem' }}>
+            Évaluation de la Formation
+          </h2>
+          <p style={{ marginBottom: '1.5rem', color: '#654530' }}>
+            Votre feedback est essentiel pour nous aider à améliorer la qualité de nos formations.
+            Merci de prendre quelques minutes pour remplir le formulaire d'évaluation.
+          </p>
+          <a 
+            href="/evaluation" 
+            style={{
+              display: 'inline-block',
+              padding: '12px 24px',
+              backgroundColor: '#eea125',
+              color: 'white',
+              textDecoration: 'none',
+              borderRadius: '4px',
+              fontWeight: 'bold',
+              transition: 'background-color 0.3s ease'
+            }}
+            onMouseOver={(e) => e.target.style.backgroundColor = '#e8a73d'}
+            onMouseOut={(e) => e.target.style.backgroundColor = '#eea125'}
+          >
+            Accéder au Formulaire d'Évaluation
+          </a>
+        </section>
       </div>
     </>
   );

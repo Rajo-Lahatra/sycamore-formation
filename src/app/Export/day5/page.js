@@ -1,8 +1,20 @@
 import DayExport from '../DayExport';
 // Importez les slides du jour 5 existant  
+function createSlide(title, content, subtitle = null) {
+  return {
+    content: (
+      <div className="slide-content">
+        {subtitle && <h3>{subtitle}</h3>}
+        <h2 className="slide-title">{title}</h2>
+        <div 
+          className="slide-body"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      </div>
+    )
+  };
+}
 const slides = [
-    
-
     // SLIDE 2: REMBOURSEMENT CRÉDIT TVA - TEXTES
     createSlide(
         "REMBOURSEMENT DE CRÉDIT DE TVA - Textes applicables",

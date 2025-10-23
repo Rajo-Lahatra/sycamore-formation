@@ -1,5 +1,19 @@
 import DayExport from '../DayExport';
 // Importez les slides du jour 1 existant
+function createSlide(title, content, subtitle = null) {
+  return {
+    content: (
+      <div className="slide-content">
+        {subtitle && <h3>{subtitle}</h3>}
+        <h2 className="slide-title">{title}</h2>
+        <div 
+          className="slide-body"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      </div>
+    )
+  };
+}
 const slides = [
     {
         title: 'Diapositive 1 : Introduction',

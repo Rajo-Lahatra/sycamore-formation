@@ -363,7 +363,7 @@ createSlide(
     ),
 ];
 
-
+export { slides };
 export default function Day3Page() {
   return <Day3Client slides={slides} />;
 }

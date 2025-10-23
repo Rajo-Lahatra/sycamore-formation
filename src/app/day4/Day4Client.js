@@ -4,7 +4,7 @@ import ContentWrapper from '../ContentWrapper';
 import SlideShow from '../SlideShow';
 import QandA from '../../components/QandA';
 import ProtectedContent from '../../components/ProtectedContent';
-import DownloadSlides from '../../components/DownloadSlides';
+import DownloadSlides from '../../components/PDFExport';
 
 export default function Day4Client({ slides }) {
   return (

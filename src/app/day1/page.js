@@ -402,6 +402,7 @@ const slides = [
         )
     }
 ];
+export { slides };
 
 export default function Day1Page() {
   return <Day1Client slides={slides} />;

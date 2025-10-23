@@ -957,7 +957,7 @@ createSlide(
         null
     )
 ];
-
+export { slides };
 export default function Day4Page() {
   return <Day4Client slides={slides} />;
 }

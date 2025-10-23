@@ -1503,7 +1503,7 @@ createSlide(
         `
     )
 ];
-
+export { slides };
 export default function Day5Page() {
   return <Day5Client slides={slides} />;
 }

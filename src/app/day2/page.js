@@ -401,7 +401,7 @@ const slides = [
     ),
 ];
 
-
+export { slides };
 export default function Day2Page() {
   return <Day2Client slides={slides} />;
 }

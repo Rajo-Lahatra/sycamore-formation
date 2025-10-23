@@ -3,7 +3,7 @@ import ContentWrapper from '../ContentWrapper';
 import SlideShow from '../SlideShow';
 import QandA from '../../components/QandA';
 import ProtectedContent from '../../components/ProtectedContent';
-import DownloadSlides from '../../components/DownloadSlides'; // ← Nouveau import
+import DownloadSlides from '../../components/PDFExport'; // ← Nouveau import
 
 export default function Day1Client({ slides }) {
   return (

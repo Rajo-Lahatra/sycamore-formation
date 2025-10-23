@@ -4,67 +4,79 @@ import { useSlide } from '@/app/contexts/SlideContext';
 export default function DownloadSlides({ dayNumber, slides }) {
   const { currentSlide } = useSlide();
 
-  // Fonction pour extraire le contenu HTML d'une slide
-  const getSlideContent = (slide) => {
-    if (!slide || !slide.content) return '';
-    
+  // Fonction UNIVERSELLE pour extraire le contenu
+  const extractSlideContent = (slide) => {
+    if (!slide || !slide.content) {
+      return '<p>Contenu non disponible</p>';
+    }
+
     try {
-      // Cas des jours 2-5 : le contenu est dans dangerouslySetInnerHTML
-      if (slide.content.props && slide.content.props.dangerouslySetInnerHTML) {
+      // Méthode 1: Contenu HTML direct (jours 2-5)
+      if (slide.content.props?.dangerouslySetInnerHTML?.__html) {
         return slide.content.props.dangerouslySetInnerHTML.__html;
       }
-      
-      // Cas du jour 1 : conversion simple du JSX en HTML
-      if (slide.content.props && slide.content.props.children) {
-        return convertJSXToHTML(slide.content);
+
+      // Méthode 2: JSX avec enfants (jour 1 et autres)
+      if (slide.content.props?.children) {
+        return extractFromJSXChildren(slide.content.props.children);
       }
-      
-      return '<p>Contenu non disponible</p>';
+
+      // Méthode 3: Accès direct au contenu
+      if (typeof slide.content === 'object') {
+        const contentStr = JSON.stringify(slide.content);
+        if (contentStr.includes('"__html"')) {
+          // Essayons d'extraire le HTML depuis la structure d'objet
+          const htmlMatch = contentStr.match(/"__html":"(.*?)"/);
+          if (htmlMatch) {
+            return decodeURIComponent(htmlMatch[1].replace(/\\u0022/g, '"').replace(/\\n/g, ''));
+          }
+        }
+      }
+
+      console.log('Structure non reconnue:', slide);
+      return '<p>Format de contenu non supporté</p>';
+
     } catch (error) {
-      console.error('Erreur extraction:', error);
-      return '<p>Erreur lors de l\'extraction du contenu</p>';
+      console.error('Erreur extraction:', error, slide);
+      return `<p>Erreur d'extraction: ${error.message}</p>`;
     }
   };
 
-  // Conversion basique du JSX en HTML
-  const convertJSXToHTML = (jsxElement) => {
-    if (!jsxElement || !jsxElement.props) return '';
-    
-    const { type, props } = jsxElement;
-    const { children, className, dangerouslySetInnerHTML } = props;
-    
-    // Si c'est déjà du HTML dangereux
-    if (dangerouslySetInnerHTML) {
-      return dangerouslySetInnerHTML.__html;
+  // Extraction récursive depuis les enfants JSX
+  const extractFromJSXChildren = (children) => {
+    if (!children) return '';
+
+    if (Array.isArray(children)) {
+      return children.map(child => extractFromJSXChildren(child)).join('');
     }
-    
-    let content = '';
-    
-    // Traitement des enfants
-    if (children) {
-      if (Array.isArray(children)) {
-        content = children.map(child => {
-          if (typeof child === 'string') return child;
-          if (child && child.props) return convertJSXToHTML(child);
-          return '';
-        }).join('');
-      } else if (typeof children === 'string') {
-        content = children;
-      } else if (children.props) {
-        content = convertJSXToHTML(children);
+
+    if (typeof children === 'string') {
+      return children;
+    }
+
+    if (typeof children === 'object' && children.props) {
+      const tag = children.type || 'div';
+      const childrenContent = extractFromJSXChildren(children.props.children);
+      
+      // Appliquer les balises appropriées
+      if (tag === 'h1' || tag === 'h2' || tag === 'h3' || tag === 'h4') {
+        return `<${tag}>${childrenContent}</${tag}>`;
+      } else if (tag === 'p') {
+        return `<p>${childrenContent}</p>`;
+      } else if (tag === 'ul') {
+        return `<ul>${childrenContent}</ul>`;
+      } else if (tag === 'li') {
+        return `<li>${childrenContent}</li>`;
+      } else if (tag === 'strong' || tag === 'b') {
+        return `<strong>${childrenContent}</strong>`;
+      } else if (tag === 'em' || tag === 'i') {
+        return `<em>${childrenContent}</em>`;
+      } else {
+        return childrenContent;
       }
     }
-    
-    // Appliquer les balises HTML appropriées
-    const tag = type || 'div';
-    const classAttr = className ? ` class="${className}"` : '';
-    
-    if (tag === 'h2' || tag === 'h3' || tag === 'h4' || tag === 'p' || tag === 'div' || tag === 'ul' || tag === 'li') {
-      return `<${tag}${classAttr}>${content}</${tag}>`;
-    }
-    
-    // Pour les éléments non reconnus, retourner le contenu brut
-    return content;
+
+    return '';
   };
 
   const downloadCurrentSlide = () => {
@@ -76,7 +88,7 @@ export default function DownloadSlides({ dayNumber, slides }) {
       return;
     }
 
-    const slideContent = getSlideContent(slide);
+    const slideContent = extractSlideContent(slide);
     const slideTitle = slide.title || `Slide ${currentSlide}`;
 
     generatePDF(slideTitle, slideContent, dayNumber, currentSlide, false);
@@ -84,22 +96,45 @@ export default function DownloadSlides({ dayNumber, slides }) {
 
   const downloadAllSlides = () => {
     let allSlidesContent = '';
+    let successfulSlides = 0;
     
     slides.forEach((slide, index) => {
-      const slideContent = getSlideContent(slide);
+      const slideContent = extractSlideContent(slide);
       const slideTitle = slide.title || `Slide ${index + 1}`;
       
+      // Vérifier si le contenu a été extrait avec succès
+      const hasRealContent = !slideContent.includes('non disponible') && 
+                            !slideContent.includes('non supporté') && 
+                            !slideContent.includes('Erreur d\'extraction');
+      
+      if (hasRealContent) {
+        successfulSlides++;
+      }
+      
       allSlidesContent += `
-        <div style="page-break-after: always; padding: 30px 0;">
-          <h2 style="color: #8B4513; border-bottom: 2px solid #8B4513; padding-bottom: 10px;">
-            ${slideTitle}
-          </h2>
-          <div style="margin-top: 20px;">
+        <div style="page-break-after: always; padding: 25px 0; min-height: 500px;">
+          <div style="background: #f8f9fa; padding: 15px; border-left: 4px solid #8B4513; margin-bottom: 20px;">
+            <h2 style="color: #8B4513; margin: 0; font-size: 1.4em;">${slideTitle}</h2>
+          </div>
+          <div style="line-height: 1.6; font-size: 14px;">
             ${slideContent}
           </div>
+          ${!hasRealContent ? `
+            <div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; margin-top: 20px; border-radius: 5px;">
+              <p style="margin: 0; color: #856404; font-style: italic;">
+                ⚠️ Le contenu complet n'a pas pu être extrait automatiquement. 
+                Veuillez consulter la version en ligne pour le contenu détaillé.
+              </p>
+            </div>
+          ` : ''}
         </div>
       `;
     });
+
+    // Avertissement si peu de slides ont été extraites
+    if (successfulSlides < slides.length / 2) {
+      alert(`Attention: Seulement ${successfulSlides} slides sur ${slides.length} ont pu être extraites correctement. Certains contenus peuvent être incomplets.`);
+    }
 
     generatePDF(`Toutes les slides du Jour ${dayNumber}`, allSlidesContent, dayNumber, null, true);
   };
@@ -119,43 +154,47 @@ export default function DownloadSlides({ dayNumber, slides }) {
           <style>
             body { 
               font-family: 'Arial', sans-serif; 
-              margin: 40px;
+              margin: 25px;
               line-height: 1.6;
               color: #333;
-              font-size: 14px;
+              font-size: 13px;
             }
             h1 { 
               color: #8B4513; 
               text-align: center;
               border-bottom: 3px solid #8B4513;
-              padding-bottom: 15px;
-              margin-bottom: 30px;
+              padding-bottom: 12px;
+              margin-bottom: 25px;
+              font-size: 22px;
             }
             h2 { 
               color: #8B4513; 
               border-bottom: 2px solid #8B4513;
-              padding-bottom: 8px;
-              margin: 25px 0 15px 0;
+              padding-bottom: 6px;
+              margin: 20px 0 12px 0;
+              font-size: 18px;
             }
             h3 { 
               color: #654321; 
-              margin: 20px 0 10px 0;
+              margin: 18px 0 10px 0;
+              font-size: 16px;
             }
             h4 { 
               color: #654321; 
-              margin: 18px 0 10px 0;
+              margin: 16px 0 8px 0;
+              font-size: 14px;
             }
             p { 
-              margin: 12px 0; 
-              line-height: 1.6;
+              margin: 10px 0; 
+              line-height: 1.5;
             }
             ul, ol { 
-              margin: 15px 0; 
-              padding-left: 25px;
+              margin: 12px 0; 
+              padding-left: 20px;
             }
             li { 
-              margin: 8px 0; 
-              line-height: 1.5;
+              margin: 6px 0; 
+              line-height: 1.4;
             }
             strong { 
               color: #8B4513; 
@@ -164,12 +203,12 @@ export default function DownloadSlides({ dayNumber, slides }) {
             table { 
               width: 100%; 
               border-collapse: collapse; 
-              margin: 20px 0;
-              font-size: 13px;
+              margin: 15px 0;
+              font-size: 12px;
             }
             th, td { 
               border: 1px solid #ddd; 
-              padding: 10px; 
+              padding: 8px; 
               text-align: left;
             }
             th { 
@@ -184,40 +223,36 @@ export default function DownloadSlides({ dayNumber, slides }) {
               display: flex; 
               justify-content: space-between; 
               align-items: center;
-              margin-bottom: 30px;
-              padding-bottom: 20px;
+              margin-bottom: 25px;
+              padding-bottom: 15px;
               border-bottom: 2px solid #8B4513;
             }
             .logo { 
-              height: 50px; 
+              height: 45px; 
             }
             .footer { 
-              margin-top: 40px; 
+              margin-top: 30px; 
               text-align: center; 
               color: #666; 
-              font-size: 12px;
+              font-size: 11px;
               border-top: 1px solid #ddd;
-              padding-top: 15px;
+              padding-top: 12px;
             }
-            .slide-title {
-              color: #8B4513;
-              font-size: 1.8em;
-              border-bottom: 2px solid #8B4513;
-              padding-bottom: 10px;
-              margin-top: 0;
-              margin-bottom: 25px;
+            .content-section {
+              margin-bottom: 20px;
             }
             @media print {
-              body { margin: 20px; }
+              body { margin: 15px; }
+              .no-print { display: none; }
             }
           </style>
         </head>
         <body>
           <div class="header">
             <img src="${window.location.origin}/logo-jm.png" alt="JM Consulting" class="logo" />
-            <div style="text-align: center;">
-              <h1 style="margin: 0; font-size: 24px;">Formation Sycamore</h1>
-              <p style="margin: 5px 0 0 0; font-weight: bold; color: #8B4513;">
+            <div style="text-align: center; flex-grow: 1;">
+              <h1 style="margin: 0; font-size: 20px;">Formation Sycamore</h1>
+              <p style="margin: 3px 0 0 0; font-weight: bold; color: #8B4513;">
                 Fiscalité Minière - Jour ${dayNum}
               </p>
             </div>
@@ -226,26 +261,23 @@ export default function DownloadSlides({ dayNumber, slides }) {
 
           <div class="content">
             ${isAllSlides ? content : `
-              <h2>${title}</h2>
-              ${content}
+              <div class="content-section">
+                <h2>${title}</h2>
+                ${content}
+              </div>
             `}
           </div>
 
           <div class="footer">
             <p>
-              Document généré le ${new Date().toLocaleDateString('fr-FR', { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })} 
+              Document généré le ${new Date().toLocaleDateString('fr-FR')} 
               ${isAllSlides ? 
-                `- ${slides.length} slides` : 
-                `- Slide ${slideNumber} sur ${slides.length}`
+                `• ${slides.length} slides au total` : 
+                `• Slide ${slideNumber} sur ${slides.length}`
               }
             </p>
-            <p style="font-size: 11px; color: #999;">
-              Formation Sycamore Mine Guinée SAU - Du 20 au 24 octobre 2025
+            <p style="font-size: 10px; color: #999; margin-top: 5px;">
+              Formation Sycamore Mine Guinée SAU • Du 20 au 24 octobre 2025
             </p>
           </div>
         </body>
@@ -257,7 +289,7 @@ export default function DownloadSlides({ dayNumber, slides }) {
     // Attendre que le contenu soit chargé avant d'imprimer
     setTimeout(() => {
       printWindow.print();
-    }, 500);
+    }, 800);
   };
 
   return (
@@ -271,10 +303,23 @@ export default function DownloadSlides({ dayNumber, slides }) {
           📚 Toutes les slides ({slides.length})
         </button>
       </div>
-      <p style={{ fontSize: '0.9em', color: '#666', marginTop: '10px', textAlign: 'center' }}>
-        <strong>Instructions :</strong> Cliquez sur un bouton, puis dans la fenêtre d'impression,<br/>
-        choisissez <strong>"Enregistrer au format PDF"</strong> comme destination.
-      </p>
+      <div style={{ 
+        fontSize: '0.85em', 
+        color: '#666', 
+        marginTop: '12px', 
+        textAlign: 'center',
+        background: '#f8f9fa',
+        padding: '10px',
+        borderRadius: '5px',
+        border: '1px solid #e9ecef'
+      }}>
+        <p style={{ margin: '0 0 5px 0' }}>
+          <strong>💡 Instructions :</strong> Cliquez sur un bouton, puis dans la fenêtre d'impression,
+        </p>
+        <p style={{ margin: 0 }}>
+          choisissez <strong>"Enregistrer au format PDF"</strong> comme destination.
+        </p>
+      </div>
     </div>
   );
 }

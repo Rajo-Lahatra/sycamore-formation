@@ -1,12 +1,15 @@
 'use client';
 import { useState } from 'react';
-import { supabase } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client'; // Correction de l'import
 
 export default function EvaluationPage() {
   const [loading, setLoading] = useState(false);
   const [showOtherFunction, setShowOtherFunction] = useState(false);
   const router = useRouter();
+  
+  // Créez le client Supabase
+  const supabase = createClient();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -64,18 +67,8 @@ export default function EvaluationPage() {
       ameliorations: formData.get('ameliorations'),
       besoins_suivi: formData.get('besoins_suivi'),
       
-      // Honeypot
-      bot_field: formData.get('bot-field'),
-      
       created_at: new Date().toISOString(),
     };
-
-    // Vérification honeypot
-    if (data.bot_field) {
-      console.warn("Détection de bot, soumission ignorée.");
-      setLoading(false);
-      return;
-    }
 
     try {
       const { data: result, error } = await supabase
@@ -98,26 +91,16 @@ export default function EvaluationPage() {
   };
 
   return (
-    <div className="container">
+    <div className="evaluation-container">
       <style jsx>{`
-        :root {
-          --sun: #fba519;
-          --cocoa-bean: #48281b;
-          --french-gray: #bcbdc0;
-          --tulip-tree: #e8a73d;
-          --almond-frost: #8b776a;
-          --quincy: #654530;
-          --fuel-yellow: #eea125;
-          --millbrook: #5a3e30;
-        }
-        .container {
+        .evaluation-container {
           max-width: 880px;
           margin: auto;
           background-color: #fff;
           padding: 30px;
           border-radius: 8px;
           box-shadow: 0 0 10px rgba(72,40,27,0.2);
-          border-left: 8px solid var(--sun);
+          border-left: 8px solid #fba519;
           font-family: Arial, sans-serif;
         }
         .logo {
@@ -127,12 +110,12 @@ export default function EvaluationPage() {
         }
         h1 {
           text-align: center;
-          color: var(--cocoa-bean);
+          color: #48281b;
           margin-bottom: 6px;
         }
         .subtitle {
           text-align: center;
-          color: var(--millbrook);
+          color: #5a3e30;
           margin: 0 0 24px;
           font-size: 14px;
         }
@@ -140,13 +123,13 @@ export default function EvaluationPage() {
           display: block;
           margin-top: 12px;
           font-weight: bold;
-          color: var(--millbrook);
+          color: #5a3e30;
         }
         input, select, textarea {
           width: 100%;
           padding: 10px;
           margin-top: 5px;
-          border: 1px solid var(--almond-frost);
+          border: 1px solid #8b776a;
           border-radius: 4px;
           background-color: #fdfdfd;
         }
@@ -166,8 +149,8 @@ export default function EvaluationPage() {
         .section-title {
           margin-top: 28px;
           font-size: 18px;
-          color: var(--quincy);
-          border-bottom: 1px solid var(--almond-frost);
+          color: #654530;
+          border-bottom: 1px solid #8b776a;
           padding-bottom: 6px;
         }
         .likert {
@@ -189,6 +172,7 @@ export default function EvaluationPage() {
           justify-content: center;
           font-weight: normal;
           color: #333;
+          margin-top: 0;
         }
         .badge {
           display: inline-block;
@@ -213,7 +197,7 @@ export default function EvaluationPage() {
         }
         button {
           padding: 12px 20px;
-          background-color: var(--fuel-yellow);
+          background-color: #eea125;
           color: white;
           border: none;
           border-radius: 4px;
@@ -226,7 +210,7 @@ export default function EvaluationPage() {
           color: #333;
         }
         button:hover:not(:disabled) {
-          background-color: var(--tulip-tree);
+          background-color: #e8a73d;
         }
         button.secondary:hover:not(:disabled) {
           background: #dcdcdc;
@@ -252,6 +236,7 @@ export default function EvaluationPage() {
           text-align: center;
           font-weight: normal;
           color: #333;
+          margin-top: 0;
         }
         .hidden {
           display: none;
@@ -271,9 +256,8 @@ export default function EvaluationPage() {
         }
       `}</style>
 
-      {/* Logo - à adapter avec votre chemin d'image */}
       <img 
-        src="/logo-jm.png" 
+        src="/logo.png" 
         alt="Logo du cabinet" 
         className="logo" 
       />

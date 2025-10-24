@@ -294,22 +294,19 @@ export default function HomePage() {
             Merci de prendre quelques minutes pour remplir le formulaire d'évaluation.
           </p>
           <a 
-            href="/evaluation" 
-            style={{
-              display: 'inline-block',
-              padding: '12px 24px',
-              backgroundColor: '#eea125',
-              color: 'white',
-              textDecoration: 'none',
-              borderRadius: '4px',
-              fontWeight: 'bold',
-              transition: 'background-color 0.3s ease'
-            }}
-            onMouseOver={(e) => e.target.style.backgroundColor = '#e8a73d'}
-            onMouseOut={(e) => e.target.style.backgroundColor = '#eea125'}
-          >
-            Accéder au Formulaire d'Évaluation
-          </a>
+  href="/evaluation" 
+  style={{
+    display: 'inline-block',
+    padding: '12px 24px',
+    backgroundColor: '#eea125',
+    color: 'white',
+    textDecoration: 'none',
+    borderRadius: '4px',
+    fontWeight: 'bold'
+  }}
+>
+  Accéder au Formulaire d'Évaluation
+</a>
         </section>
       </div>
     </>

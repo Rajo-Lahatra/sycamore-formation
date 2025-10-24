@@ -202,7 +202,40 @@ const slides = [
         </div>
         `
     ),
+// SLIDE X: MENTIONS OBLIGATOIRES DES FACTURES EN GUINÉE
+createSlide(
+    "MENTIONS OBLIGATOIRES DES FACTURES (Art. 383 CGI)",
+    `
+    <ol>
+        <li><strong>Identifiant unique et dates</strong><br/>
+        – Numéro unique basé sur une séquence chronologique continue.<br/>
+        – Date d'émission de la facture.<br/>
+        – Si différente : date de livraison/prestation ou de versement d'acompte.</li>
 
+        <li><strong>Identification des parties</strong><br/>
+        – <strong>Vendeur (Assujetti)</strong> : Nom, adresse, téléphone, NIF, clé d'immatriculation à la TVA.<br/>
+        – <strong>Client (Acquéreur)</strong> : Nom, adresse, téléphone.<br/>
+        – <strong>Client assujetti</strong> : Son NIF et sa clé TVA si c'est lui le redevable (Art. 373 Bis).</li>
+
+        <li><strong>Détail de l'opération</strong><br/>
+        – Pour chaque bien/service : quantité, dénomination précise, prix unitaire HT.<br/>
+        – Taux de TVA applicable ou référence à l'article exonérant.<br/>
+        – Rabais, remises, ristournes ou escomptes acquis et chiffrables.</li>
+
+        <li><strong>Montants et régimes fiscaux</strong><br/>
+        – Montant total HT.<br/>
+        – Montant total de la TVA exigible.<br/>
+        – Prix total TTC.<br/>
+        – Mention "TVA d’après les débits – article 366 Bis du CGI" si applicable.<br/>
+        – Mention "TVA sur marge – article 410 Bis du CGI" si applicable.</li>
+    </ol>
+
+    <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #dc3545; margin-top: 20px;">
+        <h4 style="margin: 0 0 10px 0;">Points de vigilance importants :</h4>
+        <p style="margin: 0;">Tout document modifiant la facture initiale (avoir, avenant) doit reprendre l'ensemble de ces mentions et référencer clairement la facture d'origine. Le droit à déduction de la TVA par l'acheteur est conditionné par la possession d'une facture comportant toutes ces mentions.</p>
+    </div>
+    `
+),
     // SLIDE 10: MOYENS GÉNÉRAUX DE CONTRÔLE
     createSlide(
         "MOYENS GÉNÉRAUX DE CONTRÔLES - Demande d'éclaircissements",

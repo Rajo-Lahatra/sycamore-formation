@@ -257,8 +257,8 @@ export default function EvaluationPage() {
       `}</style>
 
       <img 
-        src="/logo.png" 
-        alt="Logo du cabinet" 
+        src="/logo-jm.png" 
+        alt="Logo JM Consulting" 
         className="logo" 
       />
       
